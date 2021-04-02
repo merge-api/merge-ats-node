@@ -15,5 +15,7 @@ import { RequestFile } from './models';
 export enum GenderEnum {
     Male = <any> 'MALE',
     Female = <any> 'FEMALE',
+    NonBinary = <any> 'NON-BINARY',
+    Other = <any> 'OTHER',
     DeclineToSelfIdentify = <any> 'DECLINE_TO_SELF_IDENTIFY'
 }

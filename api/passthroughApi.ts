@@ -94,9 +94,8 @@ export class PassthroughApi {
      * Pull data from an endpoint not currently supported by Merge.
      * @param xAccountToken Token identifying the end user.
      * @param dataPassthroughRequest 
-     * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      */
-    public async passthroughCreate (xAccountToken: string, dataPassthroughRequest: DataPassthroughRequest, includeRemoteData?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RemoteResponse;  }> {
+    public async passthroughCreate (xAccountToken: string, dataPassthroughRequest: DataPassthroughRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RemoteResponse;  }> {
         const localVarPath = this.basePath + '/passthrough';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -117,10 +116,6 @@ export class PassthroughApi {
         // verify required parameter 'dataPassthroughRequest' is not null or undefined
         if (dataPassthroughRequest === null || dataPassthroughRequest === undefined) {
             throw new Error('Required parameter dataPassthroughRequest was null or undefined when calling passthroughCreate.');
-        }
-
-        if (includeRemoteData !== undefined) {
-            localVarQueryParameters['include_remote_data'] = ObjectSerializer.serialize(includeRemoteData, "boolean");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

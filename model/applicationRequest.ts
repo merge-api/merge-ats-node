@@ -11,13 +11,11 @@
  */
 
 import { RequestFile } from './models';
-import { RemoteData } from './remoteData';
 
 /**
 * # The Application Object ### Description The `Application` object is used to represent an Application for a job position.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
 */
-export class Application {
-    'id'?: string;
+export class ApplicationRequest {
     /**
     * The third-party API ID of the matching object.
     */
@@ -54,16 +52,10 @@ export class Application {
     * The application\'s reason for rejection.
     */
     'rejectReason'?: string | null;
-    'remoteData'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
-        },
         {
             "name": "remoteId",
             "baseName": "remote_id",
@@ -108,15 +100,10 @@ export class Application {
             "name": "rejectReason",
             "baseName": "reject_reason",
             "type": "string"
-        },
-        {
-            "name": "remoteData",
-            "baseName": "remote_data",
-            "type": "Array<RemoteData>"
         }    ];
 
     static getAttributeTypeMap() {
-        return Application.attributeTypeMap;
+        return ApplicationRequest.attributeTypeMap;
     }
 }
 
