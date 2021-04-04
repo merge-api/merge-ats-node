@@ -18,21 +18,22 @@ export class AccountIntegration {
     */
     'name': string;
     /**
-    * Category or categories this integration belongs to. Multiple categories should be comma separated.<br/><br>Example: For [ats, hris], enter <i>ats,hris</i>
+    * Category or categories this integration belongs to.
     */
     'categories'?: Array<AccountIntegration.CategoriesEnum>;
     /**
-    * Company logo in rectangular shape. <b>Upload an image with a clear background.</b>
+    * Company logo in rectangular shape.
     */
     'image'?: string | null;
     /**
-    * Company logo in square shape. <b>Upload an image with a white background.</b>
+    * Company logo in square shape.
     */
     'squareImage'?: string | null;
     /**
-    * The color of this integration used for buttons and text throughout the app and landing pages. <b>Choose a darker, saturated color.</b>
+    * The color of this integration used for buttons and text throughout the app and landing pages.
     */
     'color'?: string;
+    'slug'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -61,6 +62,11 @@ export class AccountIntegration {
             "name": "color",
             "baseName": "color",
             "type": "string"
+        },
+        {
+            "name": "slug",
+            "baseName": "slug",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
@@ -71,6 +77,7 @@ export class AccountIntegration {
 export namespace AccountIntegration {
     export enum CategoriesEnum {
         Hris = <any> 'hris',
-        Ats = <any> 'ats'
+        Ats = <any> 'ats',
+        Accounting = <any> 'accounting'
     }
 }

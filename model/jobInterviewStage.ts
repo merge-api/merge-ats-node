@@ -27,7 +27,7 @@ export class JobInterviewStage {
     */
     'name'?: string | null;
     /**
-    * The job that this stage belongs to.
+    * If stages are specific to a job, this is the job that this stage belongs to.
     */
     'job'?: string | null;
     'remoteData'?: Array<RemoteData> | null;

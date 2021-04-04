@@ -16,7 +16,9 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { Application } from '../model/application';
+import { ApplicationRequest } from '../model/applicationRequest';
 import { PaginatedApplicationList } from '../model/paginatedApplicationList';
+import { PatchedApplicationRequest } from '../model/patchedApplicationRequest';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -90,6 +92,94 @@ export class ApplicationsApi {
         this.interceptors.push(interceptor);
     }
 
+    /**
+     * Creates an `Application` object with the given values.
+     * @param xAccountToken Token identifying the end user.
+     * @param remoteUserId The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+     * @param runAsync Whether or not third-party updates should be run asynchronously.
+     * @param applicationRequest 
+     */
+    public async applicationsCreate (xAccountToken: string, remoteUserId: string, runAsync?: boolean, applicationRequest?: ApplicationRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Application;  }> {
+        const localVarPath = this.basePath + '/applications';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'xAccountToken' is not null or undefined
+        if (xAccountToken === null || xAccountToken === undefined) {
+            throw new Error('Required parameter xAccountToken was null or undefined when calling applicationsCreate.');
+        }
+
+        // verify required parameter 'remoteUserId' is not null or undefined
+        if (remoteUserId === null || remoteUserId === undefined) {
+            throw new Error('Required parameter remoteUserId was null or undefined when calling applicationsCreate.');
+        }
+
+        if (remoteUserId !== undefined) {
+            localVarQueryParameters['remote_user_id'] = ObjectSerializer.serialize(remoteUserId, "string");
+        }
+
+        if (runAsync !== undefined) {
+            localVarQueryParameters['run_async'] = ObjectSerializer.serialize(runAsync, "boolean");
+        }
+
+        localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(applicationRequest, "ApplicationRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.tokenAuth.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.tokenAuth.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: Application;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "Application");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
     /**
      * Returns a list of `Application` objects.
      * @param xAccountToken Token identifying the end user.
@@ -221,6 +311,101 @@ export class ApplicationsApi {
                         reject(error);
                     } else {
                         body = ObjectSerializer.deserialize(body, "PaginatedApplicationList");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Updates an `Application` object with the given `id`.
+     * @param xAccountToken Token identifying the end user.
+     * @param id 
+     * @param remoteUserId The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+     * @param runAsync Whether or not third-party updates should be run asynchronously.
+     * @param patchedApplicationRequest 
+     */
+    public async applicationsPartialUpdate (xAccountToken: string, id: string, remoteUserId: string, runAsync?: boolean, patchedApplicationRequest?: PatchedApplicationRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Application;  }> {
+        const localVarPath = this.basePath + '/applications/{id}'
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'xAccountToken' is not null or undefined
+        if (xAccountToken === null || xAccountToken === undefined) {
+            throw new Error('Required parameter xAccountToken was null or undefined when calling applicationsPartialUpdate.');
+        }
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling applicationsPartialUpdate.');
+        }
+
+        // verify required parameter 'remoteUserId' is not null or undefined
+        if (remoteUserId === null || remoteUserId === undefined) {
+            throw new Error('Required parameter remoteUserId was null or undefined when calling applicationsPartialUpdate.');
+        }
+
+        if (remoteUserId !== undefined) {
+            localVarQueryParameters['remote_user_id'] = ObjectSerializer.serialize(remoteUserId, "string");
+        }
+
+        if (runAsync !== undefined) {
+            localVarQueryParameters['run_async'] = ObjectSerializer.serialize(runAsync, "boolean");
+        }
+
+        localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'PATCH',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(patchedApplicationRequest, "PatchedApplicationRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.tokenAuth.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.tokenAuth.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: Application;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "Application");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

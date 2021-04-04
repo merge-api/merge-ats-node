@@ -6,17 +6,21 @@ export * from './accountToken';
 export * from './activity';
 export * from './activityTypeEnum';
 export * from './application';
+export * from './applicationRequest';
 export * from './attachment';
 export * from './availableActions';
 export * from './candidate';
+export * from './candidateRequest';
 export * from './dataPassthroughRequest';
 export * from './department';
 export * from './disabilityStatusEnum';
 export * from './eEOC';
 export * from './emailAddress';
+export * from './emailAddressRequest';
 export * from './emailAddressTypeEnum';
 export * from './endUserDetailsRequest';
 export * from './genderEnum';
+export * from './generateRemoteKeyRequest';
 export * from './job';
 export * from './jobInterviewStage';
 export * from './jobStatusEnum';
@@ -42,18 +46,25 @@ export * from './paginatedRemoteUserList';
 export * from './paginatedScheduledInterviewList';
 export * from './paginatedScorecardList';
 export * from './paginatedTagList';
+export * from './patchedApplicationRequest';
 export * from './phoneNumber';
+export * from './phoneNumberRequest';
 export * from './phoneNumberTypeEnum';
 export * from './raceEnum';
 export * from './rejectReason';
 export * from './remoteData';
+export * from './remoteDataRequest';
+export * from './remoteKey';
+export * from './remoteKeyForRegenerationRequest';
 export * from './remoteResponse';
 export * from './remoteUser';
 export * from './scheduledInterview';
 export * from './scheduledInterviewStatusEnum';
 export * from './scorecard';
+export * from './syncStatus';
 export * from './tag';
 export * from './url';
+export * from './urlRequest';
 export * from './urlTypeEnum';
 export * from './veteranStatusEnum';
 export * from './visibilityEnum';
@@ -77,17 +88,21 @@ import { AccountToken } from './accountToken';
 import { Activity } from './activity';
 import { ActivityTypeEnum } from './activityTypeEnum';
 import { Application } from './application';
+import { ApplicationRequest } from './applicationRequest';
 import { Attachment } from './attachment';
 import { AvailableActions } from './availableActions';
 import { Candidate } from './candidate';
+import { CandidateRequest } from './candidateRequest';
 import { DataPassthroughRequest } from './dataPassthroughRequest';
 import { Department } from './department';
 import { DisabilityStatusEnum } from './disabilityStatusEnum';
 import { EEOC } from './eEOC';
 import { EmailAddress } from './emailAddress';
+import { EmailAddressRequest } from './emailAddressRequest';
 import { EmailAddressTypeEnum } from './emailAddressTypeEnum';
 import { EndUserDetailsRequest } from './endUserDetailsRequest';
 import { GenderEnum } from './genderEnum';
+import { GenerateRemoteKeyRequest } from './generateRemoteKeyRequest';
 import { Job } from './job';
 import { JobInterviewStage } from './jobInterviewStage';
 import { JobStatusEnum } from './jobStatusEnum';
@@ -113,18 +128,25 @@ import { PaginatedRemoteUserList } from './paginatedRemoteUserList';
 import { PaginatedScheduledInterviewList } from './paginatedScheduledInterviewList';
 import { PaginatedScorecardList } from './paginatedScorecardList';
 import { PaginatedTagList } from './paginatedTagList';
+import { PatchedApplicationRequest } from './patchedApplicationRequest';
 import { PhoneNumber } from './phoneNumber';
+import { PhoneNumberRequest } from './phoneNumberRequest';
 import { PhoneNumberTypeEnum } from './phoneNumberTypeEnum';
 import { RaceEnum } from './raceEnum';
 import { RejectReason } from './rejectReason';
 import { RemoteData } from './remoteData';
+import { RemoteDataRequest } from './remoteDataRequest';
+import { RemoteKey } from './remoteKey';
+import { RemoteKeyForRegenerationRequest } from './remoteKeyForRegenerationRequest';
 import { RemoteResponse } from './remoteResponse';
 import { RemoteUser } from './remoteUser';
 import { ScheduledInterview } from './scheduledInterview';
 import { ScheduledInterviewStatusEnum } from './scheduledInterviewStatusEnum';
 import { Scorecard } from './scorecard';
+import { SyncStatus } from './syncStatus';
 import { Tag } from './tag';
 import { Url } from './url';
+import { UrlRequest } from './urlRequest';
 import { UrlTypeEnum } from './urlTypeEnum';
 import { VeteranStatusEnum } from './veteranStatusEnum';
 import { VisibilityEnum } from './visibilityEnum';
@@ -166,14 +188,18 @@ let typeMap: {[index: string]: any} = {
     "AccountToken": AccountToken,
     "Activity": Activity,
     "Application": Application,
+    "ApplicationRequest": ApplicationRequest,
     "Attachment": Attachment,
     "AvailableActions": AvailableActions,
     "Candidate": Candidate,
+    "CandidateRequest": CandidateRequest,
     "DataPassthroughRequest": DataPassthroughRequest,
     "Department": Department,
     "EEOC": EEOC,
     "EmailAddress": EmailAddress,
+    "EmailAddressRequest": EmailAddressRequest,
     "EndUserDetailsRequest": EndUserDetailsRequest,
+    "GenerateRemoteKeyRequest": GenerateRemoteKeyRequest,
     "Job": Job,
     "JobInterviewStage": JobInterviewStage,
     "LinkToken": LinkToken,
@@ -195,15 +221,22 @@ let typeMap: {[index: string]: any} = {
     "PaginatedScheduledInterviewList": PaginatedScheduledInterviewList,
     "PaginatedScorecardList": PaginatedScorecardList,
     "PaginatedTagList": PaginatedTagList,
+    "PatchedApplicationRequest": PatchedApplicationRequest,
     "PhoneNumber": PhoneNumber,
+    "PhoneNumberRequest": PhoneNumberRequest,
     "RejectReason": RejectReason,
     "RemoteData": RemoteData,
+    "RemoteDataRequest": RemoteDataRequest,
+    "RemoteKey": RemoteKey,
+    "RemoteKeyForRegenerationRequest": RemoteKeyForRegenerationRequest,
     "RemoteResponse": RemoteResponse,
     "RemoteUser": RemoteUser,
     "ScheduledInterview": ScheduledInterview,
     "Scorecard": Scorecard,
+    "SyncStatus": SyncStatus,
     "Tag": Tag,
     "Url": Url,
+    "UrlRequest": UrlRequest,
 }
 
 export class ObjectSerializer {
