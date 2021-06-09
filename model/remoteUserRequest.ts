@@ -12,13 +12,11 @@
 
 import { RequestFile } from './models';
 import { AccessRoleEnum } from './accessRoleEnum';
-import { RemoteData } from './remoteData';
 
 /**
 * # The RemoteUser Object ### Description The `RemoteUser` object is used to represent a third party user.  ### Usage Example Fetch from the `LIST RemoteUsers` endpoint to show all users for a third party.
 */
-export class RemoteUser {
-    'id'?: string;
+export class RemoteUserRequest {
     /**
     * The third-party API ID of the matching object.
     */
@@ -47,16 +45,10 @@ export class RemoteUser {
     * The user\'s role.
     */
     'access_role'?: AccessRoleEnum | null;
-    'remote_data'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
-        },
         {
             "name": "remote_id",
             "baseName": "remote_id",
@@ -91,15 +83,10 @@ export class RemoteUser {
             "name": "access_role",
             "baseName": "access_role",
             "type": "AccessRoleEnum"
-        },
-        {
-            "name": "remote_data",
-            "baseName": "remote_data",
-            "type": "Array<RemoteData>"
         }    ];
 
     static getAttributeTypeMap() {
-        return RemoteUser.attributeTypeMap;
+        return RemoteUserRequest.attributeTypeMap;
     }
 }
 

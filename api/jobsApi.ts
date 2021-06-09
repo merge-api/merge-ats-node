@@ -102,8 +102,9 @@ export class JobsApi {
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
      * @param remoteId The API provider\&#39;s ID for the given object.
+     * @param status If provided, will only return jobs with this status. Options: (\&#39;OPEN\&#39;, \&#39;CLOSED\&#39;, \&#39;DRAFT\&#39;, \&#39;ARCHIVED\&#39;, \&#39;PENDING\&#39;)
      */
-    public async jobsList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'departments' | 'departments,hiring_managers' | 'departments,offices' | 'departments,offices,hiring_managers' | 'hiring_managers' | 'offices' | 'offices,hiring_managers', includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedJobList;  }> {
+    public async jobsList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'departments' | 'departments,hiring_managers' | 'departments,offices' | 'departments,offices,hiring_managers' | 'hiring_managers' | 'offices' | 'offices,hiring_managers', includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, status?: 'OPEN' | 'CLOSED' | 'DRAFT' | 'ARCHIVED' | 'PENDING' | '' | 'null', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedJobList;  }> {
         const localVarPath = this.basePath + '/jobs';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -155,6 +156,10 @@ export class JobsApi {
 
         if (remoteId !== undefined) {
             localVarQueryParameters['remote_id'] = ObjectSerializer.serialize(remoteId, "string");
+        }
+
+        if (status !== undefined) {
+            localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'OPEN' | 'CLOSED' | 'DRAFT' | 'ARCHIVED' | 'PENDING' | '' | 'null'");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

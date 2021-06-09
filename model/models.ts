@@ -8,6 +8,8 @@ export * from './activityTypeEnum';
 export * from './application';
 export * from './applicationRequest';
 export * from './attachment';
+export * from './attachmentRequest';
+export * from './attachmentTypeEnum';
 export * from './availableActions';
 export * from './candidate';
 export * from './candidateRequest';
@@ -45,8 +47,8 @@ export * from './paginatedRejectReasonList';
 export * from './paginatedRemoteUserList';
 export * from './paginatedScheduledInterviewList';
 export * from './paginatedScorecardList';
+export * from './paginatedSyncStatusList';
 export * from './paginatedTagList';
-export * from './patchedApplicationRequest';
 export * from './phoneNumber';
 export * from './phoneNumberRequest';
 export * from './phoneNumberTypeEnum';
@@ -58,10 +60,14 @@ export * from './remoteKey';
 export * from './remoteKeyForRegenerationRequest';
 export * from './remoteResponse';
 export * from './remoteUser';
+export * from './remoteUserRequest';
 export * from './scheduledInterview';
+export * from './scheduledInterviewRequest';
 export * from './scheduledInterviewStatusEnum';
 export * from './scorecard';
+export * from './scorecardRequest';
 export * from './syncStatus';
+export * from './syncStatusStatusEnum';
 export * from './tag';
 export * from './url';
 export * from './urlRequest';
@@ -90,6 +96,8 @@ import { ActivityTypeEnum } from './activityTypeEnum';
 import { Application } from './application';
 import { ApplicationRequest } from './applicationRequest';
 import { Attachment } from './attachment';
+import { AttachmentRequest } from './attachmentRequest';
+import { AttachmentTypeEnum } from './attachmentTypeEnum';
 import { AvailableActions } from './availableActions';
 import { Candidate } from './candidate';
 import { CandidateRequest } from './candidateRequest';
@@ -127,8 +135,8 @@ import { PaginatedRejectReasonList } from './paginatedRejectReasonList';
 import { PaginatedRemoteUserList } from './paginatedRemoteUserList';
 import { PaginatedScheduledInterviewList } from './paginatedScheduledInterviewList';
 import { PaginatedScorecardList } from './paginatedScorecardList';
+import { PaginatedSyncStatusList } from './paginatedSyncStatusList';
 import { PaginatedTagList } from './paginatedTagList';
-import { PatchedApplicationRequest } from './patchedApplicationRequest';
 import { PhoneNumber } from './phoneNumber';
 import { PhoneNumberRequest } from './phoneNumberRequest';
 import { PhoneNumberTypeEnum } from './phoneNumberTypeEnum';
@@ -140,10 +148,14 @@ import { RemoteKey } from './remoteKey';
 import { RemoteKeyForRegenerationRequest } from './remoteKeyForRegenerationRequest';
 import { RemoteResponse } from './remoteResponse';
 import { RemoteUser } from './remoteUser';
+import { RemoteUserRequest } from './remoteUserRequest';
 import { ScheduledInterview } from './scheduledInterview';
+import { ScheduledInterviewRequest } from './scheduledInterviewRequest';
 import { ScheduledInterviewStatusEnum } from './scheduledInterviewStatusEnum';
 import { Scorecard } from './scorecard';
+import { ScorecardRequest } from './scorecardRequest';
 import { SyncStatus } from './syncStatus';
+import { SyncStatusStatusEnum } from './syncStatusStatusEnum';
 import { Tag } from './tag';
 import { Url } from './url';
 import { UrlRequest } from './urlRequest';
@@ -167,6 +179,7 @@ let enumsMap: {[index: string]: any} = {
         "AccessRoleEnum": AccessRoleEnum,
         "AccountIntegration.CategoriesEnum": AccountIntegration.CategoriesEnum,
         "ActivityTypeEnum": ActivityTypeEnum,
+        "AttachmentTypeEnum": AttachmentTypeEnum,
         "DisabilityStatusEnum": DisabilityStatusEnum,
         "EmailAddressTypeEnum": EmailAddressTypeEnum,
         "EndUserDetailsRequest.CategoriesEnum": EndUserDetailsRequest.CategoriesEnum,
@@ -178,6 +191,7 @@ let enumsMap: {[index: string]: any} = {
         "PhoneNumberTypeEnum": PhoneNumberTypeEnum,
         "RaceEnum": RaceEnum,
         "ScheduledInterviewStatusEnum": ScheduledInterviewStatusEnum,
+        "SyncStatusStatusEnum": SyncStatusStatusEnum,
         "UrlTypeEnum": UrlTypeEnum,
         "VeteranStatusEnum": VeteranStatusEnum,
         "VisibilityEnum": VisibilityEnum,
@@ -190,6 +204,7 @@ let typeMap: {[index: string]: any} = {
     "Application": Application,
     "ApplicationRequest": ApplicationRequest,
     "Attachment": Attachment,
+    "AttachmentRequest": AttachmentRequest,
     "AvailableActions": AvailableActions,
     "Candidate": Candidate,
     "CandidateRequest": CandidateRequest,
@@ -220,8 +235,8 @@ let typeMap: {[index: string]: any} = {
     "PaginatedRemoteUserList": PaginatedRemoteUserList,
     "PaginatedScheduledInterviewList": PaginatedScheduledInterviewList,
     "PaginatedScorecardList": PaginatedScorecardList,
+    "PaginatedSyncStatusList": PaginatedSyncStatusList,
     "PaginatedTagList": PaginatedTagList,
-    "PatchedApplicationRequest": PatchedApplicationRequest,
     "PhoneNumber": PhoneNumber,
     "PhoneNumberRequest": PhoneNumberRequest,
     "RejectReason": RejectReason,
@@ -231,8 +246,11 @@ let typeMap: {[index: string]: any} = {
     "RemoteKeyForRegenerationRequest": RemoteKeyForRegenerationRequest,
     "RemoteResponse": RemoteResponse,
     "RemoteUser": RemoteUser,
+    "RemoteUserRequest": RemoteUserRequest,
     "ScheduledInterview": ScheduledInterview,
+    "ScheduledInterviewRequest": ScheduledInterviewRequest,
     "Scorecard": Scorecard,
+    "ScorecardRequest": ScorecardRequest,
     "SyncStatus": SyncStatus,
     "Tag": Tag,
     "Url": Url,
@@ -284,9 +302,9 @@ export class ObjectSerializer {
             let subType: string = type.replace("Array<", ""); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
             let transformedData: any[] = [];
-            for (let index in data) {
-                let date = data[index];
-                transformedData.push(ObjectSerializer.serialize(date, subType));
+            for (let index = 0; index < data.length; index++) {
+                let datum = data[index];
+                transformedData.push(ObjectSerializer.serialize(datum, subType));
             }
             return transformedData;
         } else if (type === "Date") {
@@ -305,7 +323,7 @@ export class ObjectSerializer {
             // get the map for the correct type.
             let attributeTypes = typeMap[type].getAttributeTypeMap();
             let instance: {[index: string]: any} = {};
-            for (let index in attributeTypes) {
+            for (let index = 0; index < attributeTypes.length; index++) {
                 let attributeType = attributeTypes[index];
                 instance[attributeType.baseName] = ObjectSerializer.serialize(data[attributeType.name], attributeType.type);
             }
@@ -324,9 +342,9 @@ export class ObjectSerializer {
             let subType: string = type.replace("Array<", ""); // Array<Type> => Type>
             subType = subType.substring(0, subType.length - 1); // Type> => Type
             let transformedData: any[] = [];
-            for (let index in data) {
-                let date = data[index];
-                transformedData.push(ObjectSerializer.deserialize(date, subType));
+            for (let index = 0; index < data.length; index++) {
+                let datum = data[index];
+                transformedData.push(ObjectSerializer.deserialize(datum, subType));
             }
             return transformedData;
         } else if (type === "Date") {
@@ -341,7 +359,7 @@ export class ObjectSerializer {
             }
             let instance = new typeMap[type]();
             let attributeTypes = typeMap[type].getAttributeTypeMap();
-            for (let index in attributeTypes) {
+            for (let index = 0; index < attributeTypes.length; index++) {
                 let attributeType = attributeTypes[index];
                 instance[attributeType.name] = ObjectSerializer.deserialize(data[attributeType.baseName], attributeType.type);
             }

@@ -12,13 +12,11 @@
 
 import { RequestFile } from './models';
 import { AttachmentTypeEnum } from './attachmentTypeEnum';
-import { RemoteData } from './remoteData';
 
 /**
 * # The Attachment Object ### Description The `Attachment` object is used to represent a attachment for a candidate.  ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
 */
-export class Attachment {
-    'id'?: string;
+export class AttachmentRequest {
     /**
     * The third-party API ID of the matching object.
     */
@@ -36,16 +34,10 @@ export class Attachment {
     * The attachment\'s type.
     */
     'attachment_type'?: AttachmentTypeEnum | null;
-    'remote_data'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
-        },
         {
             "name": "remote_id",
             "baseName": "remote_id",
@@ -70,15 +62,10 @@ export class Attachment {
             "name": "attachment_type",
             "baseName": "attachment_type",
             "type": "AttachmentTypeEnum"
-        },
-        {
-            "name": "remote_data",
-            "baseName": "remote_data",
-            "type": "Array<RemoteData>"
         }    ];
 
     static getAttributeTypeMap() {
-        return Attachment.attributeTypeMap;
+        return AttachmentRequest.attributeTypeMap;
     }
 }
 

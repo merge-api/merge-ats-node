@@ -22,7 +22,7 @@ export class Job {
     /**
     * The third-party API ID of the matching object.
     */
-    'remoteId'?: string | null;
+    'remote_id'?: string | null;
     /**
     * The job\'s name.
     */
@@ -38,19 +38,19 @@ export class Job {
     /**
     * When the third party\'s job was created.
     */
-    'remoteCreatedAt'?: Date | null;
+    'remote_created_at'?: Date | null;
     /**
     * When the third party\'s job was updated.
     */
-    'remoteUpdatedAt'?: Date | null;
+    'remote_updated_at'?: Date | null;
     /**
     * Whether the job is confidential.
     */
     'confidential'?: boolean | null;
     'departments'?: Array<string>;
     'offices'?: Array<string>;
-    'hiringManagers'?: Array<string>;
-    'remoteData'?: Array<RemoteData> | null;
+    'hiring_managers'?: Array<string>;
+    'remote_data'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -61,7 +61,7 @@ export class Job {
             "type": "string"
         },
         {
-            "name": "remoteId",
+            "name": "remote_id",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -81,12 +81,12 @@ export class Job {
             "type": "JobStatusEnum"
         },
         {
-            "name": "remoteCreatedAt",
+            "name": "remote_created_at",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "remoteUpdatedAt",
+            "name": "remote_updated_at",
             "baseName": "remote_updated_at",
             "type": "Date"
         },
@@ -106,12 +106,12 @@ export class Job {
             "type": "Array<string>"
         },
         {
-            "name": "hiringManagers",
+            "name": "hiring_managers",
             "baseName": "hiring_managers",
             "type": "Array<string>"
         },
         {
-            "name": "remoteData",
+            "name": "remote_data",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }    ];

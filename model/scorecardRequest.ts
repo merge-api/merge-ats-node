@@ -12,13 +12,11 @@
 
 import { RequestFile } from './models';
 import { OverallRecommendationEnum } from './overallRecommendationEnum';
-import { RemoteData } from './remoteData';
 
 /**
 * # The Scorecard Object ### Description The `Scorecard` object is used to represent a Scorecard for an interview  ### Usage Example Fetch from the `LIST Scorecards` endpoint and filter by `application` to show all scorecard for an applicant.
 */
-export class Scorecard {
-    'id'?: string;
+export class ScorecardRequest {
     /**
     * The third-party API ID of the matching object.
     */
@@ -47,16 +45,10 @@ export class Scorecard {
     * The inteviewer\'s recommendation.
     */
     'overall_recommendation'?: OverallRecommendationEnum | null;
-    'remote_data'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
-        },
         {
             "name": "remote_id",
             "baseName": "remote_id",
@@ -91,15 +83,10 @@ export class Scorecard {
             "name": "overall_recommendation",
             "baseName": "overall_recommendation",
             "type": "OverallRecommendationEnum"
-        },
-        {
-            "name": "remote_data",
-            "baseName": "remote_data",
-            "type": "Array<RemoteData>"
         }    ];
 
     static getAttributeTypeMap() {
-        return Scorecard.attributeTypeMap;
+        return ScorecardRequest.attributeTypeMap;
     }
 }
 

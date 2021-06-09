@@ -11,14 +11,12 @@
  */
 
 import { RequestFile } from './models';
-import { RemoteData } from './remoteData';
 import { ScheduledInterviewStatusEnum } from './scheduledInterviewStatusEnum';
 
 /**
 * # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent an interview  ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
 */
-export class ScheduledInterview {
-    'id'?: string;
+export class ScheduledInterviewRequest {
     /**
     * The third-party API ID of the matching object.
     */
@@ -60,16 +58,10 @@ export class ScheduledInterview {
     * The interview\'s status.
     */
     'status'?: ScheduledInterviewStatusEnum | null;
-    'remote_data'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            "name": "id",
-            "baseName": "id",
-            "type": "string"
-        },
         {
             "name": "remote_id",
             "baseName": "remote_id",
@@ -124,15 +116,10 @@ export class ScheduledInterview {
             "name": "status",
             "baseName": "status",
             "type": "ScheduledInterviewStatusEnum"
-        },
-        {
-            "name": "remote_data",
-            "baseName": "remote_data",
-            "type": "Array<RemoteData>"
         }    ];
 
     static getAttributeTypeMap() {
-        return ScheduledInterview.attributeTypeMap;
+        return ScheduledInterviewRequest.attributeTypeMap;
     }
 }
 

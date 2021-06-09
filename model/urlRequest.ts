@@ -24,7 +24,7 @@ export class UrlRequest {
     /**
     * The type of site.
     */
-    'urlType'?: UrlTypeEnum | null;
+    'url_type'?: UrlTypeEnum | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -35,7 +35,7 @@ export class UrlRequest {
             "type": "string"
         },
         {
-            "name": "urlType",
+            "name": "url_type",
             "baseName": "url_type",
             "type": "UrlTypeEnum"
         }    ];
