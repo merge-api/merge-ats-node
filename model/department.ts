@@ -21,12 +21,12 @@ export class Department {
     /**
     * The third-party API ID of the matching object.
     */
-    'remoteId'?: string | null;
+    'remote_id'?: string | null;
     /**
     * The department\'s name.
     */
     'name'?: string | null;
-    'remoteData'?: Array<RemoteData> | null;
+    'remote_data'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -37,7 +37,7 @@ export class Department {
             "type": "string"
         },
         {
-            "name": "remoteId",
+            "name": "remote_id",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -47,7 +47,7 @@ export class Department {
             "type": "string"
         },
         {
-            "name": "remoteData",
+            "name": "remote_data",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }    ];

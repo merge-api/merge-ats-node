@@ -25,7 +25,7 @@ export class EEOC {
     /**
     * The third-party API ID of the matching object.
     */
-    'remoteId'?: string | null;
+    'remote_id'?: string | null;
     /**
     * The candidate being represented.
     */
@@ -33,7 +33,7 @@ export class EEOC {
     /**
     * When the information was submitted.
     */
-    'submittedAt'?: Date | null;
+    'submitted_at'?: Date | null;
     /**
     * The candidate\'s race.
     */
@@ -45,12 +45,12 @@ export class EEOC {
     /**
     * The candidate\'s veteran status.
     */
-    'veteranStatus'?: VeteranStatusEnum | null;
+    'veteran_status'?: VeteranStatusEnum | null;
     /**
     * The candidate\'s disability status.
     */
-    'disabilityStatus'?: DisabilityStatusEnum | null;
-    'remoteData'?: Array<RemoteData> | null;
+    'disability_status'?: DisabilityStatusEnum | null;
+    'remote_data'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -61,7 +61,7 @@ export class EEOC {
             "type": "string"
         },
         {
-            "name": "remoteId",
+            "name": "remote_id",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -71,7 +71,7 @@ export class EEOC {
             "type": "string"
         },
         {
-            "name": "submittedAt",
+            "name": "submitted_at",
             "baseName": "submitted_at",
             "type": "Date"
         },
@@ -86,17 +86,17 @@ export class EEOC {
             "type": "GenderEnum"
         },
         {
-            "name": "veteranStatus",
+            "name": "veteran_status",
             "baseName": "veteran_status",
             "type": "VeteranStatusEnum"
         },
         {
-            "name": "disabilityStatus",
+            "name": "disability_status",
             "baseName": "disability_status",
             "type": "DisabilityStatusEnum"
         },
         {
-            "name": "remoteData",
+            "name": "remote_data",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }    ];

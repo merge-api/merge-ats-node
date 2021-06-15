@@ -18,13 +18,13 @@ import { EmailAddressTypeEnum } from './emailAddressTypeEnum';
 */
 export class EmailAddressRequest {
     /**
-    * The email\'s address.
+    * The email address.
     */
     'value'?: string | null;
     /**
     * The type of email address.
     */
-    'emailAddressType'?: EmailAddressTypeEnum | null;
+    'email_address_type'?: EmailAddressTypeEnum | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -35,7 +35,7 @@ export class EmailAddressRequest {
             "type": "string"
         },
         {
-            "name": "emailAddressType",
+            "name": "email_address_type",
             "baseName": "email_address_type",
             "type": "EmailAddressTypeEnum"
         }    ];

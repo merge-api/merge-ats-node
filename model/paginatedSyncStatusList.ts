@@ -11,28 +11,34 @@
  */
 
 import { RequestFile } from './models';
-import { AccountIntegration } from './accountIntegration';
+import { SyncStatus } from './syncStatus';
 
-export class AccountToken {
-    'account_token': string;
-    'integration': AccountIntegration;
+export class PaginatedSyncStatusList {
+    'next'?: string | null;
+    'previous'?: string | null;
+    'results'?: Array<SyncStatus>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "account_token",
-            "baseName": "account_token",
+            "name": "next",
+            "baseName": "next",
             "type": "string"
         },
         {
-            "name": "integration",
-            "baseName": "integration",
-            "type": "AccountIntegration"
+            "name": "previous",
+            "baseName": "previous",
+            "type": "string"
+        },
+        {
+            "name": "results",
+            "baseName": "results",
+            "type": "Array<SyncStatus>"
         }    ];
 
     static getAttributeTypeMap() {
-        return AccountToken.attributeTypeMap;
+        return PaginatedSyncStatusList.attributeTypeMap;
     }
 }
 
