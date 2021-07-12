@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 api.ts
 api/accountTokenApi.ts
 api/activitiesApi.ts
@@ -8,10 +7,12 @@ api/applicationsApi.ts
 api/attachmentsApi.ts
 api/availableActionsApi.ts
 api/candidatesApi.ts
+api/deleteAccountApi.ts
 api/departmentsApi.ts
 api/eeocsApi.ts
 api/generateKeyApi.ts
 api/interviewsApi.ts
+api/issuesApi.ts
 api/jobInterviewStagesApi.ts
 api/jobsApi.ts
 api/linkTokenApi.ts
@@ -33,6 +34,8 @@ model/activityTypeEnum.ts
 model/application.ts
 model/applicationRequest.ts
 model/attachment.ts
+model/attachmentRequest.ts
+model/attachmentTypeEnum.ts
 model/availableActions.ts
 model/candidate.ts
 model/candidateRequest.ts
@@ -46,6 +49,8 @@ model/emailAddressTypeEnum.ts
 model/endUserDetailsRequest.ts
 model/genderEnum.ts
 model/generateRemoteKeyRequest.ts
+model/issue.ts
+model/issueStatusEnum.ts
 model/job.ts
 model/jobInterviewStage.ts
 model/jobStatusEnum.ts
@@ -63,6 +68,7 @@ model/paginatedAttachmentList.ts
 model/paginatedCandidateList.ts
 model/paginatedDepartmentList.ts
 model/paginatedEEOCList.ts
+model/paginatedIssueList.ts
 model/paginatedJobInterviewStageList.ts
 model/paginatedJobList.ts
 model/paginatedOfferList.ts
@@ -71,8 +77,8 @@ model/paginatedRejectReasonList.ts
 model/paginatedRemoteUserList.ts
 model/paginatedScheduledInterviewList.ts
 model/paginatedScorecardList.ts
+model/paginatedSyncStatusList.ts
 model/paginatedTagList.ts
-model/patchedApplicationRequest.ts
 model/phoneNumber.ts
 model/phoneNumberRequest.ts
 model/phoneNumberTypeEnum.ts
@@ -84,10 +90,14 @@ model/remoteKey.ts
 model/remoteKeyForRegenerationRequest.ts
 model/remoteResponse.ts
 model/remoteUser.ts
+model/remoteUserRequest.ts
 model/scheduledInterview.ts
+model/scheduledInterviewRequest.ts
 model/scheduledInterviewStatusEnum.ts
 model/scorecard.ts
+model/scorecardRequest.ts
 model/syncStatus.ts
+model/syncStatusStatusEnum.ts
 model/tag.ts
 model/url.ts
 model/urlRequest.ts

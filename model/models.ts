@@ -23,6 +23,8 @@ export * from './emailAddressTypeEnum';
 export * from './endUserDetailsRequest';
 export * from './genderEnum';
 export * from './generateRemoteKeyRequest';
+export * from './issue';
+export * from './issueStatusEnum';
 export * from './job';
 export * from './jobInterviewStage';
 export * from './jobStatusEnum';
@@ -39,6 +41,7 @@ export * from './paginatedAttachmentList';
 export * from './paginatedCandidateList';
 export * from './paginatedDepartmentList';
 export * from './paginatedEEOCList';
+export * from './paginatedIssueList';
 export * from './paginatedJobInterviewStageList';
 export * from './paginatedJobList';
 export * from './paginatedOfferList';
@@ -111,6 +114,8 @@ import { EmailAddressTypeEnum } from './emailAddressTypeEnum';
 import { EndUserDetailsRequest } from './endUserDetailsRequest';
 import { GenderEnum } from './genderEnum';
 import { GenerateRemoteKeyRequest } from './generateRemoteKeyRequest';
+import { Issue } from './issue';
+import { IssueStatusEnum } from './issueStatusEnum';
 import { Job } from './job';
 import { JobInterviewStage } from './jobInterviewStage';
 import { JobStatusEnum } from './jobStatusEnum';
@@ -127,6 +132,7 @@ import { PaginatedAttachmentList } from './paginatedAttachmentList';
 import { PaginatedCandidateList } from './paginatedCandidateList';
 import { PaginatedDepartmentList } from './paginatedDepartmentList';
 import { PaginatedEEOCList } from './paginatedEEOCList';
+import { PaginatedIssueList } from './paginatedIssueList';
 import { PaginatedJobInterviewStageList } from './paginatedJobInterviewStageList';
 import { PaginatedJobList } from './paginatedJobList';
 import { PaginatedOfferList } from './paginatedOfferList';
@@ -184,6 +190,7 @@ let enumsMap: {[index: string]: any} = {
         "EmailAddressTypeEnum": EmailAddressTypeEnum,
         "EndUserDetailsRequest.CategoriesEnum": EndUserDetailsRequest.CategoriesEnum,
         "GenderEnum": GenderEnum,
+        "IssueStatusEnum": IssueStatusEnum,
         "JobStatusEnum": JobStatusEnum,
         "MethodEnum": MethodEnum,
         "OfferStatusEnum": OfferStatusEnum,
@@ -215,6 +222,7 @@ let typeMap: {[index: string]: any} = {
     "EmailAddressRequest": EmailAddressRequest,
     "EndUserDetailsRequest": EndUserDetailsRequest,
     "GenerateRemoteKeyRequest": GenerateRemoteKeyRequest,
+    "Issue": Issue,
     "Job": Job,
     "JobInterviewStage": JobInterviewStage,
     "LinkToken": LinkToken,
@@ -227,6 +235,7 @@ let typeMap: {[index: string]: any} = {
     "PaginatedCandidateList": PaginatedCandidateList,
     "PaginatedDepartmentList": PaginatedDepartmentList,
     "PaginatedEEOCList": PaginatedEEOCList,
+    "PaginatedIssueList": PaginatedIssueList,
     "PaginatedJobInterviewStageList": PaginatedJobInterviewStageList,
     "PaginatedJobList": PaginatedJobList,
     "PaginatedOfferList": PaginatedOfferList,

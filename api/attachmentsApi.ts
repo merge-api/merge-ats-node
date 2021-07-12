@@ -94,11 +94,11 @@ export class AttachmentsApi {
     /**
      * Creates an `Attachment` object with the given values.
      * @param xAccountToken Token identifying the end user.
-     * @param remoteUserId The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+     * @param remoteUserId The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
      * @param runAsync Whether or not third-party updates should be run asynchronously.
      * @param attachmentRequest 
      */
-    public async attachmentsCreate (xAccountToken: string, remoteUserId: string, runAsync?: boolean, attachmentRequest?: AttachmentRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Attachment;  }> {
+    public async attachmentsCreate (xAccountToken: string, remoteUserId?: string, runAsync?: boolean, attachmentRequest?: AttachmentRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Attachment;  }> {
         const localVarPath = this.basePath + '/attachments';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -114,11 +114,6 @@ export class AttachmentsApi {
         // verify required parameter 'xAccountToken' is not null or undefined
         if (xAccountToken === null || xAccountToken === undefined) {
             throw new Error('Required parameter xAccountToken was null or undefined when calling attachmentsCreate.');
-        }
-
-        // verify required parameter 'remoteUserId' is not null or undefined
-        if (remoteUserId === null || remoteUserId === undefined) {
-            throw new Error('Required parameter remoteUserId was null or undefined when calling attachmentsCreate.');
         }
 
         if (remoteUserId !== undefined) {

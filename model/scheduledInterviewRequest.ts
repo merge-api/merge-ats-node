@@ -33,6 +33,9 @@ export class ScheduledInterviewRequest {
     * The user organizing the interview.
     */
     'organizer'?: string | null;
+    /**
+    * Array of `RemoteUser` IDs.
+    */
     'interviewers'?: Array<string>;
     /**
     * The interview\'s location.

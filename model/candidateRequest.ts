@@ -66,8 +66,17 @@ export class CandidateRequest {
     'phone_numbers'?: Array<PhoneNumberRequest>;
     'email_addresses'?: Array<EmailAddressRequest>;
     'urls'?: Array<UrlRequest>;
+    /**
+    * Array of `Tag` names as strings.
+    */
     'tags'?: Array<string>;
+    /**
+    * Array of `Application` object IDs.
+    */
     'applications'?: Array<string>;
+    /**
+    * Array of `Attachment` object IDs.
+    */
     'attachments'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
