@@ -94,11 +94,11 @@ export class UsersApi {
     /**
      * Creates a `RemoteUser` object with the given values.
      * @param xAccountToken Token identifying the end user.
-     * @param remoteUserId The ID of the RemoteUser deleting the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+     * @param remoteUserId The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
      * @param runAsync Whether or not third-party updates should be run asynchronously.
      * @param remoteUserRequest 
      */
-    public async usersCreate (xAccountToken: string, remoteUserId: string, runAsync?: boolean, remoteUserRequest?: RemoteUserRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RemoteUser;  }> {
+    public async usersCreate (xAccountToken: string, remoteUserId?: string, runAsync?: boolean, remoteUserRequest?: RemoteUserRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RemoteUser;  }> {
         const localVarPath = this.basePath + '/users';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -114,11 +114,6 @@ export class UsersApi {
         // verify required parameter 'xAccountToken' is not null or undefined
         if (xAccountToken === null || xAccountToken === undefined) {
             throw new Error('Required parameter xAccountToken was null or undefined when calling usersCreate.');
-        }
-
-        // verify required parameter 'remoteUserId' is not null or undefined
-        if (remoteUserId === null || remoteUserId === undefined) {
-            throw new Error('Required parameter remoteUserId was null or undefined when calling usersCreate.');
         }
 
         if (remoteUserId !== undefined) {

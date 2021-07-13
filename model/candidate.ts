@@ -68,8 +68,17 @@ export class Candidate {
     'phone_numbers'?: Array<PhoneNumber>;
     'email_addresses'?: Array<EmailAddress>;
     'urls'?: Array<Url>;
+    /**
+    * Array of `Tag` names as strings.
+    */
     'tags'?: Array<string>;
+    /**
+    * Array of `Application` object IDs.
+    */
     'applications'?: Array<string>;
+    /**
+    * Array of `Attachment` object IDs.
+    */
     'attachments'?: Array<string>;
     'remote_data'?: Array<RemoteData> | null;
 

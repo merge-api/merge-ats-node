@@ -47,8 +47,17 @@ export class Job {
     * Whether the job is confidential.
     */
     'confidential'?: boolean | null;
+    /**
+    * IDs of `Department` objects for this `Job`.
+    */
     'departments'?: Array<string>;
+    /**
+    * IDs of `Office` objects for this `Job`.
+    */
     'offices'?: Array<string>;
+    /**
+    * IDs of `RemoteUser` objects that serve as hiring managers for this `Job`.
+    */
     'hiring_managers'?: Array<string>;
     'remote_data'?: Array<RemoteData> | null;
 

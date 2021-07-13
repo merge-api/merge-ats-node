@@ -10,6 +10,8 @@ export * from './availableActionsApi';
 import { AvailableActionsApi } from './availableActionsApi';
 export * from './candidatesApi';
 import { CandidatesApi } from './candidatesApi';
+export * from './deleteAccountApi';
+import { DeleteAccountApi } from './deleteAccountApi';
 export * from './departmentsApi';
 import { DepartmentsApi } from './departmentsApi';
 export * from './eeocsApi';
@@ -18,6 +20,8 @@ export * from './generateKeyApi';
 import { GenerateKeyApi } from './generateKeyApi';
 export * from './interviewsApi';
 import { InterviewsApi } from './interviewsApi';
+export * from './issuesApi';
+import { IssuesApi } from './issuesApi';
 export * from './jobInterviewStagesApi';
 import { JobInterviewStagesApi } from './jobInterviewStagesApi';
 export * from './jobsApi';
@@ -53,4 +57,4 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [AccountTokenApi, ActivitiesApi, ApplicationsApi, AttachmentsApi, AvailableActionsApi, CandidatesApi, DepartmentsApi, EeocsApi, GenerateKeyApi, InterviewsApi, JobInterviewStagesApi, JobsApi, LinkTokenApi, OffersApi, OfficesApi, PassthroughApi, RegenerateKeyApi, RejectReasonsApi, ScorecardsApi, SyncStatusApi, TagsApi, UsersApi];
+export const APIS = [AccountTokenApi, ActivitiesApi, ApplicationsApi, AttachmentsApi, AvailableActionsApi, CandidatesApi, DeleteAccountApi, DepartmentsApi, EeocsApi, GenerateKeyApi, InterviewsApi, IssuesApi, JobInterviewStagesApi, JobsApi, LinkTokenApi, OffersApi, OfficesApi, PassthroughApi, RegenerateKeyApi, RejectReasonsApi, ScorecardsApi, SyncStatusApi, TagsApi, UsersApi];
