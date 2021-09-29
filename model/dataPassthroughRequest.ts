@@ -12,6 +12,7 @@
 
 import { RequestFile } from './models';
 import { MethodEnum } from './methodEnum';
+import { RequestFormatEnum } from './requestFormatEnum';
 
 /**
 * # The DataPassthrough Object ### Description The `DataPassthrough` object is used to send information to an otherwise-unsupported third-party endpoint.  ### Usage Example Create a `DataPassthrough` to get team hierarchies from your Rippling integration.
@@ -19,9 +20,10 @@ import { MethodEnum } from './methodEnum';
 export class DataPassthroughRequest {
     'method': MethodEnum;
     'path': string;
-    'base_url_override'?: string | null;
-    'data'?: { [key: string]: any; } | null;
+    'baseUrlOverride'?: string | null;
+    'data'?: string | null;
     'headers'?: { [key: string]: any; } | null;
+    'requestFormat'?: RequestFormatEnum | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -37,19 +39,24 @@ export class DataPassthroughRequest {
             "type": "string"
         },
         {
-            "name": "base_url_override",
+            "name": "baseUrlOverride",
             "baseName": "base_url_override",
             "type": "string"
         },
         {
             "name": "data",
             "baseName": "data",
-            "type": "{ [key: string]: any; }"
+            "type": "string"
         },
         {
             "name": "headers",
             "baseName": "headers",
             "type": "{ [key: string]: any; }"
+        },
+        {
+            "name": "requestFormat",
+            "baseName": "request_format",
+            "type": "RequestFormatEnum"
         }    ];
 
     static getAttributeTypeMap() {

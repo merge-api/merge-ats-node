@@ -22,21 +22,21 @@ export class Attachment {
     /**
     * The third-party API ID of the matching object.
     */
-    'remote_id'?: string | null;
+    'remoteId'?: string | null;
     /**
     * The attachment\'s name.
     */
-    'file_name'?: string | null;
+    'fileName'?: string | null;
     /**
     * The attachment\'s url.
     */
-    'file_url'?: string | null;
+    'fileUrl'?: string | null;
     'candidate'?: string | null;
     /**
     * The attachment\'s type.
     */
-    'attachment_type'?: AttachmentTypeEnum | null;
-    'remote_data'?: Array<RemoteData> | null;
+    'attachmentType'?: AttachmentTypeEnum | null;
+    'remoteData'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -47,17 +47,17 @@ export class Attachment {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
         {
-            "name": "file_name",
+            "name": "fileName",
             "baseName": "file_name",
             "type": "string"
         },
         {
-            "name": "file_url",
+            "name": "fileUrl",
             "baseName": "file_url",
             "type": "string"
         },
@@ -67,12 +67,12 @@ export class Attachment {
             "type": "string"
         },
         {
-            "name": "attachment_type",
+            "name": "attachmentType",
             "baseName": "attachment_type",
             "type": "AttachmentTypeEnum"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }    ];

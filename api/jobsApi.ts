@@ -93,6 +93,7 @@ export class JobsApi {
     /**
      * Returns a list of `Job` objects.
      * @param xAccountToken Token identifying the end user.
+     * @param code If provided, will only return jobs with this code.
      * @param createdAfter If provided, will only return objects created after this datetime.
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
@@ -104,7 +105,7 @@ export class JobsApi {
      * @param remoteId The API provider\&#39;s ID for the given object.
      * @param status If provided, will only return jobs with this status. Options: (\&#39;OPEN\&#39;, \&#39;CLOSED\&#39;, \&#39;DRAFT\&#39;, \&#39;ARCHIVED\&#39;, \&#39;PENDING\&#39;)
      */
-    public async jobsList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'departments' | 'departments,hiring_managers' | 'departments,offices' | 'departments,offices,hiring_managers' | 'hiring_managers' | 'offices' | 'offices,hiring_managers', includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, status?: 'OPEN' | 'CLOSED' | 'DRAFT' | 'ARCHIVED' | 'PENDING' | '' | 'null', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedJobList;  }> {
+    public async jobsList (xAccountToken: string, code?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'departments' | 'departments,hiring_managers' | 'departments,offices' | 'departments,offices,hiring_managers' | 'hiring_managers' | 'offices' | 'offices,hiring_managers', includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, status?: 'OPEN' | 'CLOSED' | 'DRAFT' | 'ARCHIVED' | 'PENDING' | '' | 'null', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedJobList;  }> {
         const localVarPath = this.basePath + '/jobs';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -120,6 +121,10 @@ export class JobsApi {
         // verify required parameter 'xAccountToken' is not null or undefined
         if (xAccountToken === null || xAccountToken === undefined) {
             throw new Error('Required parameter xAccountToken was null or undefined when calling jobsList.');
+        }
+
+        if (code !== undefined) {
+            localVarQueryParameters['code'] = ObjectSerializer.serialize(code, "string");
         }
 
         if (createdAfter !== undefined) {

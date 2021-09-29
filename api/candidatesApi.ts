@@ -189,8 +189,9 @@ export class CandidatesApi {
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
      * @param remoteId The API provider\&#39;s ID for the given object.
+     * @param tag If provided, will only return candidates with this tag.
      */
-    public async candidatesList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, emailAddress?: string, expand?: 'applications' | 'applications,attachments' | 'attachments', firstName?: string, includeRemoteData?: boolean, lastName?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedCandidateList;  }> {
+    public async candidatesList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, emailAddress?: string, expand?: 'applications' | 'applications,attachments' | 'attachments', firstName?: string, includeRemoteData?: boolean, lastName?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, tag?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedCandidateList;  }> {
         const localVarPath = this.basePath + '/candidates';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -254,6 +255,10 @@ export class CandidatesApi {
 
         if (remoteId !== undefined) {
             localVarQueryParameters['remote_id'] = ObjectSerializer.serialize(remoteId, "string");
+        }
+
+        if (tag !== undefined) {
+            localVarQueryParameters['tag'] = ObjectSerializer.serialize(tag, "string");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

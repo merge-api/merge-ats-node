@@ -24,7 +24,7 @@ export class PhoneNumberRequest {
     /**
     * The type of phone number.
     */
-    'phone_number_type'?: PhoneNumberTypeEnum | null;
+    'phoneNumberType'?: PhoneNumberTypeEnum | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -35,7 +35,7 @@ export class PhoneNumberRequest {
             "type": "string"
         },
         {
-            "name": "phone_number_type",
+            "name": "phoneNumberType",
             "baseName": "phone_number_type",
             "type": "PhoneNumberTypeEnum"
         }    ];

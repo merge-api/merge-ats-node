@@ -1,3 +1,5 @@
+export * from './accountDetailsApi';
+import { AccountDetailsApi } from './accountDetailsApi';
 export * from './accountTokenApi';
 import { AccountTokenApi } from './accountTokenApi';
 export * from './activitiesApi';
@@ -57,4 +59,4 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [AccountTokenApi, ActivitiesApi, ApplicationsApi, AttachmentsApi, AvailableActionsApi, CandidatesApi, DeleteAccountApi, DepartmentsApi, EeocsApi, GenerateKeyApi, InterviewsApi, IssuesApi, JobInterviewStagesApi, JobsApi, LinkTokenApi, OffersApi, OfficesApi, PassthroughApi, RegenerateKeyApi, RejectReasonsApi, ScorecardsApi, SyncStatusApi, TagsApi, UsersApi];
+export const APIS = [AccountDetailsApi, AccountTokenApi, ActivitiesApi, ApplicationsApi, AttachmentsApi, AvailableActionsApi, CandidatesApi, DeleteAccountApi, DepartmentsApi, EeocsApi, GenerateKeyApi, InterviewsApi, IssuesApi, JobInterviewStagesApi, JobsApi, LinkTokenApi, OffersApi, OfficesApi, PassthroughApi, RegenerateKeyApi, RejectReasonsApi, ScorecardsApi, SyncStatusApi, TagsApi, UsersApi];

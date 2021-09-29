@@ -11,20 +11,37 @@
  */
 
 import { RequestFile } from './models';
+import { CategoryEnum } from './categoryEnum';
 
-export class EndUserDetailsRequest {
-    'endUserEmailAddress': string;
-    'endUserOrganizationName': string;
-    'endUserOriginId': string;
-    'categories'?: Array<EndUserDetailsRequest.CategoriesEnum>;
-    'integration'?: string | null;
+export class AccountDetails {
+    'id'?: string;
+    'integration'?: string;
+    'category'?: CategoryEnum | null;
+    'endUserOriginId'?: string;
+    'endUserOrganizationName'?: string;
+    'endUserEmailAddress'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "endUserEmailAddress",
-            "baseName": "end_user_email_address",
+            "name": "id",
+            "baseName": "id",
+            "type": "string"
+        },
+        {
+            "name": "integration",
+            "baseName": "integration",
+            "type": "string"
+        },
+        {
+            "name": "category",
+            "baseName": "category",
+            "type": "CategoryEnum"
+        },
+        {
+            "name": "endUserOriginId",
+            "baseName": "end_user_origin_id",
             "type": "string"
         },
         {
@@ -33,30 +50,13 @@ export class EndUserDetailsRequest {
             "type": "string"
         },
         {
-            "name": "endUserOriginId",
-            "baseName": "end_user_origin_id",
-            "type": "string"
-        },
-        {
-            "name": "categories",
-            "baseName": "categories",
-            "type": "Array<EndUserDetailsRequest.CategoriesEnum>"
-        },
-        {
-            "name": "integration",
-            "baseName": "integration",
+            "name": "endUserEmailAddress",
+            "baseName": "end_user_email_address",
             "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
-        return EndUserDetailsRequest.attributeTypeMap;
+        return AccountDetails.attributeTypeMap;
     }
 }
 
-export namespace EndUserDetailsRequest {
-    export enum CategoriesEnum {
-        Hris = <any> 'hris',
-        Ats = <any> 'ats',
-        Accounting = <any> 'accounting'
-    }
-}
