@@ -22,7 +22,7 @@ export class Offer {
     /**
     * The third-party API ID of the matching object.
     */
-    'remoteId'?: string | null;
+    'remote_id'?: string | null;
     /**
     * The application who is receiving the offer.
     */
@@ -34,24 +34,24 @@ export class Offer {
     /**
     * When the third party\'s offer was created.
     */
-    'remoteCreatedAt'?: Date | null;
+    'remote_created_at'?: Date | null;
     /**
     * When the offer was closed.
     */
-    'closedAt'?: Date | null;
+    'closed_at'?: Date | null;
     /**
     * When the offer was sent.
     */
-    'sentAt'?: Date | null;
+    'sent_at'?: Date | null;
     /**
     * The employment start date on the offer.
     */
-    'startDate'?: Date | null;
+    'start_date'?: Date | null;
     /**
     * The offer\'s status.
     */
     'status'?: OfferStatusEnum | null;
-    'remoteData'?: Array<RemoteData> | null;
+    'remote_data'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -62,7 +62,7 @@ export class Offer {
             "type": "string"
         },
         {
-            "name": "remoteId",
+            "name": "remote_id",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -77,22 +77,22 @@ export class Offer {
             "type": "string"
         },
         {
-            "name": "remoteCreatedAt",
+            "name": "remote_created_at",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "closedAt",
+            "name": "closed_at",
             "baseName": "closed_at",
             "type": "Date"
         },
         {
-            "name": "sentAt",
+            "name": "sent_at",
             "baseName": "sent_at",
             "type": "Date"
         },
         {
-            "name": "startDate",
+            "name": "start_date",
             "baseName": "start_date",
             "type": "Date"
         },
@@ -102,7 +102,7 @@ export class Offer {
             "type": "OfferStatusEnum"
         },
         {
-            "name": "remoteData",
+            "name": "remote_data",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }    ];

@@ -24,7 +24,7 @@ export class EmailAddress {
     /**
     * The type of email address.
     */
-    'emailAddressType'?: EmailAddressTypeEnum | null;
+    'email_address_type'?: EmailAddressTypeEnum | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -35,7 +35,7 @@ export class EmailAddress {
             "type": "string"
         },
         {
-            "name": "emailAddressType",
+            "name": "email_address_type",
             "baseName": "email_address_type",
             "type": "EmailAddressTypeEnum"
         }    ];

@@ -20,36 +20,36 @@ export class AttachmentRequest {
     /**
     * The third-party API ID of the matching object.
     */
-    'remoteId'?: string | null;
+    'remote_id'?: string | null;
     /**
     * The attachment\'s name.
     */
-    'fileName'?: string | null;
+    'file_name'?: string | null;
     /**
     * The attachment\'s url.
     */
-    'fileUrl'?: string | null;
+    'file_url'?: string | null;
     'candidate'?: string | null;
     /**
     * The attachment\'s type.
     */
-    'attachmentType'?: AttachmentTypeEnum | null;
+    'attachment_type'?: AttachmentTypeEnum | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "remoteId",
+            "name": "remote_id",
             "baseName": "remote_id",
             "type": "string"
         },
         {
-            "name": "fileName",
+            "name": "file_name",
             "baseName": "file_name",
             "type": "string"
         },
         {
-            "name": "fileUrl",
+            "name": "file_url",
             "baseName": "file_url",
             "type": "string"
         },
@@ -59,7 +59,7 @@ export class AttachmentRequest {
             "type": "string"
         },
         {
-            "name": "attachmentType",
+            "name": "attachment_type",
             "baseName": "attachment_type",
             "type": "AttachmentTypeEnum"
         }    ];

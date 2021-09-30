@@ -22,15 +22,15 @@ export class CandidateRequest {
     /**
     * The third-party API ID of the matching object.
     */
-    'remoteId'?: string | null;
+    'remote_id'?: string | null;
     /**
     * The candidate\'s first name.
     */
-    'firstName'?: string | null;
+    'first_name'?: string | null;
     /**
     * The candidate\'s last name.
     */
-    'lastName'?: string | null;
+    'last_name'?: string | null;
     /**
     * The candidate\'s current company.
     */
@@ -42,29 +42,29 @@ export class CandidateRequest {
     /**
     * When the third party\'s candidate was created.
     */
-    'remoteCreatedAt'?: Date | null;
+    'remote_created_at'?: Date | null;
     /**
     * When the third party\'s candidate was updated.
     */
-    'remoteUpdatedAt'?: Date | null;
+    'remote_updated_at'?: Date | null;
     /**
     * When the most recent candidate interaction occurred.
     */
-    'lastInteractionAt'?: Date | null;
+    'last_interaction_at'?: Date | null;
     /**
     * Whether or not the candidate is private.
     */
-    'isPrivate'?: boolean | null;
+    'is_private'?: boolean | null;
     /**
     * Whether or not the candidate can be emailed.
     */
-    'canEmail'?: boolean | null;
+    'can_email'?: boolean | null;
     /**
     * The candidate\'s locations.
     */
     'locations'?: Array<string> | null;
-    'phoneNumbers'?: Array<PhoneNumberRequest>;
-    'emailAddresses'?: Array<EmailAddressRequest>;
+    'phone_numbers'?: Array<PhoneNumberRequest>;
+    'email_addresses'?: Array<EmailAddressRequest>;
     'urls'?: Array<UrlRequest>;
     /**
     * Array of `Tag` names as strings.
@@ -83,17 +83,17 @@ export class CandidateRequest {
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "remoteId",
+            "name": "remote_id",
             "baseName": "remote_id",
             "type": "string"
         },
         {
-            "name": "firstName",
+            "name": "first_name",
             "baseName": "first_name",
             "type": "string"
         },
         {
-            "name": "lastName",
+            "name": "last_name",
             "baseName": "last_name",
             "type": "string"
         },
@@ -108,27 +108,27 @@ export class CandidateRequest {
             "type": "string"
         },
         {
-            "name": "remoteCreatedAt",
+            "name": "remote_created_at",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "remoteUpdatedAt",
+            "name": "remote_updated_at",
             "baseName": "remote_updated_at",
             "type": "Date"
         },
         {
-            "name": "lastInteractionAt",
+            "name": "last_interaction_at",
             "baseName": "last_interaction_at",
             "type": "Date"
         },
         {
-            "name": "isPrivate",
+            "name": "is_private",
             "baseName": "is_private",
             "type": "boolean"
         },
         {
-            "name": "canEmail",
+            "name": "can_email",
             "baseName": "can_email",
             "type": "boolean"
         },
@@ -138,12 +138,12 @@ export class CandidateRequest {
             "type": "Array<string>"
         },
         {
-            "name": "phoneNumbers",
+            "name": "phone_numbers",
             "baseName": "phone_numbers",
             "type": "Array<PhoneNumberRequest>"
         },
         {
-            "name": "emailAddresses",
+            "name": "email_addresses",
             "baseName": "email_addresses",
             "type": "Array<EmailAddressRequest>"
         },

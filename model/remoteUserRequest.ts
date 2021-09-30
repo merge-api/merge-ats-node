@@ -20,15 +20,15 @@ export class RemoteUserRequest {
     /**
     * The third-party API ID of the matching object.
     */
-    'remoteId'?: string | null;
+    'remote_id'?: string | null;
     /**
     * The user\'s first name.
     */
-    'firstName'?: string | null;
+    'first_name'?: string | null;
     /**
     * The user\'s last name.
     */
-    'lastName'?: string | null;
+    'last_name'?: string | null;
     /**
     * The user\'s email.
     */
@@ -40,27 +40,27 @@ export class RemoteUserRequest {
     /**
     * When the third party\'s user was created.
     */
-    'remoteCreatedAt'?: Date | null;
+    'remote_created_at'?: Date | null;
     /**
     * The user\'s role.
     */
-    'accessRole'?: AccessRoleEnum | null;
+    'access_role'?: AccessRoleEnum | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "remoteId",
+            "name": "remote_id",
             "baseName": "remote_id",
             "type": "string"
         },
         {
-            "name": "firstName",
+            "name": "first_name",
             "baseName": "first_name",
             "type": "string"
         },
         {
-            "name": "lastName",
+            "name": "last_name",
             "baseName": "last_name",
             "type": "string"
         },
@@ -75,12 +75,12 @@ export class RemoteUserRequest {
             "type": "boolean"
         },
         {
-            "name": "remoteCreatedAt",
+            "name": "remote_created_at",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "accessRole",
+            "name": "access_role",
             "baseName": "access_role",
             "type": "AccessRoleEnum"
         }    ];

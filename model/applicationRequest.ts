@@ -19,7 +19,7 @@ export class ApplicationRequest {
     /**
     * The third-party API ID of the matching object.
     */
-    'remoteId'?: string | null;
+    'remote_id'?: string | null;
     /**
     * The candidate applying.
     */
@@ -31,11 +31,11 @@ export class ApplicationRequest {
     /**
     * When the application was submitted.
     */
-    'appliedAt'?: Date | null;
+    'applied_at'?: Date | null;
     /**
     * When the application was rejected.
     */
-    'rejectedAt'?: Date | null;
+    'rejected_at'?: Date | null;
     /**
     * The application\'s source.
     */
@@ -43,21 +43,21 @@ export class ApplicationRequest {
     /**
     * The user credited for this application.
     */
-    'creditedTo'?: string | null;
+    'credited_to'?: string | null;
     /**
     * The application\'s current stage.
     */
-    'currentStage'?: string | null;
+    'current_stage'?: string | null;
     /**
     * The application\'s reason for rejection.
     */
-    'rejectReason'?: string | null;
+    'reject_reason'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "remoteId",
+            "name": "remote_id",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -72,12 +72,12 @@ export class ApplicationRequest {
             "type": "string"
         },
         {
-            "name": "appliedAt",
+            "name": "applied_at",
             "baseName": "applied_at",
             "type": "Date"
         },
         {
-            "name": "rejectedAt",
+            "name": "rejected_at",
             "baseName": "rejected_at",
             "type": "Date"
         },
@@ -87,17 +87,17 @@ export class ApplicationRequest {
             "type": "string"
         },
         {
-            "name": "creditedTo",
+            "name": "credited_to",
             "baseName": "credited_to",
             "type": "string"
         },
         {
-            "name": "currentStage",
+            "name": "current_stage",
             "baseName": "current_stage",
             "type": "string"
         },
         {
-            "name": "rejectReason",
+            "name": "reject_reason",
             "baseName": "reject_reason",
             "type": "string"
         }    ];

@@ -20,7 +20,7 @@ export class ScorecardRequest {
     /**
     * The third-party API ID of the matching object.
     */
-    'remoteId'?: string | null;
+    'remote_id'?: string | null;
     /**
     * The application being scored.
     */
@@ -36,21 +36,21 @@ export class ScorecardRequest {
     /**
     * When the third party\'s scorecard was created.
     */
-    'remoteCreatedAt'?: Date | null;
+    'remote_created_at'?: Date | null;
     /**
     * When the scorecard was submitted.
     */
-    'submittedAt'?: Date | null;
+    'submitted_at'?: Date | null;
     /**
     * The inteviewer\'s recommendation.
     */
-    'overallRecommendation'?: OverallRecommendationEnum | null;
+    'overall_recommendation'?: OverallRecommendationEnum | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "remoteId",
+            "name": "remote_id",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -70,17 +70,17 @@ export class ScorecardRequest {
             "type": "string"
         },
         {
-            "name": "remoteCreatedAt",
+            "name": "remote_created_at",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "submittedAt",
+            "name": "submitted_at",
             "baseName": "submitted_at",
             "type": "Date"
         },
         {
-            "name": "overallRecommendation",
+            "name": "overall_recommendation",
             "baseName": "overall_recommendation",
             "type": "OverallRecommendationEnum"
         }    ];

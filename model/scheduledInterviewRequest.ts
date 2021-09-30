@@ -20,7 +20,7 @@ export class ScheduledInterviewRequest {
     /**
     * The third-party API ID of the matching object.
     */
-    'remoteId'?: string | null;
+    'remote_id'?: string | null;
     /**
     * The application being interviewed.
     */
@@ -28,7 +28,7 @@ export class ScheduledInterviewRequest {
     /**
     * The stage of the interview.
     */
-    'jobInterviewStage'?: string | null;
+    'job_interview_stage'?: string | null;
     /**
     * The user organizing the interview.
     */
@@ -44,19 +44,19 @@ export class ScheduledInterviewRequest {
     /**
     * When the interview was started.
     */
-    'startAt'?: Date | null;
+    'start_at'?: Date | null;
     /**
     * When the interview was ended.
     */
-    'endAt'?: Date | null;
+    'end_at'?: Date | null;
     /**
     * When the third party\'s interview was created.
     */
-    'remoteCreatedAt'?: Date | null;
+    'remote_created_at'?: Date | null;
     /**
     * When the third party\'s interview was updated.
     */
-    'remoteUpdatedAt'?: Date | null;
+    'remote_updated_at'?: Date | null;
     /**
     * The interview\'s status.
     */
@@ -66,7 +66,7 @@ export class ScheduledInterviewRequest {
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "remoteId",
+            "name": "remote_id",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -76,7 +76,7 @@ export class ScheduledInterviewRequest {
             "type": "string"
         },
         {
-            "name": "jobInterviewStage",
+            "name": "job_interview_stage",
             "baseName": "job_interview_stage",
             "type": "string"
         },
@@ -96,22 +96,22 @@ export class ScheduledInterviewRequest {
             "type": "string"
         },
         {
-            "name": "startAt",
+            "name": "start_at",
             "baseName": "start_at",
             "type": "Date"
         },
         {
-            "name": "endAt",
+            "name": "end_at",
             "baseName": "end_at",
             "type": "Date"
         },
         {
-            "name": "remoteCreatedAt",
+            "name": "remote_created_at",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "remoteUpdatedAt",
+            "name": "remote_updated_at",
             "baseName": "remote_updated_at",
             "type": "Date"
         },
