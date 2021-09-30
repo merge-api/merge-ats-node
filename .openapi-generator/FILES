@@ -1,5 +1,6 @@
 .gitignore
 api.ts
+api/accountDetailsApi.ts
 api/accountTokenApi.ts
 api/activitiesApi.ts
 api/apis.ts
@@ -27,6 +28,7 @@ api/tagsApi.ts
 api/usersApi.ts
 git_push.sh
 model/accessRoleEnum.ts
+model/accountDetails.ts
 model/accountIntegration.ts
 model/accountToken.ts
 model/activity.ts
@@ -39,6 +41,7 @@ model/attachmentTypeEnum.ts
 model/availableActions.ts
 model/candidate.ts
 model/candidateRequest.ts
+model/categoryEnum.ts
 model/dataPassthroughRequest.ts
 model/department.ts
 model/disabilityStatusEnum.ts
@@ -91,6 +94,7 @@ model/remoteKeyForRegenerationRequest.ts
 model/remoteResponse.ts
 model/remoteUser.ts
 model/remoteUserRequest.ts
+model/requestFormatEnum.ts
 model/scheduledInterview.ts
 model/scheduledInterviewRequest.ts
 model/scheduledInterviewStatusEnum.ts
@@ -104,5 +108,3 @@ model/urlRequest.ts
 model/urlTypeEnum.ts
 model/veteranStatusEnum.ts
 model/visibilityEnum.ts
-package.json
-tsconfig.json
