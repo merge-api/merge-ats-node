@@ -1,6 +1,7 @@
 import localVarRequest from 'request';
 
 export * from './accessRoleEnum';
+export * from './accountDetails';
 export * from './accountIntegration';
 export * from './accountToken';
 export * from './activity';
@@ -13,6 +14,7 @@ export * from './attachmentTypeEnum';
 export * from './availableActions';
 export * from './candidate';
 export * from './candidateRequest';
+export * from './categoryEnum';
 export * from './dataPassthroughRequest';
 export * from './department';
 export * from './disabilityStatusEnum';
@@ -64,6 +66,7 @@ export * from './remoteKeyForRegenerationRequest';
 export * from './remoteResponse';
 export * from './remoteUser';
 export * from './remoteUserRequest';
+export * from './requestFormatEnum';
 export * from './scheduledInterview';
 export * from './scheduledInterviewRequest';
 export * from './scheduledInterviewStatusEnum';
@@ -92,6 +95,7 @@ export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 
 import { AccessRoleEnum } from './accessRoleEnum';
+import { AccountDetails } from './accountDetails';
 import { AccountIntegration } from './accountIntegration';
 import { AccountToken } from './accountToken';
 import { Activity } from './activity';
@@ -104,6 +108,7 @@ import { AttachmentTypeEnum } from './attachmentTypeEnum';
 import { AvailableActions } from './availableActions';
 import { Candidate } from './candidate';
 import { CandidateRequest } from './candidateRequest';
+import { CategoryEnum } from './categoryEnum';
 import { DataPassthroughRequest } from './dataPassthroughRequest';
 import { Department } from './department';
 import { DisabilityStatusEnum } from './disabilityStatusEnum';
@@ -155,6 +160,7 @@ import { RemoteKeyForRegenerationRequest } from './remoteKeyForRegenerationReque
 import { RemoteResponse } from './remoteResponse';
 import { RemoteUser } from './remoteUser';
 import { RemoteUserRequest } from './remoteUserRequest';
+import { RequestFormatEnum } from './requestFormatEnum';
 import { ScheduledInterview } from './scheduledInterview';
 import { ScheduledInterviewRequest } from './scheduledInterviewRequest';
 import { ScheduledInterviewStatusEnum } from './scheduledInterviewStatusEnum';
@@ -186,6 +192,7 @@ let enumsMap: {[index: string]: any} = {
         "AccountIntegration.CategoriesEnum": AccountIntegration.CategoriesEnum,
         "ActivityTypeEnum": ActivityTypeEnum,
         "AttachmentTypeEnum": AttachmentTypeEnum,
+        "CategoryEnum": CategoryEnum,
         "DisabilityStatusEnum": DisabilityStatusEnum,
         "EmailAddressTypeEnum": EmailAddressTypeEnum,
         "EndUserDetailsRequest.CategoriesEnum": EndUserDetailsRequest.CategoriesEnum,
@@ -197,6 +204,7 @@ let enumsMap: {[index: string]: any} = {
         "OverallRecommendationEnum": OverallRecommendationEnum,
         "PhoneNumberTypeEnum": PhoneNumberTypeEnum,
         "RaceEnum": RaceEnum,
+        "RequestFormatEnum": RequestFormatEnum,
         "ScheduledInterviewStatusEnum": ScheduledInterviewStatusEnum,
         "SyncStatusStatusEnum": SyncStatusStatusEnum,
         "UrlTypeEnum": UrlTypeEnum,
@@ -205,6 +213,7 @@ let enumsMap: {[index: string]: any} = {
 }
 
 let typeMap: {[index: string]: any} = {
+    "AccountDetails": AccountDetails,
     "AccountIntegration": AccountIntegration,
     "AccountToken": AccountToken,
     "Activity": Activity,

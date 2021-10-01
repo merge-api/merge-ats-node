@@ -32,6 +32,10 @@ export class Job {
     */
     'description'?: string | null;
     /**
+    * The job\'s code. Typically an additional identifier used to reference the particular job that is displayed on the ATS.
+    */
+    'code'?: string | null;
+    /**
     * The job\'s status.
     */
     'status'?: JobStatusEnum | null;
@@ -82,6 +86,11 @@ export class Job {
         {
             "name": "description",
             "baseName": "description",
+            "type": "string"
+        },
+        {
+            "name": "code",
+            "baseName": "code",
             "type": "string"
         },
         {
