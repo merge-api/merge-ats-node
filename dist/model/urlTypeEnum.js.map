@@ -1,0 +1,1 @@
+{"version":3,"file":"urlTypeEnum.js","sourceRoot":"","sources":["../../model/urlTypeEnum.ts"],"names":[],"mappings":";;;AAcA,IAAY,WAOX;AAPD,WAAY,WAAW;IACnB,sCAAiB,UAAU,cAAA,CAAA;IAC3B,qCAAgB,SAAS,aAAA,CAAA;IACzB,uCAAkB,WAAW,eAAA,CAAA;IAC7B,kCAAa,MAAM,UAAA,CAAA;IACnB,yCAAoB,cAAc,iBAAA,CAAA;IAClC,mCAAc,OAAO,WAAA,CAAA;AACzB,CAAC,EAPW,WAAW,GAAX,mBAAW,KAAX,mBAAW,QAOtB"}
