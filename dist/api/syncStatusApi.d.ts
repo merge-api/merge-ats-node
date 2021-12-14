@@ -25,7 +25,7 @@ export declare class SyncStatusApi {
     setDefaultAuthentication(auth: Authentication): void;
     setApiKey(key: SyncStatusApiApiKeys, value: string): void;
     addInterceptor(interceptor: Interceptor): void;
-    syncStatusList(xAccountToken: string, cursor?: number, pageSize?: number, options?: {
+    syncStatusList(xAccountToken: string, cursor?: string, pageSize?: number, options?: {
         headers: {
             [name: string]: string;
         };

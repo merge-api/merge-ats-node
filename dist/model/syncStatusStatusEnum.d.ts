@@ -1,4 +1,6 @@
 export declare enum SyncStatusStatusEnum {
     Syncing,
-    Done
+    Done,
+    Failed,
+    Disabled
 }

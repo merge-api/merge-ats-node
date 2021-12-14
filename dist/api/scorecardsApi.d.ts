@@ -2,7 +2,6 @@
 import http from 'http';
 import { PaginatedScorecardList } from '../model/paginatedScorecardList';
 import { Scorecard } from '../model/scorecard';
-import { ScorecardRequest } from '../model/scorecardRequest';
 import { Authentication, Interceptor } from '../model/models';
 import { ApiKeyAuth } from '../model/models';
 export declare enum ScorecardsApiApiKeys {
@@ -26,14 +25,6 @@ export declare class ScorecardsApi {
     setDefaultAuthentication(auth: Authentication): void;
     setApiKey(key: ScorecardsApiApiKeys, value: string): void;
     addInterceptor(interceptor: Interceptor): void;
-    scorecardsCreate(xAccountToken: string, remoteUserId?: string, runAsync?: boolean, scorecardRequest?: ScorecardRequest, options?: {
-        headers: {
-            [name: string]: string;
-        };
-    }): Promise<{
-        response: http.IncomingMessage;
-        body: Scorecard;
-    }>;
     scorecardsList(xAccountToken: string, applicationId?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'application' | 'application,interview' | 'application,interview,interviewer' | 'application,interviewer' | 'interview' | 'interview,interviewer' | 'interviewer', includeRemoteData?: boolean, interviewId?: string, interviewerId?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options?: {
         headers: {
             [name: string]: string;

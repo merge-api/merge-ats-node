@@ -1,7 +1,7 @@
 import { EmailAddressTypeEnum } from './emailAddressTypeEnum';
 export declare class EmailAddressRequest {
     'value'?: string | null;
-    'email_address_type'?: EmailAddressTypeEnum | null;
+    'emailAddressType'?: EmailAddressTypeEnum | null;
     static discriminator: string | undefined;
     static attributeTypeMap: Array<{
         name: string;

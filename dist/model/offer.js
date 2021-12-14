@@ -15,7 +15,7 @@ var Offer = (function () {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -30,22 +30,22 @@ var Offer = (function () {
             "type": "string"
         },
         {
-            "name": "remote_created_at",
+            "name": "remoteCreatedAt",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "closed_at",
+            "name": "closedAt",
             "baseName": "closed_at",
             "type": "Date"
         },
         {
-            "name": "sent_at",
+            "name": "sentAt",
             "baseName": "sent_at",
             "type": "Date"
         },
         {
-            "name": "start_date",
+            "name": "startDate",
             "baseName": "start_date",
             "type": "Date"
         },
@@ -55,7 +55,7 @@ var Offer = (function () {
             "type": "OfferStatusEnum"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }

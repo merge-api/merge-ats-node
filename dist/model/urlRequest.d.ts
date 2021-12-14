@@ -1,7 +1,7 @@
 import { UrlTypeEnum } from './urlTypeEnum';
 export declare class UrlRequest {
     'value'?: string | null;
-    'url_type'?: UrlTypeEnum | null;
+    'urlType'?: UrlTypeEnum | null;
     static discriminator: string | undefined;
     static attributeTypeMap: Array<{
         name: string;

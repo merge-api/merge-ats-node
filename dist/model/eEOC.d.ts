@@ -5,14 +5,14 @@ import { RemoteData } from './remoteData';
 import { VeteranStatusEnum } from './veteranStatusEnum';
 export declare class EEOC {
     'id'?: string;
-    'remote_id'?: string | null;
+    'remoteId'?: string | null;
     'candidate'?: string | null;
-    'submitted_at'?: Date | null;
+    'submittedAt'?: Date | null;
     'race'?: RaceEnum | null;
     'gender'?: GenderEnum | null;
-    'veteran_status'?: VeteranStatusEnum | null;
-    'disability_status'?: DisabilityStatusEnum | null;
-    'remote_data'?: Array<RemoteData> | null;
+    'veteranStatus'?: VeteranStatusEnum | null;
+    'disabilityStatus'?: DisabilityStatusEnum | null;
+    'remoteData'?: Array<RemoteData> | null;
     static discriminator: string | undefined;
     static attributeTypeMap: Array<{
         name: string;

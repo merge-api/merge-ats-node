@@ -15,7 +15,7 @@ var PhoneNumberRequest = (function () {
             "type": "string"
         },
         {
-            "name": "phone_number_type",
+            "name": "phoneNumberType",
             "baseName": "phone_number_type",
             "type": "PhoneNumberTypeEnum"
         }

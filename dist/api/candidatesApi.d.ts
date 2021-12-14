@@ -1,7 +1,8 @@
 /// <reference types="node" />
 import http from 'http';
 import { Candidate } from '../model/candidate';
-import { CandidateRequest } from '../model/candidateRequest';
+import { CandidateEndpointRequest } from '../model/candidateEndpointRequest';
+import { CandidateResponse } from '../model/candidateResponse';
 import { PaginatedCandidateList } from '../model/paginatedCandidateList';
 import { Authentication, Interceptor } from '../model/models';
 import { ApiKeyAuth } from '../model/models';
@@ -26,15 +27,15 @@ export declare class CandidatesApi {
     setDefaultAuthentication(auth: Authentication): void;
     setApiKey(key: CandidatesApiApiKeys, value: string): void;
     addInterceptor(interceptor: Interceptor): void;
-    candidatesCreate(xAccountToken: string, remoteUserId?: string, runAsync?: boolean, candidateRequest?: CandidateRequest, options?: {
+    candidatesCreate(xAccountToken: string, candidateEndpointRequest: CandidateEndpointRequest, runAsync?: boolean, options?: {
         headers: {
             [name: string]: string;
         };
     }): Promise<{
         response: http.IncomingMessage;
-        body: Candidate;
+        body: CandidateResponse;
     }>;
-    candidatesList(xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, emailAddress?: string, expand?: 'applications' | 'applications,attachments' | 'attachments', firstName?: string, includeRemoteData?: boolean, lastName?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, tag?: string, options?: {
+    candidatesList(xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'applications' | 'applications,attachments' | 'attachments', firstName?: string, includeRemoteData?: boolean, lastName?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options?: {
         headers: {
             [name: string]: string;
         };

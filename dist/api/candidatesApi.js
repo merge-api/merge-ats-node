@@ -106,7 +106,7 @@ var CandidatesApi = (function () {
     CandidatesApi.prototype.addInterceptor = function (interceptor) {
         this.interceptors.push(interceptor);
     };
-    CandidatesApi.prototype.candidatesCreate = function (xAccountToken, remoteUserId, runAsync, candidateRequest, options) {
+    CandidatesApi.prototype.candidatesCreate = function (xAccountToken, candidateEndpointRequest, runAsync, options) {
         if (options === void 0) { options = { headers: {} }; }
         return __awaiter(this, void 0, void 0, function () {
             var localVarPath, localVarQueryParameters, localVarHeaderParams, produces, localVarFormParams, localVarUseFormData, localVarRequestOptions, authenticationPromise, interceptorPromise, _loop_1, _i, _a, interceptor;
@@ -126,8 +126,8 @@ var CandidatesApi = (function () {
                 if (xAccountToken === null || xAccountToken === undefined) {
                     throw new Error('Required parameter xAccountToken was null or undefined when calling candidatesCreate.');
                 }
-                if (remoteUserId !== undefined) {
-                    localVarQueryParameters['remote_user_id'] = models_1.ObjectSerializer.serialize(remoteUserId, "string");
+                if (candidateEndpointRequest === null || candidateEndpointRequest === undefined) {
+                    throw new Error('Required parameter candidateEndpointRequest was null or undefined when calling candidatesCreate.');
                 }
                 if (runAsync !== undefined) {
                     localVarQueryParameters['run_async'] = models_1.ObjectSerializer.serialize(runAsync, "boolean");
@@ -142,7 +142,7 @@ var CandidatesApi = (function () {
                     uri: localVarPath,
                     useQuerystring: this._useQuerystring,
                     json: true,
-                    body: models_1.ObjectSerializer.serialize(candidateRequest, "CandidateRequest")
+                    body: models_1.ObjectSerializer.serialize(candidateEndpointRequest, "CandidateEndpointRequest")
                 };
                 authenticationPromise = Promise.resolve();
                 if (this.authentications.tokenAuth.apiKey) {
@@ -172,7 +172,7 @@ var CandidatesApi = (function () {
                                     reject(error);
                                 }
                                 else {
-                                    body = models_1.ObjectSerializer.deserialize(body, "Candidate");
+                                    body = models_1.ObjectSerializer.deserialize(body, "CandidateResponse");
                                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                                         resolve({ response: response, body: body });
                                     }
@@ -186,7 +186,7 @@ var CandidatesApi = (function () {
             });
         });
     };
-    CandidatesApi.prototype.candidatesList = function (xAccountToken, createdAfter, createdBefore, cursor, emailAddress, expand, firstName, includeRemoteData, lastName, modifiedAfter, modifiedBefore, pageSize, remoteId, tag, options) {
+    CandidatesApi.prototype.candidatesList = function (xAccountToken, createdAfter, createdBefore, cursor, expand, firstName, includeRemoteData, lastName, modifiedAfter, modifiedBefore, pageSize, remoteId, options) {
         if (options === void 0) { options = { headers: {} }; }
         return __awaiter(this, void 0, void 0, function () {
             var localVarPath, localVarQueryParameters, localVarHeaderParams, produces, localVarFormParams, localVarUseFormData, localVarRequestOptions, authenticationPromise, interceptorPromise, _loop_2, _i, _a, interceptor;
@@ -215,9 +215,6 @@ var CandidatesApi = (function () {
                 if (cursor !== undefined) {
                     localVarQueryParameters['cursor'] = models_1.ObjectSerializer.serialize(cursor, "string");
                 }
-                if (emailAddress !== undefined) {
-                    localVarQueryParameters['email_address'] = models_1.ObjectSerializer.serialize(emailAddress, "string");
-                }
                 if (expand !== undefined) {
                     localVarQueryParameters['expand'] = models_1.ObjectSerializer.serialize(expand, "'applications' | 'applications,attachments' | 'attachments'");
                 }
@@ -241,9 +238,6 @@ var CandidatesApi = (function () {
                 }
                 if (remoteId !== undefined) {
                     localVarQueryParameters['remote_id'] = models_1.ObjectSerializer.serialize(remoteId, "string");
-                }
-                if (tag !== undefined) {
-                    localVarQueryParameters['tag'] = models_1.ObjectSerializer.serialize(tag, "string");
                 }
                 localVarHeaderParams['X-Account-Token'] = models_1.ObjectSerializer.serialize(xAccountToken, "string");
                 Object.assign(localVarHeaderParams, options.headers);

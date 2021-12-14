@@ -127,7 +127,7 @@ var SyncStatusApi = (function () {
                     throw new Error('Required parameter xAccountToken was null or undefined when calling syncStatusList.');
                 }
                 if (cursor !== undefined) {
-                    localVarQueryParameters['cursor'] = models_1.ObjectSerializer.serialize(cursor, "number");
+                    localVarQueryParameters['cursor'] = models_1.ObjectSerializer.serialize(cursor, "string");
                 }
                 if (pageSize !== undefined) {
                     localVarQueryParameters['page_size'] = models_1.ObjectSerializer.serialize(pageSize, "number");

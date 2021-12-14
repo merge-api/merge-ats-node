@@ -15,7 +15,7 @@ var Activity = (function () {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -25,12 +25,12 @@ var Activity = (function () {
             "type": "string"
         },
         {
-            "name": "remote_created_at",
+            "name": "remoteCreatedAt",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "activity_type",
+            "name": "activityType",
             "baseName": "activity_type",
             "type": "ActivityTypeEnum"
         },
@@ -50,7 +50,7 @@ var Activity = (function () {
             "type": "VisibilityEnum"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }

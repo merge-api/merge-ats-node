@@ -10,17 +10,17 @@ var AttachmentRequest = (function () {
     AttachmentRequest.discriminator = undefined;
     AttachmentRequest.attributeTypeMap = [
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
         {
-            "name": "file_name",
+            "name": "fileName",
             "baseName": "file_name",
             "type": "string"
         },
         {
-            "name": "file_url",
+            "name": "fileUrl",
             "baseName": "file_url",
             "type": "string"
         },
@@ -30,7 +30,7 @@ var AttachmentRequest = (function () {
             "type": "string"
         },
         {
-            "name": "attachment_type",
+            "name": "attachmentType",
             "baseName": "attachment_type",
             "type": "AttachmentTypeEnum"
         }

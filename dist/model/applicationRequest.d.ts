@@ -1,13 +1,16 @@
 export declare class ApplicationRequest {
-    'remote_id'?: string | null;
+    'remoteId'?: string | null;
     'candidate'?: string | null;
     'job'?: string | null;
-    'applied_at'?: Date | null;
-    'rejected_at'?: Date | null;
+    'appliedAt'?: Date | null;
+    'rejectedAt'?: Date | null;
     'source'?: string | null;
-    'credited_to'?: string | null;
-    'current_stage'?: string | null;
-    'reject_reason'?: string | null;
+    'creditedTo'?: string | null;
+    'currentStage'?: string | null;
+    'rejectReason'?: string | null;
+    'customFields'?: {
+        [key: string]: any;
+    } | null;
     static discriminator: string | undefined;
     static attributeTypeMap: Array<{
         name: string;

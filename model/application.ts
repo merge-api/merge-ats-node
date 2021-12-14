@@ -21,7 +21,7 @@ export class Application {
     /**
     * The third-party API ID of the matching object.
     */
-    'remote_id'?: string | null;
+    'remoteId'?: string | null;
     /**
     * The candidate applying.
     */
@@ -33,11 +33,11 @@ export class Application {
     /**
     * When the application was submitted.
     */
-    'applied_at'?: Date | null;
+    'appliedAt'?: Date | null;
     /**
     * When the application was rejected.
     */
-    'rejected_at'?: Date | null;
+    'rejectedAt'?: Date | null;
     /**
     * The application\'s source.
     */
@@ -45,16 +45,20 @@ export class Application {
     /**
     * The user credited for this application.
     */
-    'credited_to'?: string | null;
+    'creditedTo'?: string | null;
     /**
     * The application\'s current stage.
     */
-    'current_stage'?: string | null;
+    'currentStage'?: string | null;
     /**
     * The application\'s reason for rejection.
     */
-    'reject_reason'?: string | null;
-    'remote_data'?: Array<RemoteData> | null;
+    'rejectReason'?: string | null;
+    'remoteData'?: Array<RemoteData> | null;
+    /**
+    * Custom fields configured for a given model.
+    */
+    'customFields'?: { [key: string]: any; } | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -65,7 +69,7 @@ export class Application {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -80,12 +84,12 @@ export class Application {
             "type": "string"
         },
         {
-            "name": "applied_at",
+            "name": "appliedAt",
             "baseName": "applied_at",
             "type": "Date"
         },
         {
-            "name": "rejected_at",
+            "name": "rejectedAt",
             "baseName": "rejected_at",
             "type": "Date"
         },
@@ -95,24 +99,29 @@ export class Application {
             "type": "string"
         },
         {
-            "name": "credited_to",
+            "name": "creditedTo",
             "baseName": "credited_to",
             "type": "string"
         },
         {
-            "name": "current_stage",
+            "name": "currentStage",
             "baseName": "current_stage",
             "type": "string"
         },
         {
-            "name": "reject_reason",
+            "name": "rejectReason",
             "baseName": "reject_reason",
             "type": "string"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "{ [key: string]: any; }"
         }    ];
 
     static getAttributeTypeMap() {

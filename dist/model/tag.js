@@ -10,7 +10,7 @@ var Tag = (function () {
     Tag.discriminator = undefined;
     Tag.attributeTypeMap = [
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -20,7 +20,7 @@ var Tag = (function () {
             "type": "string"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<{ [key: string]: any; }>"
         }

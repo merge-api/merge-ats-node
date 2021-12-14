@@ -15,7 +15,7 @@ var ScheduledInterview = (function () {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -25,7 +25,7 @@ var ScheduledInterview = (function () {
             "type": "string"
         },
         {
-            "name": "job_interview_stage",
+            "name": "jobInterviewStage",
             "baseName": "job_interview_stage",
             "type": "string"
         },
@@ -45,22 +45,22 @@ var ScheduledInterview = (function () {
             "type": "string"
         },
         {
-            "name": "start_at",
+            "name": "startAt",
             "baseName": "start_at",
             "type": "Date"
         },
         {
-            "name": "end_at",
+            "name": "endAt",
             "baseName": "end_at",
             "type": "Date"
         },
         {
-            "name": "remote_created_at",
+            "name": "remoteCreatedAt",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "remote_updated_at",
+            "name": "remoteUpdatedAt",
             "baseName": "remote_updated_at",
             "type": "Date"
         },
@@ -70,7 +70,7 @@ var ScheduledInterview = (function () {
             "type": "ScheduledInterviewStatusEnum"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }

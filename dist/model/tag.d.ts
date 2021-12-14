@@ -1,7 +1,7 @@
 export declare class Tag {
-    'remote_id'?: string | null;
+    'remoteId'?: string | null;
     'name'?: string | null;
-    'remote_data'?: Array<{
+    'remoteData'?: Array<{
         [key: string]: any;
     }> | null;
     static discriminator: string | undefined;

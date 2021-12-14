@@ -25,7 +25,7 @@ export declare class IssuesApi {
     setDefaultAuthentication(auth: Authentication): void;
     setApiKey(key: IssuesApiApiKeys, value: string): void;
     addInterceptor(interceptor: Interceptor): void;
-    issuesList(accountToken?: string, cursor?: number, endDate?: string, endUserOrganizationName?: string, includeMuted?: string, integrationName?: string, pageSize?: number, startDate?: string, status?: 'ONGOING' | 'RESOLVED', options?: {
+    issuesList(accountToken?: string, cursor?: string, endDate?: string, endUserOrganizationName?: string, includeMuted?: string, integrationName?: string, pageSize?: number, startDate?: string, status?: 'ONGOING' | 'RESOLVED', options?: {
         headers: {
             [name: string]: string;
         };

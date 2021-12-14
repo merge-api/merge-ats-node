@@ -15,7 +15,7 @@ var EmailAddress = (function () {
             "type": "string"
         },
         {
-            "name": "email_address_type",
+            "name": "emailAddressType",
             "baseName": "email_address_type",
             "type": "EmailAddressTypeEnum"
         }

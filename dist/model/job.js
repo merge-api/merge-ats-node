@@ -15,7 +15,7 @@ var Job = (function () {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -40,12 +40,12 @@ var Job = (function () {
             "type": "JobStatusEnum"
         },
         {
-            "name": "remote_created_at",
+            "name": "remoteCreatedAt",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "remote_updated_at",
+            "name": "remoteUpdatedAt",
             "baseName": "remote_updated_at",
             "type": "Date"
         },
@@ -65,12 +65,12 @@ var Job = (function () {
             "type": "Array<string>"
         },
         {
-            "name": "hiring_managers",
+            "name": "hiringManagers",
             "baseName": "hiring_managers",
             "type": "Array<string>"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }

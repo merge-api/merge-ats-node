@@ -13,18 +13,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VoidAuth = exports.OAuth = exports.ApiKeyAuth = exports.HttpBearerAuth = exports.HttpBasicAuth = exports.ObjectSerializer = void 0;
 __exportStar(require("./accessRoleEnum"), exports);
 __exportStar(require("./accountDetails"), exports);
+__exportStar(require("./accountDetailsAndActions"), exports);
+__exportStar(require("./accountDetailsAndActionsIntegration"), exports);
+__exportStar(require("./accountDetailsAndActionsStatusEnum"), exports);
 __exportStar(require("./accountIntegration"), exports);
 __exportStar(require("./accountToken"), exports);
 __exportStar(require("./activity"), exports);
 __exportStar(require("./activityTypeEnum"), exports);
 __exportStar(require("./application"), exports);
+__exportStar(require("./applicationEndpointRequest"), exports);
 __exportStar(require("./applicationRequest"), exports);
+__exportStar(require("./applicationResponse"), exports);
 __exportStar(require("./attachment"), exports);
+__exportStar(require("./attachmentEndpointRequest"), exports);
 __exportStar(require("./attachmentRequest"), exports);
+__exportStar(require("./attachmentResponse"), exports);
 __exportStar(require("./attachmentTypeEnum"), exports);
 __exportStar(require("./availableActions"), exports);
 __exportStar(require("./candidate"), exports);
+__exportStar(require("./candidateEndpointRequest"), exports);
 __exportStar(require("./candidateRequest"), exports);
+__exportStar(require("./candidateResponse"), exports);
+__exportStar(require("./categoriesEnum"), exports);
 __exportStar(require("./categoryEnum"), exports);
 __exportStar(require("./dataPassthroughRequest"), exports);
 __exportStar(require("./department"), exports);
@@ -48,6 +58,7 @@ __exportStar(require("./offer"), exports);
 __exportStar(require("./offerStatusEnum"), exports);
 __exportStar(require("./office"), exports);
 __exportStar(require("./overallRecommendationEnum"), exports);
+__exportStar(require("./paginatedAccountDetailsAndActionsList"), exports);
 __exportStar(require("./paginatedActivityList"), exports);
 __exportStar(require("./paginatedApplicationList"), exports);
 __exportStar(require("./paginatedAttachmentList"), exports);
@@ -76,35 +87,43 @@ __exportStar(require("./remoteKey"), exports);
 __exportStar(require("./remoteKeyForRegenerationRequest"), exports);
 __exportStar(require("./remoteResponse"), exports);
 __exportStar(require("./remoteUser"), exports);
-__exportStar(require("./remoteUserRequest"), exports);
 __exportStar(require("./requestFormatEnum"), exports);
 __exportStar(require("./scheduledInterview"), exports);
-__exportStar(require("./scheduledInterviewRequest"), exports);
 __exportStar(require("./scheduledInterviewStatusEnum"), exports);
 __exportStar(require("./scorecard"), exports);
-__exportStar(require("./scorecardRequest"), exports);
 __exportStar(require("./syncStatus"), exports);
 __exportStar(require("./syncStatusStatusEnum"), exports);
 __exportStar(require("./tag"), exports);
 __exportStar(require("./url"), exports);
 __exportStar(require("./urlRequest"), exports);
 __exportStar(require("./urlTypeEnum"), exports);
+__exportStar(require("./validationProblem"), exports);
 __exportStar(require("./veteranStatusEnum"), exports);
 __exportStar(require("./visibilityEnum"), exports);
 var accessRoleEnum_1 = require("./accessRoleEnum");
 var accountDetails_1 = require("./accountDetails");
+var accountDetailsAndActions_1 = require("./accountDetailsAndActions");
+var accountDetailsAndActionsIntegration_1 = require("./accountDetailsAndActionsIntegration");
+var accountDetailsAndActionsStatusEnum_1 = require("./accountDetailsAndActionsStatusEnum");
 var accountIntegration_1 = require("./accountIntegration");
 var accountToken_1 = require("./accountToken");
 var activity_1 = require("./activity");
 var activityTypeEnum_1 = require("./activityTypeEnum");
 var application_1 = require("./application");
+var applicationEndpointRequest_1 = require("./applicationEndpointRequest");
 var applicationRequest_1 = require("./applicationRequest");
+var applicationResponse_1 = require("./applicationResponse");
 var attachment_1 = require("./attachment");
+var attachmentEndpointRequest_1 = require("./attachmentEndpointRequest");
 var attachmentRequest_1 = require("./attachmentRequest");
+var attachmentResponse_1 = require("./attachmentResponse");
 var attachmentTypeEnum_1 = require("./attachmentTypeEnum");
 var availableActions_1 = require("./availableActions");
 var candidate_1 = require("./candidate");
+var candidateEndpointRequest_1 = require("./candidateEndpointRequest");
 var candidateRequest_1 = require("./candidateRequest");
+var candidateResponse_1 = require("./candidateResponse");
+var categoriesEnum_1 = require("./categoriesEnum");
 var categoryEnum_1 = require("./categoryEnum");
 var dataPassthroughRequest_1 = require("./dataPassthroughRequest");
 var department_1 = require("./department");
@@ -128,6 +147,7 @@ var offer_1 = require("./offer");
 var offerStatusEnum_1 = require("./offerStatusEnum");
 var office_1 = require("./office");
 var overallRecommendationEnum_1 = require("./overallRecommendationEnum");
+var paginatedAccountDetailsAndActionsList_1 = require("./paginatedAccountDetailsAndActionsList");
 var paginatedActivityList_1 = require("./paginatedActivityList");
 var paginatedApplicationList_1 = require("./paginatedApplicationList");
 var paginatedAttachmentList_1 = require("./paginatedAttachmentList");
@@ -156,19 +176,17 @@ var remoteKey_1 = require("./remoteKey");
 var remoteKeyForRegenerationRequest_1 = require("./remoteKeyForRegenerationRequest");
 var remoteResponse_1 = require("./remoteResponse");
 var remoteUser_1 = require("./remoteUser");
-var remoteUserRequest_1 = require("./remoteUserRequest");
 var requestFormatEnum_1 = require("./requestFormatEnum");
 var scheduledInterview_1 = require("./scheduledInterview");
-var scheduledInterviewRequest_1 = require("./scheduledInterviewRequest");
 var scheduledInterviewStatusEnum_1 = require("./scheduledInterviewStatusEnum");
 var scorecard_1 = require("./scorecard");
-var scorecardRequest_1 = require("./scorecardRequest");
 var syncStatus_1 = require("./syncStatus");
 var syncStatusStatusEnum_1 = require("./syncStatusStatusEnum");
 var tag_1 = require("./tag");
 var url_1 = require("./url");
 var urlRequest_1 = require("./urlRequest");
 var urlTypeEnum_1 = require("./urlTypeEnum");
+var validationProblem_1 = require("./validationProblem");
 var veteranStatusEnum_1 = require("./veteranStatusEnum");
 var visibilityEnum_1 = require("./visibilityEnum");
 var primitives = [
@@ -183,13 +201,13 @@ var primitives = [
 ];
 var enumsMap = {
     "AccessRoleEnum": accessRoleEnum_1.AccessRoleEnum,
-    "AccountIntegration.CategoriesEnum": accountIntegration_1.AccountIntegration.CategoriesEnum,
+    "AccountDetailsAndActionsStatusEnum": accountDetailsAndActionsStatusEnum_1.AccountDetailsAndActionsStatusEnum,
     "ActivityTypeEnum": activityTypeEnum_1.ActivityTypeEnum,
     "AttachmentTypeEnum": attachmentTypeEnum_1.AttachmentTypeEnum,
+    "CategoriesEnum": categoriesEnum_1.CategoriesEnum,
     "CategoryEnum": categoryEnum_1.CategoryEnum,
     "DisabilityStatusEnum": disabilityStatusEnum_1.DisabilityStatusEnum,
     "EmailAddressTypeEnum": emailAddressTypeEnum_1.EmailAddressTypeEnum,
-    "EndUserDetailsRequest.CategoriesEnum": endUserDetailsRequest_1.EndUserDetailsRequest.CategoriesEnum,
     "GenderEnum": genderEnum_1.GenderEnum,
     "IssueStatusEnum": issueStatusEnum_1.IssueStatusEnum,
     "JobStatusEnum": jobStatusEnum_1.JobStatusEnum,
@@ -207,16 +225,24 @@ var enumsMap = {
 };
 var typeMap = {
     "AccountDetails": accountDetails_1.AccountDetails,
+    "AccountDetailsAndActions": accountDetailsAndActions_1.AccountDetailsAndActions,
+    "AccountDetailsAndActionsIntegration": accountDetailsAndActionsIntegration_1.AccountDetailsAndActionsIntegration,
     "AccountIntegration": accountIntegration_1.AccountIntegration,
     "AccountToken": accountToken_1.AccountToken,
     "Activity": activity_1.Activity,
     "Application": application_1.Application,
+    "ApplicationEndpointRequest": applicationEndpointRequest_1.ApplicationEndpointRequest,
     "ApplicationRequest": applicationRequest_1.ApplicationRequest,
+    "ApplicationResponse": applicationResponse_1.ApplicationResponse,
     "Attachment": attachment_1.Attachment,
+    "AttachmentEndpointRequest": attachmentEndpointRequest_1.AttachmentEndpointRequest,
     "AttachmentRequest": attachmentRequest_1.AttachmentRequest,
+    "AttachmentResponse": attachmentResponse_1.AttachmentResponse,
     "AvailableActions": availableActions_1.AvailableActions,
     "Candidate": candidate_1.Candidate,
+    "CandidateEndpointRequest": candidateEndpointRequest_1.CandidateEndpointRequest,
     "CandidateRequest": candidateRequest_1.CandidateRequest,
+    "CandidateResponse": candidateResponse_1.CandidateResponse,
     "DataPassthroughRequest": dataPassthroughRequest_1.DataPassthroughRequest,
     "Department": department_1.Department,
     "EEOC": eEOC_1.EEOC,
@@ -231,6 +257,7 @@ var typeMap = {
     "ModelOperation": modelOperation_1.ModelOperation,
     "Offer": offer_1.Offer,
     "Office": office_1.Office,
+    "PaginatedAccountDetailsAndActionsList": paginatedAccountDetailsAndActionsList_1.PaginatedAccountDetailsAndActionsList,
     "PaginatedActivityList": paginatedActivityList_1.PaginatedActivityList,
     "PaginatedApplicationList": paginatedApplicationList_1.PaginatedApplicationList,
     "PaginatedAttachmentList": paginatedAttachmentList_1.PaginatedAttachmentList,
@@ -257,15 +284,13 @@ var typeMap = {
     "RemoteKeyForRegenerationRequest": remoteKeyForRegenerationRequest_1.RemoteKeyForRegenerationRequest,
     "RemoteResponse": remoteResponse_1.RemoteResponse,
     "RemoteUser": remoteUser_1.RemoteUser,
-    "RemoteUserRequest": remoteUserRequest_1.RemoteUserRequest,
     "ScheduledInterview": scheduledInterview_1.ScheduledInterview,
-    "ScheduledInterviewRequest": scheduledInterviewRequest_1.ScheduledInterviewRequest,
     "Scorecard": scorecard_1.Scorecard,
-    "ScorecardRequest": scorecardRequest_1.ScorecardRequest,
     "SyncStatus": syncStatus_1.SyncStatus,
     "Tag": tag_1.Tag,
     "Url": url_1.Url,
     "UrlRequest": urlRequest_1.UrlRequest,
+    "ValidationProblem": validationProblem_1.ValidationProblem,
 };
 var ObjectSerializer = (function () {
     function ObjectSerializer() {

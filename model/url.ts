@@ -24,7 +24,7 @@ export class Url {
     /**
     * The type of site.
     */
-    'url_type'?: UrlTypeEnum | null;
+    'urlType'?: UrlTypeEnum | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -35,7 +35,7 @@ export class Url {
             "type": "string"
         },
         {
-            "name": "url_type",
+            "name": "urlType",
             "baseName": "url_type",
             "type": "UrlTypeEnum"
         }    ];

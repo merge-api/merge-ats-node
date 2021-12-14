@@ -15,7 +15,7 @@ var UrlRequest = (function () {
             "type": "string"
         },
         {
-            "name": "url_type",
+            "name": "urlType",
             "baseName": "url_type",
             "type": "UrlTypeEnum"
         }

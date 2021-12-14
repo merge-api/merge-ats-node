@@ -25,18 +25,23 @@ var AccountDetails = (function () {
             "type": "CategoryEnum"
         },
         {
-            "name": "end_user_origin_id",
+            "name": "endUserOriginId",
             "baseName": "end_user_origin_id",
             "type": "string"
         },
         {
-            "name": "end_user_organization_name",
+            "name": "endUserOrganizationName",
             "baseName": "end_user_organization_name",
             "type": "string"
         },
         {
-            "name": "end_user_email_address",
+            "name": "endUserEmailAddress",
             "baseName": "end_user_email_address",
+            "type": "string"
+        },
+        {
+            "name": "status",
+            "baseName": "status",
             "type": "string"
         }
     ];

@@ -22,7 +22,7 @@ export class Job {
     /**
     * The third-party API ID of the matching object.
     */
-    'remote_id'?: string | null;
+    'remoteId'?: string | null;
     /**
     * The job\'s name.
     */
@@ -42,11 +42,11 @@ export class Job {
     /**
     * When the third party\'s job was created.
     */
-    'remote_created_at'?: Date | null;
+    'remoteCreatedAt'?: Date | null;
     /**
     * When the third party\'s job was updated.
     */
-    'remote_updated_at'?: Date | null;
+    'remoteUpdatedAt'?: Date | null;
     /**
     * Whether the job is confidential.
     */
@@ -62,8 +62,8 @@ export class Job {
     /**
     * IDs of `RemoteUser` objects that serve as hiring managers for this `Job`.
     */
-    'hiring_managers'?: Array<string>;
-    'remote_data'?: Array<RemoteData> | null;
+    'hiringManagers'?: Array<string>;
+    'remoteData'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -74,7 +74,7 @@ export class Job {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -99,12 +99,12 @@ export class Job {
             "type": "JobStatusEnum"
         },
         {
-            "name": "remote_created_at",
+            "name": "remoteCreatedAt",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "remote_updated_at",
+            "name": "remoteUpdatedAt",
             "baseName": "remote_updated_at",
             "type": "Date"
         },
@@ -124,12 +124,12 @@ export class Job {
             "type": "Array<string>"
         },
         {
-            "name": "hiring_managers",
+            "name": "hiringManagers",
             "baseName": "hiring_managers",
             "type": "Array<string>"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }    ];

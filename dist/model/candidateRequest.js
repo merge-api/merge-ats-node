@@ -10,17 +10,17 @@ var CandidateRequest = (function () {
     CandidateRequest.discriminator = undefined;
     CandidateRequest.attributeTypeMap = [
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
         {
-            "name": "first_name",
+            "name": "firstName",
             "baseName": "first_name",
             "type": "string"
         },
         {
-            "name": "last_name",
+            "name": "lastName",
             "baseName": "last_name",
             "type": "string"
         },
@@ -35,27 +35,27 @@ var CandidateRequest = (function () {
             "type": "string"
         },
         {
-            "name": "remote_created_at",
+            "name": "remoteCreatedAt",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "remote_updated_at",
+            "name": "remoteUpdatedAt",
             "baseName": "remote_updated_at",
             "type": "Date"
         },
         {
-            "name": "last_interaction_at",
+            "name": "lastInteractionAt",
             "baseName": "last_interaction_at",
             "type": "Date"
         },
         {
-            "name": "is_private",
+            "name": "isPrivate",
             "baseName": "is_private",
             "type": "boolean"
         },
         {
-            "name": "can_email",
+            "name": "canEmail",
             "baseName": "can_email",
             "type": "boolean"
         },
@@ -65,12 +65,12 @@ var CandidateRequest = (function () {
             "type": "Array<string>"
         },
         {
-            "name": "phone_numbers",
+            "name": "phoneNumbers",
             "baseName": "phone_numbers",
             "type": "Array<PhoneNumberRequest>"
         },
         {
-            "name": "email_addresses",
+            "name": "emailAddresses",
             "baseName": "email_addresses",
             "type": "Array<EmailAddressRequest>"
         },
@@ -93,6 +93,11 @@ var CandidateRequest = (function () {
             "name": "attachments",
             "baseName": "attachments",
             "type": "Array<string>"
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "{ [key: string]: any; }"
         }
     ];
     return CandidateRequest;
