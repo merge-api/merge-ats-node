@@ -10,7 +10,7 @@ var ApplicationRequest = (function () {
     ApplicationRequest.discriminator = undefined;
     ApplicationRequest.attributeTypeMap = [
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -25,12 +25,12 @@ var ApplicationRequest = (function () {
             "type": "string"
         },
         {
-            "name": "applied_at",
+            "name": "appliedAt",
             "baseName": "applied_at",
             "type": "Date"
         },
         {
-            "name": "rejected_at",
+            "name": "rejectedAt",
             "baseName": "rejected_at",
             "type": "Date"
         },
@@ -40,19 +40,24 @@ var ApplicationRequest = (function () {
             "type": "string"
         },
         {
-            "name": "credited_to",
+            "name": "creditedTo",
             "baseName": "credited_to",
             "type": "string"
         },
         {
-            "name": "current_stage",
+            "name": "currentStage",
             "baseName": "current_stage",
             "type": "string"
         },
         {
-            "name": "reject_reason",
+            "name": "rejectReason",
             "baseName": "reject_reason",
             "type": "string"
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "{ [key: string]: any; }"
         }
     ];
     return ApplicationRequest;

@@ -2,23 +2,26 @@ import { EmailAddressRequest } from './emailAddressRequest';
 import { PhoneNumberRequest } from './phoneNumberRequest';
 import { UrlRequest } from './urlRequest';
 export declare class CandidateRequest {
-    'remote_id'?: string | null;
-    'first_name'?: string | null;
-    'last_name'?: string | null;
+    'remoteId'?: string | null;
+    'firstName'?: string | null;
+    'lastName'?: string | null;
     'company'?: string | null;
     'title'?: string | null;
-    'remote_created_at'?: Date | null;
-    'remote_updated_at'?: Date | null;
-    'last_interaction_at'?: Date | null;
-    'is_private'?: boolean | null;
-    'can_email'?: boolean | null;
+    'remoteCreatedAt'?: Date | null;
+    'remoteUpdatedAt'?: Date | null;
+    'lastInteractionAt'?: Date | null;
+    'isPrivate'?: boolean | null;
+    'canEmail'?: boolean | null;
     'locations'?: Array<string> | null;
-    'phone_numbers'?: Array<PhoneNumberRequest>;
-    'email_addresses'?: Array<EmailAddressRequest>;
+    'phoneNumbers'?: Array<PhoneNumberRequest>;
+    'emailAddresses'?: Array<EmailAddressRequest>;
     'urls'?: Array<UrlRequest>;
     'tags'?: Array<string>;
     'applications'?: Array<string>;
     'attachments'?: Array<string>;
+    'customFields'?: {
+        [key: string]: any;
+    } | null;
     static discriminator: string | undefined;
     static attributeTypeMap: Array<{
         name: string;

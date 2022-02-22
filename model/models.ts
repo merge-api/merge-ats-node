@@ -2,18 +2,28 @@ import localVarRequest from 'request';
 
 export * from './accessRoleEnum';
 export * from './accountDetails';
+export * from './accountDetailsAndActions';
+export * from './accountDetailsAndActionsIntegration';
+export * from './accountDetailsAndActionsStatusEnum';
 export * from './accountIntegration';
 export * from './accountToken';
 export * from './activity';
 export * from './activityTypeEnum';
 export * from './application';
+export * from './applicationEndpointRequest';
 export * from './applicationRequest';
+export * from './applicationResponse';
 export * from './attachment';
+export * from './attachmentEndpointRequest';
 export * from './attachmentRequest';
+export * from './attachmentResponse';
 export * from './attachmentTypeEnum';
 export * from './availableActions';
 export * from './candidate';
+export * from './candidateEndpointRequest';
 export * from './candidateRequest';
+export * from './candidateResponse';
+export * from './categoriesEnum';
 export * from './categoryEnum';
 export * from './dataPassthroughRequest';
 export * from './department';
@@ -37,6 +47,7 @@ export * from './offer';
 export * from './offerStatusEnum';
 export * from './office';
 export * from './overallRecommendationEnum';
+export * from './paginatedAccountDetailsAndActionsList';
 export * from './paginatedActivityList';
 export * from './paginatedApplicationList';
 export * from './paginatedAttachmentList';
@@ -65,19 +76,17 @@ export * from './remoteKey';
 export * from './remoteKeyForRegenerationRequest';
 export * from './remoteResponse';
 export * from './remoteUser';
-export * from './remoteUserRequest';
 export * from './requestFormatEnum';
 export * from './scheduledInterview';
-export * from './scheduledInterviewRequest';
 export * from './scheduledInterviewStatusEnum';
 export * from './scorecard';
-export * from './scorecardRequest';
 export * from './syncStatus';
 export * from './syncStatusStatusEnum';
 export * from './tag';
 export * from './url';
 export * from './urlRequest';
 export * from './urlTypeEnum';
+export * from './validationProblem';
 export * from './veteranStatusEnum';
 export * from './visibilityEnum';
 
@@ -96,18 +105,28 @@ export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 import { AccessRoleEnum } from './accessRoleEnum';
 import { AccountDetails } from './accountDetails';
+import { AccountDetailsAndActions } from './accountDetailsAndActions';
+import { AccountDetailsAndActionsIntegration } from './accountDetailsAndActionsIntegration';
+import { AccountDetailsAndActionsStatusEnum } from './accountDetailsAndActionsStatusEnum';
 import { AccountIntegration } from './accountIntegration';
 import { AccountToken } from './accountToken';
 import { Activity } from './activity';
 import { ActivityTypeEnum } from './activityTypeEnum';
 import { Application } from './application';
+import { ApplicationEndpointRequest } from './applicationEndpointRequest';
 import { ApplicationRequest } from './applicationRequest';
+import { ApplicationResponse } from './applicationResponse';
 import { Attachment } from './attachment';
+import { AttachmentEndpointRequest } from './attachmentEndpointRequest';
 import { AttachmentRequest } from './attachmentRequest';
+import { AttachmentResponse } from './attachmentResponse';
 import { AttachmentTypeEnum } from './attachmentTypeEnum';
 import { AvailableActions } from './availableActions';
 import { Candidate } from './candidate';
+import { CandidateEndpointRequest } from './candidateEndpointRequest';
 import { CandidateRequest } from './candidateRequest';
+import { CandidateResponse } from './candidateResponse';
+import { CategoriesEnum } from './categoriesEnum';
 import { CategoryEnum } from './categoryEnum';
 import { DataPassthroughRequest } from './dataPassthroughRequest';
 import { Department } from './department';
@@ -131,6 +150,7 @@ import { Offer } from './offer';
 import { OfferStatusEnum } from './offerStatusEnum';
 import { Office } from './office';
 import { OverallRecommendationEnum } from './overallRecommendationEnum';
+import { PaginatedAccountDetailsAndActionsList } from './paginatedAccountDetailsAndActionsList';
 import { PaginatedActivityList } from './paginatedActivityList';
 import { PaginatedApplicationList } from './paginatedApplicationList';
 import { PaginatedAttachmentList } from './paginatedAttachmentList';
@@ -159,19 +179,17 @@ import { RemoteKey } from './remoteKey';
 import { RemoteKeyForRegenerationRequest } from './remoteKeyForRegenerationRequest';
 import { RemoteResponse } from './remoteResponse';
 import { RemoteUser } from './remoteUser';
-import { RemoteUserRequest } from './remoteUserRequest';
 import { RequestFormatEnum } from './requestFormatEnum';
 import { ScheduledInterview } from './scheduledInterview';
-import { ScheduledInterviewRequest } from './scheduledInterviewRequest';
 import { ScheduledInterviewStatusEnum } from './scheduledInterviewStatusEnum';
 import { Scorecard } from './scorecard';
-import { ScorecardRequest } from './scorecardRequest';
 import { SyncStatus } from './syncStatus';
 import { SyncStatusStatusEnum } from './syncStatusStatusEnum';
 import { Tag } from './tag';
 import { Url } from './url';
 import { UrlRequest } from './urlRequest';
 import { UrlTypeEnum } from './urlTypeEnum';
+import { ValidationProblem } from './validationProblem';
 import { VeteranStatusEnum } from './veteranStatusEnum';
 import { VisibilityEnum } from './visibilityEnum';
 
@@ -189,13 +207,13 @@ let primitives = [
 
 let enumsMap: {[index: string]: any} = {
         "AccessRoleEnum": AccessRoleEnum,
-        "AccountIntegration.CategoriesEnum": AccountIntegration.CategoriesEnum,
+        "AccountDetailsAndActionsStatusEnum": AccountDetailsAndActionsStatusEnum,
         "ActivityTypeEnum": ActivityTypeEnum,
         "AttachmentTypeEnum": AttachmentTypeEnum,
+        "CategoriesEnum": CategoriesEnum,
         "CategoryEnum": CategoryEnum,
         "DisabilityStatusEnum": DisabilityStatusEnum,
         "EmailAddressTypeEnum": EmailAddressTypeEnum,
-        "EndUserDetailsRequest.CategoriesEnum": EndUserDetailsRequest.CategoriesEnum,
         "GenderEnum": GenderEnum,
         "IssueStatusEnum": IssueStatusEnum,
         "JobStatusEnum": JobStatusEnum,
@@ -214,16 +232,24 @@ let enumsMap: {[index: string]: any} = {
 
 let typeMap: {[index: string]: any} = {
     "AccountDetails": AccountDetails,
+    "AccountDetailsAndActions": AccountDetailsAndActions,
+    "AccountDetailsAndActionsIntegration": AccountDetailsAndActionsIntegration,
     "AccountIntegration": AccountIntegration,
     "AccountToken": AccountToken,
     "Activity": Activity,
     "Application": Application,
+    "ApplicationEndpointRequest": ApplicationEndpointRequest,
     "ApplicationRequest": ApplicationRequest,
+    "ApplicationResponse": ApplicationResponse,
     "Attachment": Attachment,
+    "AttachmentEndpointRequest": AttachmentEndpointRequest,
     "AttachmentRequest": AttachmentRequest,
+    "AttachmentResponse": AttachmentResponse,
     "AvailableActions": AvailableActions,
     "Candidate": Candidate,
+    "CandidateEndpointRequest": CandidateEndpointRequest,
     "CandidateRequest": CandidateRequest,
+    "CandidateResponse": CandidateResponse,
     "DataPassthroughRequest": DataPassthroughRequest,
     "Department": Department,
     "EEOC": EEOC,
@@ -238,6 +264,7 @@ let typeMap: {[index: string]: any} = {
     "ModelOperation": ModelOperation,
     "Offer": Offer,
     "Office": Office,
+    "PaginatedAccountDetailsAndActionsList": PaginatedAccountDetailsAndActionsList,
     "PaginatedActivityList": PaginatedActivityList,
     "PaginatedApplicationList": PaginatedApplicationList,
     "PaginatedAttachmentList": PaginatedAttachmentList,
@@ -264,15 +291,13 @@ let typeMap: {[index: string]: any} = {
     "RemoteKeyForRegenerationRequest": RemoteKeyForRegenerationRequest,
     "RemoteResponse": RemoteResponse,
     "RemoteUser": RemoteUser,
-    "RemoteUserRequest": RemoteUserRequest,
     "ScheduledInterview": ScheduledInterview,
-    "ScheduledInterviewRequest": ScheduledInterviewRequest,
     "Scorecard": Scorecard,
-    "ScorecardRequest": ScorecardRequest,
     "SyncStatus": SyncStatus,
     "Tag": Tag,
     "Url": Url,
     "UrlRequest": UrlRequest,
+    "ValidationProblem": ValidationProblem,
 }
 
 export class ObjectSerializer {

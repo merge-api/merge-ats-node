@@ -2,14 +2,14 @@ import { AccessRoleEnum } from './accessRoleEnum';
 import { RemoteData } from './remoteData';
 export declare class RemoteUser {
     'id'?: string;
-    'remote_id'?: string | null;
-    'first_name'?: string | null;
-    'last_name'?: string | null;
+    'remoteId'?: string | null;
+    'firstName'?: string | null;
+    'lastName'?: string | null;
     'email'?: string | null;
     'disabled'?: boolean | null;
-    'remote_created_at'?: Date | null;
-    'access_role'?: AccessRoleEnum | null;
-    'remote_data'?: Array<RemoteData> | null;
+    'remoteCreatedAt'?: Date | null;
+    'accessRole'?: AccessRoleEnum | null;
+    'remoteData'?: Array<RemoteData> | null;
     static discriminator: string | undefined;
     static attributeTypeMap: Array<{
         name: string;

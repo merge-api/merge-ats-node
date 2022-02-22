@@ -22,15 +22,15 @@ export class RemoteUser {
     /**
     * The third-party API ID of the matching object.
     */
-    'remote_id'?: string | null;
+    'remoteId'?: string | null;
     /**
     * The user\'s first name.
     */
-    'first_name'?: string | null;
+    'firstName'?: string | null;
     /**
     * The user\'s last name.
     */
-    'last_name'?: string | null;
+    'lastName'?: string | null;
     /**
     * The user\'s email.
     */
@@ -42,12 +42,12 @@ export class RemoteUser {
     /**
     * When the third party\'s user was created.
     */
-    'remote_created_at'?: Date | null;
+    'remoteCreatedAt'?: Date | null;
     /**
     * The user\'s role.
     */
-    'access_role'?: AccessRoleEnum | null;
-    'remote_data'?: Array<RemoteData> | null;
+    'accessRole'?: AccessRoleEnum | null;
+    'remoteData'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -58,17 +58,17 @@ export class RemoteUser {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
         {
-            "name": "first_name",
+            "name": "firstName",
             "baseName": "first_name",
             "type": "string"
         },
         {
-            "name": "last_name",
+            "name": "lastName",
             "baseName": "last_name",
             "type": "string"
         },
@@ -83,17 +83,17 @@ export class RemoteUser {
             "type": "boolean"
         },
         {
-            "name": "remote_created_at",
+            "name": "remoteCreatedAt",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "access_role",
+            "name": "accessRole",
             "baseName": "access_role",
             "type": "AccessRoleEnum"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }    ];

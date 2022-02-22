@@ -15,7 +15,7 @@ var Scorecard = (function () {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -35,22 +35,22 @@ var Scorecard = (function () {
             "type": "string"
         },
         {
-            "name": "remote_created_at",
+            "name": "remoteCreatedAt",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "submitted_at",
+            "name": "submittedAt",
             "baseName": "submitted_at",
             "type": "Date"
         },
         {
-            "name": "overall_recommendation",
+            "name": "overallRecommendation",
             "baseName": "overall_recommendation",
             "type": "OverallRecommendationEnum"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }

@@ -157,7 +157,7 @@ var JobsApi = (function () {
                     localVarQueryParameters['remote_id'] = models_1.ObjectSerializer.serialize(remoteId, "string");
                 }
                 if (status !== undefined) {
-                    localVarQueryParameters['status'] = models_1.ObjectSerializer.serialize(status, "'OPEN' | 'CLOSED' | 'DRAFT' | 'ARCHIVED' | 'PENDING' | '' | 'null'");
+                    localVarQueryParameters['status'] = models_1.ObjectSerializer.serialize(status, "'ARCHIVED' | 'CLOSED' | 'DRAFT' | 'OPEN' | 'PENDING'");
                 }
                 localVarHeaderParams['X-Account-Token'] = models_1.ObjectSerializer.serialize(xAccountToken, "string");
                 Object.assign(localVarHeaderParams, options.headers);

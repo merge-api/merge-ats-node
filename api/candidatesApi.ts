@@ -16,7 +16,8 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { Candidate } from '../model/candidate';
-import { CandidateRequest } from '../model/candidateRequest';
+import { CandidateEndpointRequest } from '../model/candidateEndpointRequest';
+import { CandidateResponse } from '../model/candidateResponse';
 import { PaginatedCandidateList } from '../model/paginatedCandidateList';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -94,11 +95,10 @@ export class CandidatesApi {
     /**
      * Creates a `Candidate` object with the given values.
      * @param xAccountToken Token identifying the end user.
-     * @param remoteUserId The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+     * @param candidateEndpointRequest 
      * @param runAsync Whether or not third-party updates should be run asynchronously.
-     * @param candidateRequest 
      */
-    public async candidatesCreate (xAccountToken: string, remoteUserId?: string, runAsync?: boolean, candidateRequest?: CandidateRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Candidate;  }> {
+    public async candidatesCreate (xAccountToken: string, candidateEndpointRequest: CandidateEndpointRequest, runAsync?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CandidateResponse;  }> {
         const localVarPath = this.basePath + '/candidates';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -116,8 +116,9 @@ export class CandidatesApi {
             throw new Error('Required parameter xAccountToken was null or undefined when calling candidatesCreate.');
         }
 
-        if (remoteUserId !== undefined) {
-            localVarQueryParameters['remote_user_id'] = ObjectSerializer.serialize(remoteUserId, "string");
+        // verify required parameter 'candidateEndpointRequest' is not null or undefined
+        if (candidateEndpointRequest === null || candidateEndpointRequest === undefined) {
+            throw new Error('Required parameter candidateEndpointRequest was null or undefined when calling candidatesCreate.');
         }
 
         if (runAsync !== undefined) {
@@ -136,7 +137,7 @@ export class CandidatesApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(candidateRequest, "CandidateRequest")
+            body: ObjectSerializer.serialize(candidateEndpointRequest, "CandidateEndpointRequest")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -158,12 +159,12 @@ export class CandidatesApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: Candidate;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: CandidateResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
-                        body = ObjectSerializer.deserialize(body, "Candidate");
+                        body = ObjectSerializer.deserialize(body, "CandidateResponse");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -180,7 +181,6 @@ export class CandidatesApi {
      * @param createdAfter If provided, will only return objects created after this datetime.
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
-     * @param emailAddress If provided, will only return candidates with this email_address.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
      * @param firstName If provided, will only return candidates with this first name.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
@@ -189,9 +189,8 @@ export class CandidatesApi {
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
      * @param remoteId The API provider\&#39;s ID for the given object.
-     * @param tag If provided, will only return candidates with this tag.
      */
-    public async candidatesList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, emailAddress?: string, expand?: 'applications' | 'applications,attachments' | 'attachments', firstName?: string, includeRemoteData?: boolean, lastName?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, tag?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedCandidateList;  }> {
+    public async candidatesList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'applications' | 'applications,attachments' | 'attachments', firstName?: string, includeRemoteData?: boolean, lastName?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedCandidateList;  }> {
         const localVarPath = this.basePath + '/candidates';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -219,10 +218,6 @@ export class CandidatesApi {
 
         if (cursor !== undefined) {
             localVarQueryParameters['cursor'] = ObjectSerializer.serialize(cursor, "string");
-        }
-
-        if (emailAddress !== undefined) {
-            localVarQueryParameters['email_address'] = ObjectSerializer.serialize(emailAddress, "string");
         }
 
         if (expand !== undefined) {
@@ -255,10 +250,6 @@ export class CandidatesApi {
 
         if (remoteId !== undefined) {
             localVarQueryParameters['remote_id'] = ObjectSerializer.serialize(remoteId, "string");
-        }
-
-        if (tag !== undefined) {
-            localVarQueryParameters['tag'] = ObjectSerializer.serialize(tag, "string");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

@@ -21,7 +21,7 @@ export class JobInterviewStage {
     /**
     * The third-party API ID of the matching object.
     */
-    'remote_id'?: string | null;
+    'remoteId'?: string | null;
     /**
     * The stage\'s name.
     */
@@ -30,7 +30,7 @@ export class JobInterviewStage {
     * If stages are specific to a job, this is the job that this stage belongs to.
     */
     'job'?: string | null;
-    'remote_data'?: Array<RemoteData> | null;
+    'remoteData'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -41,7 +41,7 @@ export class JobInterviewStage {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -56,7 +56,7 @@ export class JobInterviewStage {
             "type": "string"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }    ];

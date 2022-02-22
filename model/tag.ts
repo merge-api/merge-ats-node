@@ -19,18 +19,18 @@ export class Tag {
     /**
     * The third-party API ID of the matching object.
     */
-    'remote_id'?: string | null;
+    'remoteId'?: string | null;
     /**
     * The tag\'s name.
     */
     'name'?: string | null;
-    'remote_data'?: Array<{ [key: string]: any; }> | null;
+    'remoteData'?: Array<{ [key: string]: any; }> | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -40,7 +40,7 @@ export class Tag {
             "type": "string"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<{ [key: string]: any; }>"
         }    ];

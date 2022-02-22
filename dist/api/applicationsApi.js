@@ -106,7 +106,7 @@ var ApplicationsApi = (function () {
     ApplicationsApi.prototype.addInterceptor = function (interceptor) {
         this.interceptors.push(interceptor);
     };
-    ApplicationsApi.prototype.applicationsCreate = function (xAccountToken, remoteUserId, runAsync, applicationRequest, options) {
+    ApplicationsApi.prototype.applicationsCreate = function (xAccountToken, applicationEndpointRequest, runAsync, options) {
         if (options === void 0) { options = { headers: {} }; }
         return __awaiter(this, void 0, void 0, function () {
             var localVarPath, localVarQueryParameters, localVarHeaderParams, produces, localVarFormParams, localVarUseFormData, localVarRequestOptions, authenticationPromise, interceptorPromise, _loop_1, _i, _a, interceptor;
@@ -126,8 +126,8 @@ var ApplicationsApi = (function () {
                 if (xAccountToken === null || xAccountToken === undefined) {
                     throw new Error('Required parameter xAccountToken was null or undefined when calling applicationsCreate.');
                 }
-                if (remoteUserId !== undefined) {
-                    localVarQueryParameters['remote_user_id'] = models_1.ObjectSerializer.serialize(remoteUserId, "string");
+                if (applicationEndpointRequest === null || applicationEndpointRequest === undefined) {
+                    throw new Error('Required parameter applicationEndpointRequest was null or undefined when calling applicationsCreate.');
                 }
                 if (runAsync !== undefined) {
                     localVarQueryParameters['run_async'] = models_1.ObjectSerializer.serialize(runAsync, "boolean");
@@ -142,7 +142,7 @@ var ApplicationsApi = (function () {
                     uri: localVarPath,
                     useQuerystring: this._useQuerystring,
                     json: true,
-                    body: models_1.ObjectSerializer.serialize(applicationRequest, "ApplicationRequest")
+                    body: models_1.ObjectSerializer.serialize(applicationEndpointRequest, "ApplicationEndpointRequest")
                 };
                 authenticationPromise = Promise.resolve();
                 if (this.authentications.tokenAuth.apiKey) {
@@ -172,7 +172,7 @@ var ApplicationsApi = (function () {
                                     reject(error);
                                 }
                                 else {
-                                    body = models_1.ObjectSerializer.deserialize(body, "Application");
+                                    body = models_1.ObjectSerializer.deserialize(body, "ApplicationResponse");
                                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                                         resolve({ response: response, body: body });
                                     }

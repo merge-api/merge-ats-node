@@ -58,6 +58,8 @@ __exportStar(require("./jobsApi"), exports);
 var jobsApi_1 = require("./jobsApi");
 __exportStar(require("./linkTokenApi"), exports);
 var linkTokenApi_1 = require("./linkTokenApi");
+__exportStar(require("./linkedAccountsApi"), exports);
+var linkedAccountsApi_1 = require("./linkedAccountsApi");
 __exportStar(require("./offersApi"), exports);
 var offersApi_1 = require("./offersApi");
 __exportStar(require("./officesApi"), exports);
@@ -89,5 +91,5 @@ var HttpError = (function (_super) {
     return HttpError;
 }(Error));
 exports.HttpError = HttpError;
-exports.APIS = [accountDetailsApi_1.AccountDetailsApi, accountTokenApi_1.AccountTokenApi, activitiesApi_1.ActivitiesApi, applicationsApi_1.ApplicationsApi, attachmentsApi_1.AttachmentsApi, availableActionsApi_1.AvailableActionsApi, candidatesApi_1.CandidatesApi, deleteAccountApi_1.DeleteAccountApi, departmentsApi_1.DepartmentsApi, eeocsApi_1.EeocsApi, generateKeyApi_1.GenerateKeyApi, interviewsApi_1.InterviewsApi, issuesApi_1.IssuesApi, jobInterviewStagesApi_1.JobInterviewStagesApi, jobsApi_1.JobsApi, linkTokenApi_1.LinkTokenApi, offersApi_1.OffersApi, officesApi_1.OfficesApi, passthroughApi_1.PassthroughApi, regenerateKeyApi_1.RegenerateKeyApi, rejectReasonsApi_1.RejectReasonsApi, scorecardsApi_1.ScorecardsApi, syncStatusApi_1.SyncStatusApi, tagsApi_1.TagsApi, usersApi_1.UsersApi];
+exports.APIS = [accountDetailsApi_1.AccountDetailsApi, accountTokenApi_1.AccountTokenApi, activitiesApi_1.ActivitiesApi, applicationsApi_1.ApplicationsApi, attachmentsApi_1.AttachmentsApi, availableActionsApi_1.AvailableActionsApi, candidatesApi_1.CandidatesApi, deleteAccountApi_1.DeleteAccountApi, departmentsApi_1.DepartmentsApi, eeocsApi_1.EeocsApi, generateKeyApi_1.GenerateKeyApi, interviewsApi_1.InterviewsApi, issuesApi_1.IssuesApi, jobInterviewStagesApi_1.JobInterviewStagesApi, jobsApi_1.JobsApi, linkTokenApi_1.LinkTokenApi, linkedAccountsApi_1.LinkedAccountsApi, offersApi_1.OffersApi, officesApi_1.OfficesApi, passthroughApi_1.PassthroughApi, regenerateKeyApi_1.RegenerateKeyApi, rejectReasonsApi_1.RejectReasonsApi, scorecardsApi_1.ScorecardsApi, syncStatusApi_1.SyncStatusApi, tagsApi_1.TagsApi, usersApi_1.UsersApi];
 //# sourceMappingURL=apis.js.map

@@ -17,7 +17,6 @@ import http from 'http';
 /* tslint:disable:no-unused-locals */
 import { PaginatedRemoteUserList } from '../model/paginatedRemoteUserList';
 import { RemoteUser } from '../model/remoteUser';
-import { RemoteUserRequest } from '../model/remoteUserRequest';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -91,89 +90,6 @@ export class UsersApi {
         this.interceptors.push(interceptor);
     }
 
-    /**
-     * Creates a `RemoteUser` object with the given values.
-     * @param xAccountToken Token identifying the end user.
-     * @param remoteUserId The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
-     * @param runAsync Whether or not third-party updates should be run asynchronously.
-     * @param remoteUserRequest 
-     */
-    public async usersCreate (xAccountToken: string, remoteUserId?: string, runAsync?: boolean, remoteUserRequest?: RemoteUserRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RemoteUser;  }> {
-        const localVarPath = this.basePath + '/users';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'xAccountToken' is not null or undefined
-        if (xAccountToken === null || xAccountToken === undefined) {
-            throw new Error('Required parameter xAccountToken was null or undefined when calling usersCreate.');
-        }
-
-        if (remoteUserId !== undefined) {
-            localVarQueryParameters['remote_user_id'] = ObjectSerializer.serialize(remoteUserId, "string");
-        }
-
-        if (runAsync !== undefined) {
-            localVarQueryParameters['run_async'] = ObjectSerializer.serialize(runAsync, "boolean");
-        }
-
-        localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(remoteUserRequest, "RemoteUserRequest")
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.tokenAuth.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.tokenAuth.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body: RemoteUser;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        body = ObjectSerializer.deserialize(body, "RemoteUser");
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
     /**
      * Returns a list of `RemoteUser` objects.
      * @param xAccountToken Token identifying the end user.

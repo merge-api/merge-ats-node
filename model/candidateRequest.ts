@@ -22,15 +22,15 @@ export class CandidateRequest {
     /**
     * The third-party API ID of the matching object.
     */
-    'remote_id'?: string | null;
+    'remoteId'?: string | null;
     /**
     * The candidate\'s first name.
     */
-    'first_name'?: string | null;
+    'firstName'?: string | null;
     /**
     * The candidate\'s last name.
     */
-    'last_name'?: string | null;
+    'lastName'?: string | null;
     /**
     * The candidate\'s current company.
     */
@@ -42,29 +42,29 @@ export class CandidateRequest {
     /**
     * When the third party\'s candidate was created.
     */
-    'remote_created_at'?: Date | null;
+    'remoteCreatedAt'?: Date | null;
     /**
     * When the third party\'s candidate was updated.
     */
-    'remote_updated_at'?: Date | null;
+    'remoteUpdatedAt'?: Date | null;
     /**
     * When the most recent candidate interaction occurred.
     */
-    'last_interaction_at'?: Date | null;
+    'lastInteractionAt'?: Date | null;
     /**
     * Whether or not the candidate is private.
     */
-    'is_private'?: boolean | null;
+    'isPrivate'?: boolean | null;
     /**
     * Whether or not the candidate can be emailed.
     */
-    'can_email'?: boolean | null;
+    'canEmail'?: boolean | null;
     /**
     * The candidate\'s locations.
     */
     'locations'?: Array<string> | null;
-    'phone_numbers'?: Array<PhoneNumberRequest>;
-    'email_addresses'?: Array<EmailAddressRequest>;
+    'phoneNumbers'?: Array<PhoneNumberRequest>;
+    'emailAddresses'?: Array<EmailAddressRequest>;
     'urls'?: Array<UrlRequest>;
     /**
     * Array of `Tag` names as strings.
@@ -78,22 +78,26 @@ export class CandidateRequest {
     * Array of `Attachment` object IDs.
     */
     'attachments'?: Array<string>;
+    /**
+    * Custom fields configured for a given model.
+    */
+    'customFields'?: { [key: string]: any; } | null;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
         {
-            "name": "first_name",
+            "name": "firstName",
             "baseName": "first_name",
             "type": "string"
         },
         {
-            "name": "last_name",
+            "name": "lastName",
             "baseName": "last_name",
             "type": "string"
         },
@@ -108,27 +112,27 @@ export class CandidateRequest {
             "type": "string"
         },
         {
-            "name": "remote_created_at",
+            "name": "remoteCreatedAt",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "remote_updated_at",
+            "name": "remoteUpdatedAt",
             "baseName": "remote_updated_at",
             "type": "Date"
         },
         {
-            "name": "last_interaction_at",
+            "name": "lastInteractionAt",
             "baseName": "last_interaction_at",
             "type": "Date"
         },
         {
-            "name": "is_private",
+            "name": "isPrivate",
             "baseName": "is_private",
             "type": "boolean"
         },
         {
-            "name": "can_email",
+            "name": "canEmail",
             "baseName": "can_email",
             "type": "boolean"
         },
@@ -138,12 +142,12 @@ export class CandidateRequest {
             "type": "Array<string>"
         },
         {
-            "name": "phone_numbers",
+            "name": "phoneNumbers",
             "baseName": "phone_numbers",
             "type": "Array<PhoneNumberRequest>"
         },
         {
-            "name": "email_addresses",
+            "name": "emailAddresses",
             "baseName": "email_addresses",
             "type": "Array<EmailAddressRequest>"
         },
@@ -166,6 +170,11 @@ export class CandidateRequest {
             "name": "attachments",
             "baseName": "attachments",
             "type": "Array<string>"
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "{ [key: string]: any; }"
         }    ];
 
     static getAttributeTypeMap() {

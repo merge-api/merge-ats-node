@@ -23,7 +23,7 @@ export class Activity {
     /**
     * The third-party API ID of the matching object.
     */
-    'remote_id'?: string | null;
+    'remoteId'?: string | null;
     /**
     * The user the performed the action.
     */
@@ -31,11 +31,11 @@ export class Activity {
     /**
     * When the third party\'s activity was created.
     */
-    'remote_created_at'?: Date | null;
+    'remoteCreatedAt'?: Date | null;
     /**
     * The activity\'s type.
     */
-    'activity_type'?: ActivityTypeEnum | null;
+    'activityType'?: ActivityTypeEnum | null;
     /**
     * The activity\'s subject.
     */
@@ -48,7 +48,7 @@ export class Activity {
     * The activity\'s visibility.
     */
     'visibility'?: VisibilityEnum | null;
-    'remote_data'?: Array<RemoteData> | null;
+    'remoteData'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -59,7 +59,7 @@ export class Activity {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -69,12 +69,12 @@ export class Activity {
             "type": "string"
         },
         {
-            "name": "remote_created_at",
+            "name": "remoteCreatedAt",
             "baseName": "remote_created_at",
             "type": "Date"
         },
         {
-            "name": "activity_type",
+            "name": "activityType",
             "baseName": "activity_type",
             "type": "ActivityTypeEnum"
         },
@@ -94,7 +94,7 @@ export class Activity {
             "type": "VisibilityEnum"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }    ];

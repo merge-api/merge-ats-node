@@ -106,7 +106,7 @@ var AttachmentsApi = (function () {
     AttachmentsApi.prototype.addInterceptor = function (interceptor) {
         this.interceptors.push(interceptor);
     };
-    AttachmentsApi.prototype.attachmentsCreate = function (xAccountToken, remoteUserId, runAsync, attachmentRequest, options) {
+    AttachmentsApi.prototype.attachmentsCreate = function (xAccountToken, attachmentEndpointRequest, runAsync, options) {
         if (options === void 0) { options = { headers: {} }; }
         return __awaiter(this, void 0, void 0, function () {
             var localVarPath, localVarQueryParameters, localVarHeaderParams, produces, localVarFormParams, localVarUseFormData, localVarRequestOptions, authenticationPromise, interceptorPromise, _loop_1, _i, _a, interceptor;
@@ -126,8 +126,8 @@ var AttachmentsApi = (function () {
                 if (xAccountToken === null || xAccountToken === undefined) {
                     throw new Error('Required parameter xAccountToken was null or undefined when calling attachmentsCreate.');
                 }
-                if (remoteUserId !== undefined) {
-                    localVarQueryParameters['remote_user_id'] = models_1.ObjectSerializer.serialize(remoteUserId, "string");
+                if (attachmentEndpointRequest === null || attachmentEndpointRequest === undefined) {
+                    throw new Error('Required parameter attachmentEndpointRequest was null or undefined when calling attachmentsCreate.');
                 }
                 if (runAsync !== undefined) {
                     localVarQueryParameters['run_async'] = models_1.ObjectSerializer.serialize(runAsync, "boolean");
@@ -142,7 +142,7 @@ var AttachmentsApi = (function () {
                     uri: localVarPath,
                     useQuerystring: this._useQuerystring,
                     json: true,
-                    body: models_1.ObjectSerializer.serialize(attachmentRequest, "AttachmentRequest")
+                    body: models_1.ObjectSerializer.serialize(attachmentEndpointRequest, "AttachmentEndpointRequest")
                 };
                 authenticationPromise = Promise.resolve();
                 if (this.authentications.tokenAuth.apiKey) {
@@ -172,7 +172,7 @@ var AttachmentsApi = (function () {
                                     reject(error);
                                 }
                                 else {
-                                    body = models_1.ObjectSerializer.deserialize(body, "Attachment");
+                                    body = models_1.ObjectSerializer.deserialize(body, "AttachmentResponse");
                                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                                         resolve({ response: response, body: body });
                                     }
@@ -186,7 +186,7 @@ var AttachmentsApi = (function () {
             });
         });
     };
-    AttachmentsApi.prototype.attachmentsList = function (xAccountToken, candidateId, createdAfter, createdBefore, cursor, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, options) {
+    AttachmentsApi.prototype.attachmentsList = function (xAccountToken, candidateId, createdAfter, createdBefore, cursor, expand, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, options) {
         if (options === void 0) { options = { headers: {} }; }
         return __awaiter(this, void 0, void 0, function () {
             var localVarPath, localVarQueryParameters, localVarHeaderParams, produces, localVarFormParams, localVarUseFormData, localVarRequestOptions, authenticationPromise, interceptorPromise, _loop_2, _i, _a, interceptor;
@@ -217,6 +217,9 @@ var AttachmentsApi = (function () {
                 }
                 if (cursor !== undefined) {
                     localVarQueryParameters['cursor'] = models_1.ObjectSerializer.serialize(cursor, "string");
+                }
+                if (expand !== undefined) {
+                    localVarQueryParameters['expand'] = models_1.ObjectSerializer.serialize(expand, "'candidate'");
                 }
                 if (includeRemoteData !== undefined) {
                     localVarQueryParameters['include_remote_data'] = models_1.ObjectSerializer.serialize(includeRemoteData, "boolean");
@@ -286,7 +289,7 @@ var AttachmentsApi = (function () {
             });
         });
     };
-    AttachmentsApi.prototype.attachmentsRetrieve = function (xAccountToken, id, includeRemoteData, options) {
+    AttachmentsApi.prototype.attachmentsRetrieve = function (xAccountToken, id, expand, includeRemoteData, options) {
         if (options === void 0) { options = { headers: {} }; }
         return __awaiter(this, void 0, void 0, function () {
             var localVarPath, localVarQueryParameters, localVarHeaderParams, produces, localVarFormParams, localVarUseFormData, localVarRequestOptions, authenticationPromise, interceptorPromise, _loop_3, _i, _a, interceptor;
@@ -309,6 +312,9 @@ var AttachmentsApi = (function () {
                 }
                 if (id === null || id === undefined) {
                     throw new Error('Required parameter id was null or undefined when calling attachmentsRetrieve.');
+                }
+                if (expand !== undefined) {
+                    localVarQueryParameters['expand'] = models_1.ObjectSerializer.serialize(expand, "'candidate'");
                 }
                 if (includeRemoteData !== undefined) {
                     localVarQueryParameters['include_remote_data'] = models_1.ObjectSerializer.serialize(includeRemoteData, "boolean");

@@ -127,7 +127,7 @@ var IssuesApi = (function () {
                     localVarQueryParameters['account_token'] = models_1.ObjectSerializer.serialize(accountToken, "string");
                 }
                 if (cursor !== undefined) {
-                    localVarQueryParameters['cursor'] = models_1.ObjectSerializer.serialize(cursor, "number");
+                    localVarQueryParameters['cursor'] = models_1.ObjectSerializer.serialize(cursor, "string");
                 }
                 if (endDate !== undefined) {
                     localVarQueryParameters['end_date'] = models_1.ObjectSerializer.serialize(endDate, "string");

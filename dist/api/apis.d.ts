@@ -31,6 +31,8 @@ export * from './jobsApi';
 import { JobsApi } from './jobsApi';
 export * from './linkTokenApi';
 import { LinkTokenApi } from './linkTokenApi';
+export * from './linkedAccountsApi';
+import { LinkedAccountsApi } from './linkedAccountsApi';
 export * from './offersApi';
 import { OffersApi } from './offersApi';
 export * from './officesApi';
@@ -57,4 +59,4 @@ export declare class HttpError extends Error {
     constructor(response: http.IncomingMessage, body: any, statusCode?: number | undefined);
 }
 export { RequestFile } from '../model/models';
-export declare const APIS: (typeof AccountDetailsApi | typeof AccountTokenApi | typeof ActivitiesApi | typeof ApplicationsApi | typeof AttachmentsApi | typeof AvailableActionsApi | typeof CandidatesApi | typeof DeleteAccountApi | typeof DepartmentsApi | typeof EeocsApi | typeof GenerateKeyApi | typeof InterviewsApi | typeof IssuesApi | typeof JobInterviewStagesApi | typeof JobsApi | typeof LinkTokenApi | typeof OffersApi | typeof OfficesApi | typeof PassthroughApi | typeof RegenerateKeyApi | typeof RejectReasonsApi | typeof ScorecardsApi | typeof SyncStatusApi | typeof TagsApi | typeof UsersApi)[];
+export declare const APIS: (typeof AccountDetailsApi | typeof AccountTokenApi | typeof ActivitiesApi | typeof ApplicationsApi | typeof AttachmentsApi | typeof AvailableActionsApi | typeof CandidatesApi | typeof DeleteAccountApi | typeof DepartmentsApi | typeof EeocsApi | typeof GenerateKeyApi | typeof InterviewsApi | typeof IssuesApi | typeof JobInterviewStagesApi | typeof JobsApi | typeof LinkTokenApi | typeof LinkedAccountsApi | typeof OffersApi | typeof OfficesApi | typeof PassthroughApi | typeof RegenerateKeyApi | typeof RejectReasonsApi | typeof ScorecardsApi | typeof SyncStatusApi | typeof TagsApi | typeof UsersApi)[];

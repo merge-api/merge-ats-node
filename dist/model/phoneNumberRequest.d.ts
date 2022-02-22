@@ -1,7 +1,7 @@
 import { PhoneNumberTypeEnum } from './phoneNumberTypeEnum';
 export declare class PhoneNumberRequest {
     'value'?: string | null;
-    'phone_number_type'?: PhoneNumberTypeEnum | null;
+    'phoneNumberType'?: PhoneNumberTypeEnum | null;
     static discriminator: string | undefined;
     static attributeTypeMap: Array<{
         name: string;

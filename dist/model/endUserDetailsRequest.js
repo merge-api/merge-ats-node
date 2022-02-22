@@ -10,24 +10,24 @@ var EndUserDetailsRequest = (function () {
     EndUserDetailsRequest.discriminator = undefined;
     EndUserDetailsRequest.attributeTypeMap = [
         {
-            "name": "end_user_email_address",
+            "name": "endUserEmailAddress",
             "baseName": "end_user_email_address",
             "type": "string"
         },
         {
-            "name": "end_user_organization_name",
+            "name": "endUserOrganizationName",
             "baseName": "end_user_organization_name",
             "type": "string"
         },
         {
-            "name": "end_user_origin_id",
+            "name": "endUserOriginId",
             "baseName": "end_user_origin_id",
             "type": "string"
         },
         {
             "name": "categories",
             "baseName": "categories",
-            "type": "Array<EndUserDetailsRequest.CategoriesEnum>"
+            "type": "Array<CategoriesEnum>"
         },
         {
             "name": "integration",
@@ -37,14 +37,5 @@ var EndUserDetailsRequest = (function () {
     ];
     return EndUserDetailsRequest;
 }());
-exports.EndUserDetailsRequest = EndUserDetailsRequest;
-(function (EndUserDetailsRequest) {
-    var CategoriesEnum;
-    (function (CategoriesEnum) {
-        CategoriesEnum[CategoriesEnum["Hris"] = 'hris'] = "Hris";
-        CategoriesEnum[CategoriesEnum["Ats"] = 'ats'] = "Ats";
-        CategoriesEnum[CategoriesEnum["Accounting"] = 'accounting'] = "Accounting";
-    })(CategoriesEnum = EndUserDetailsRequest.CategoriesEnum || (EndUserDetailsRequest.CategoriesEnum = {}));
-})(EndUserDetailsRequest = exports.EndUserDetailsRequest || (exports.EndUserDetailsRequest = {}));
 exports.EndUserDetailsRequest = EndUserDetailsRequest;
 //# sourceMappingURL=endUserDetailsRequest.js.map

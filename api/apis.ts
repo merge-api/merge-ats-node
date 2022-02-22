@@ -30,6 +30,8 @@ export * from './jobsApi';
 import { JobsApi } from './jobsApi';
 export * from './linkTokenApi';
 import { LinkTokenApi } from './linkTokenApi';
+export * from './linkedAccountsApi';
+import { LinkedAccountsApi } from './linkedAccountsApi';
 export * from './offersApi';
 import { OffersApi } from './offersApi';
 export * from './officesApi';
@@ -59,4 +61,4 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [AccountDetailsApi, AccountTokenApi, ActivitiesApi, ApplicationsApi, AttachmentsApi, AvailableActionsApi, CandidatesApi, DeleteAccountApi, DepartmentsApi, EeocsApi, GenerateKeyApi, InterviewsApi, IssuesApi, JobInterviewStagesApi, JobsApi, LinkTokenApi, OffersApi, OfficesApi, PassthroughApi, RegenerateKeyApi, RejectReasonsApi, ScorecardsApi, SyncStatusApi, TagsApi, UsersApi];
+export const APIS = [AccountDetailsApi, AccountTokenApi, ActivitiesApi, ApplicationsApi, AttachmentsApi, AvailableActionsApi, CandidatesApi, DeleteAccountApi, DepartmentsApi, EeocsApi, GenerateKeyApi, InterviewsApi, IssuesApi, JobInterviewStagesApi, JobsApi, LinkTokenApi, LinkedAccountsApi, OffersApi, OfficesApi, PassthroughApi, RegenerateKeyApi, RejectReasonsApi, ScorecardsApi, SyncStatusApi, TagsApi, UsersApi];

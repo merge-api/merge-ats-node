@@ -15,7 +15,7 @@ var EEOC = (function () {
             "type": "string"
         },
         {
-            "name": "remote_id",
+            "name": "remoteId",
             "baseName": "remote_id",
             "type": "string"
         },
@@ -25,7 +25,7 @@ var EEOC = (function () {
             "type": "string"
         },
         {
-            "name": "submitted_at",
+            "name": "submittedAt",
             "baseName": "submitted_at",
             "type": "Date"
         },
@@ -40,17 +40,17 @@ var EEOC = (function () {
             "type": "GenderEnum"
         },
         {
-            "name": "veteran_status",
+            "name": "veteranStatus",
             "baseName": "veteran_status",
             "type": "VeteranStatusEnum"
         },
         {
-            "name": "disability_status",
+            "name": "disabilityStatus",
             "baseName": "disability_status",
             "type": "DisabilityStatusEnum"
         },
         {
-            "name": "remote_data",
+            "name": "remoteData",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
         }

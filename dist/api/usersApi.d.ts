@@ -2,7 +2,6 @@
 import http from 'http';
 import { PaginatedRemoteUserList } from '../model/paginatedRemoteUserList';
 import { RemoteUser } from '../model/remoteUser';
-import { RemoteUserRequest } from '../model/remoteUserRequest';
 import { Authentication, Interceptor } from '../model/models';
 import { ApiKeyAuth } from '../model/models';
 export declare enum UsersApiApiKeys {
@@ -26,14 +25,6 @@ export declare class UsersApi {
     setDefaultAuthentication(auth: Authentication): void;
     setApiKey(key: UsersApiApiKeys, value: string): void;
     addInterceptor(interceptor: Interceptor): void;
-    usersCreate(xAccountToken: string, remoteUserId?: string, runAsync?: boolean, remoteUserRequest?: RemoteUserRequest, options?: {
-        headers: {
-            [name: string]: string;
-        };
-    }): Promise<{
-        response: http.IncomingMessage;
-        body: RemoteUser;
-    }>;
     usersList(xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, email?: string, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options?: {
         headers: {
             [name: string]: string;
