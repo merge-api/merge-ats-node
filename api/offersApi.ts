@@ -99,13 +99,14 @@ export class OffersApi {
      * @param creatorId If provided, will only return offers created by this user.
      * @param cursor The pagination cursor value.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
      * @param remoteId The API provider\&#39;s ID for the given object.
      */
-    public async offersList (xAccountToken: string, applicationId?: string, createdAfter?: Date, createdBefore?: Date, creatorId?: string, cursor?: string, expand?: 'application' | 'application,creator' | 'creator', includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedOfferList;  }> {
+    public async offersList (xAccountToken: string, applicationId?: string, createdAfter?: Date, createdBefore?: Date, creatorId?: string, cursor?: string, expand?: 'application' | 'application,creator' | 'creator', includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedOfferList;  }> {
         const localVarPath = this.basePath + '/offers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -145,6 +146,10 @@ export class OffersApi {
 
         if (expand !== undefined) {
             localVarQueryParameters['expand'] = ObjectSerializer.serialize(expand, "'application' | 'application,creator' | 'creator'");
+        }
+
+        if (includeDeletedData !== undefined) {
+            localVarQueryParameters['include_deleted_data'] = ObjectSerializer.serialize(includeDeletedData, "boolean");
         }
 
         if (includeRemoteData !== undefined) {

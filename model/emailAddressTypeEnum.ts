@@ -12,8 +12,10 @@
 
 import { RequestFile } from './models';
 
-export enum EmailAddressTypeEnum {
+export enum EmailAddressTypeEnumExpected {
     Personal = <any> 'PERSONAL',
     Work = <any> 'WORK',
     Other = <any> 'OTHER'
 }
+
+export type EmailAddressTypeEnum = EmailAddressTypeEnumExpected | string;

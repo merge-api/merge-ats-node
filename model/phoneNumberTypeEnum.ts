@@ -12,10 +12,12 @@
 
 import { RequestFile } from './models';
 
-export enum PhoneNumberTypeEnum {
+export enum PhoneNumberTypeEnumExpected {
     Home = <any> 'HOME',
     Work = <any> 'WORK',
     Mobile = <any> 'MOBILE',
     Skype = <any> 'SKYPE',
     Other = <any> 'OTHER'
 }
+
+export type PhoneNumberTypeEnum = PhoneNumberTypeEnumExpected | string;

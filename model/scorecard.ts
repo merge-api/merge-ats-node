@@ -15,7 +15,7 @@ import { OverallRecommendationEnum } from './overallRecommendationEnum';
 import { RemoteData } from './remoteData';
 
 /**
-* # The Scorecard Object ### Description The `Scorecard` object is used to represent a Scorecard for an interview  ### Usage Example Fetch from the `LIST Scorecards` endpoint and filter by `application` to show all scorecard for an applicant.
+* # The Scorecard Object ### Description The `Scorecard` object is used to represent a Scorecard for an interview ### Usage Example Fetch from the `LIST Scorecards` endpoint and filter by `application` to show all scorecard for an applicant.
 */
 export class Scorecard {
     'id'?: string;
@@ -23,17 +23,8 @@ export class Scorecard {
     * The third-party API ID of the matching object.
     */
     'remote_id'?: string | null;
-    /**
-    * The application being scored.
-    */
     'application'?: string | null;
-    /**
-    * The interview being scored.
-    */
     'interview'?: string | null;
-    /**
-    * The interviewer doing the scoring.
-    */
     'interviewer'?: string | null;
     /**
     * When the third party\'s scorecard was created.

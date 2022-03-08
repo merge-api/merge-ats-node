@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 import { AttachmentTypeEnum } from './attachmentTypeEnum';
 
 /**
-* # The Attachment Object ### Description The `Attachment` object is used to represent a attachment for a candidate.  ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
+* # The Attachment Object ### Description The `Attachment` object is used to represent a attachment for a candidate. ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
 */
 export class AttachmentRequest {
     /**
@@ -34,6 +34,8 @@ export class AttachmentRequest {
     * The attachment\'s type.
     */
     'attachment_type'?: AttachmentTypeEnum | null;
+    'integration_params'?: { [key: string]: any; } | null;
+    'linked_account_params'?: { [key: string]: any; } | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -62,6 +64,16 @@ export class AttachmentRequest {
             "name": "attachment_type",
             "baseName": "attachment_type",
             "type": "AttachmentTypeEnum"
+        },
+        {
+            "name": "integration_params",
+            "baseName": "integration_params",
+            "type": "{ [key: string]: any; }"
+        },
+        {
+            "name": "linked_account_params",
+            "baseName": "linked_account_params",
+            "type": "{ [key: string]: any; }"
         }    ];
 
     static getAttributeTypeMap() {

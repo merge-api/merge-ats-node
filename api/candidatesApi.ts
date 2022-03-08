@@ -16,7 +16,10 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { Candidate } from '../model/candidate';
-import { CandidateRequest } from '../model/candidateRequest';
+import { CandidateEndpointRequest } from '../model/candidateEndpointRequest';
+import { CandidateResponse } from '../model/candidateResponse';
+import { IgnoreCommonModel } from '../model/ignoreCommonModel';
+import { IgnoreCommonModelRequest } from '../model/ignoreCommonModelRequest';
 import { PaginatedCandidateList } from '../model/paginatedCandidateList';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -94,11 +97,11 @@ export class CandidatesApi {
     /**
      * Creates a `Candidate` object with the given values.
      * @param xAccountToken Token identifying the end user.
-     * @param remoteUserId The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+     * @param candidateEndpointRequest 
+     * @param isDebugMode Whether to include debug fields (such as log file links) in the response.
      * @param runAsync Whether or not third-party updates should be run asynchronously.
-     * @param candidateRequest 
      */
-    public async candidatesCreate (xAccountToken: string, remoteUserId?: string, runAsync?: boolean, candidateRequest?: CandidateRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Candidate;  }> {
+    public async candidatesCreate (xAccountToken: string, candidateEndpointRequest: CandidateEndpointRequest, isDebugMode?: boolean, runAsync?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CandidateResponse;  }> {
         const localVarPath = this.basePath + '/candidates';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -116,8 +119,13 @@ export class CandidatesApi {
             throw new Error('Required parameter xAccountToken was null or undefined when calling candidatesCreate.');
         }
 
-        if (remoteUserId !== undefined) {
-            localVarQueryParameters['remote_user_id'] = ObjectSerializer.serialize(remoteUserId, "string");
+        // verify required parameter 'candidateEndpointRequest' is not null or undefined
+        if (candidateEndpointRequest === null || candidateEndpointRequest === undefined) {
+            throw new Error('Required parameter candidateEndpointRequest was null or undefined when calling candidatesCreate.');
+        }
+
+        if (isDebugMode !== undefined) {
+            localVarQueryParameters['is_debug_mode'] = ObjectSerializer.serialize(isDebugMode, "boolean");
         }
 
         if (runAsync !== undefined) {
@@ -136,7 +144,7 @@ export class CandidatesApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(candidateRequest, "CandidateRequest")
+            body: ObjectSerializer.serialize(candidateEndpointRequest, "CandidateEndpointRequest")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -158,12 +166,90 @@ export class CandidatesApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: Candidate;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: CandidateResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
-                        body = ObjectSerializer.deserialize(body, "Candidate");
+                        body = ObjectSerializer.deserialize(body, "CandidateResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Ignores a specific row based on the `model_id` in the url. These records will have their properties set to null, and will not be updated in future syncs. The \"reason\" and \"message\" fields in the request body will be stored for audit purposes.
+     * @param modelId 
+     * @param ignoreCommonModelRequest 
+     */
+    public async candidatesIgnoreCreate (modelId: string, ignoreCommonModelRequest: IgnoreCommonModelRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: IgnoreCommonModel;  }> {
+        const localVarPath = this.basePath + '/candidates/ignore/{model_id}'
+            .replace('{' + 'model_id' + '}', encodeURIComponent(String(modelId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'modelId' is not null or undefined
+        if (modelId === null || modelId === undefined) {
+            throw new Error('Required parameter modelId was null or undefined when calling candidatesIgnoreCreate.');
+        }
+
+        // verify required parameter 'ignoreCommonModelRequest' is not null or undefined
+        if (ignoreCommonModelRequest === null || ignoreCommonModelRequest === undefined) {
+            throw new Error('Required parameter ignoreCommonModelRequest was null or undefined when calling candidatesIgnoreCreate.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(ignoreCommonModelRequest, "IgnoreCommonModelRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.tokenAuth.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.tokenAuth.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: IgnoreCommonModel;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "IgnoreCommonModel");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -180,18 +266,17 @@ export class CandidatesApi {
      * @param createdAfter If provided, will only return objects created after this datetime.
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
-     * @param emailAddress If provided, will only return candidates with this email_address.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
      * @param firstName If provided, will only return candidates with this first name.
+     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param lastName If provided, will only return candidates with this last name.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
      * @param remoteId The API provider\&#39;s ID for the given object.
-     * @param tag If provided, will only return candidates with this tag.
      */
-    public async candidatesList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, emailAddress?: string, expand?: 'applications' | 'applications,attachments' | 'attachments', firstName?: string, includeRemoteData?: boolean, lastName?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, tag?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedCandidateList;  }> {
+    public async candidatesList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'applications' | 'applications,attachments' | 'attachments', firstName?: string, includeDeletedData?: boolean, includeRemoteData?: boolean, lastName?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedCandidateList;  }> {
         const localVarPath = this.basePath + '/candidates';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -221,16 +306,16 @@ export class CandidatesApi {
             localVarQueryParameters['cursor'] = ObjectSerializer.serialize(cursor, "string");
         }
 
-        if (emailAddress !== undefined) {
-            localVarQueryParameters['email_address'] = ObjectSerializer.serialize(emailAddress, "string");
-        }
-
         if (expand !== undefined) {
             localVarQueryParameters['expand'] = ObjectSerializer.serialize(expand, "'applications' | 'applications,attachments' | 'attachments'");
         }
 
         if (firstName !== undefined) {
             localVarQueryParameters['first_name'] = ObjectSerializer.serialize(firstName, "string");
+        }
+
+        if (includeDeletedData !== undefined) {
+            localVarQueryParameters['include_deleted_data'] = ObjectSerializer.serialize(includeDeletedData, "boolean");
         }
 
         if (includeRemoteData !== undefined) {
@@ -255,10 +340,6 @@ export class CandidatesApi {
 
         if (remoteId !== undefined) {
             localVarQueryParameters['remote_id'] = ObjectSerializer.serialize(remoteId, "string");
-        }
-
-        if (tag !== undefined) {
-            localVarQueryParameters['tag'] = ObjectSerializer.serialize(tag, "string");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

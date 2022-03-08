@@ -11,12 +11,9 @@
  */
 
 import { RequestFile } from './models';
-import { EmailAddressRequest } from './emailAddressRequest';
-import { PhoneNumberRequest } from './phoneNumberRequest';
-import { UrlRequest } from './urlRequest';
 
 /**
-* # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions.  ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
+* # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions. ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
 */
 export class CandidateRequest {
     /**
@@ -63,9 +60,6 @@ export class CandidateRequest {
     * The candidate\'s locations.
     */
     'locations'?: Array<string> | null;
-    'phone_numbers'?: Array<PhoneNumberRequest>;
-    'email_addresses'?: Array<EmailAddressRequest>;
-    'urls'?: Array<UrlRequest>;
     /**
     * Array of `Tag` names as strings.
     */
@@ -78,6 +72,13 @@ export class CandidateRequest {
     * Array of `Attachment` object IDs.
     */
     'attachments'?: Array<string>;
+    /**
+    * Custom fields configured for a given model.
+    */
+    'custom_fields'?: { [key: string]: any; } | null;
+    'remote_template_id'?: string | null;
+    'integration_params'?: { [key: string]: any; } | null;
+    'linked_account_params'?: { [key: string]: any; } | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -138,21 +139,6 @@ export class CandidateRequest {
             "type": "Array<string>"
         },
         {
-            "name": "phone_numbers",
-            "baseName": "phone_numbers",
-            "type": "Array<PhoneNumberRequest>"
-        },
-        {
-            "name": "email_addresses",
-            "baseName": "email_addresses",
-            "type": "Array<EmailAddressRequest>"
-        },
-        {
-            "name": "urls",
-            "baseName": "urls",
-            "type": "Array<UrlRequest>"
-        },
-        {
             "name": "tags",
             "baseName": "tags",
             "type": "Array<string>"
@@ -166,6 +152,26 @@ export class CandidateRequest {
             "name": "attachments",
             "baseName": "attachments",
             "type": "Array<string>"
+        },
+        {
+            "name": "custom_fields",
+            "baseName": "custom_fields",
+            "type": "{ [key: string]: any; }"
+        },
+        {
+            "name": "remote_template_id",
+            "baseName": "remote_template_id",
+            "type": "string"
+        },
+        {
+            "name": "integration_params",
+            "baseName": "integration_params",
+            "type": "{ [key: string]: any; }"
+        },
+        {
+            "name": "linked_account_params",
+            "baseName": "linked_account_params",
+            "type": "{ [key: string]: any; }"
         }    ];
 
     static getAttributeTypeMap() {

@@ -12,10 +12,12 @@
 
 import { RequestFile } from './models';
 
-export enum AccessRoleEnum {
+export enum AccessRoleEnumExpected {
     SuperAdmin = <any> 'SUPER_ADMIN',
     Admin = <any> 'ADMIN',
     TeamMember = <any> 'TEAM_MEMBER',
     LimitedTeamMember = <any> 'LIMITED_TEAM_MEMBER',
     Interviewer = <any> 'INTERVIEWER'
 }
+
+export type AccessRoleEnum = AccessRoleEnumExpected | string;

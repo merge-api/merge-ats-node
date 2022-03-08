@@ -12,8 +12,10 @@
 
 import { RequestFile } from './models';
 
-export enum ActivityTypeEnum {
+export enum ActivityTypeEnumExpected {
     Note = <any> 'NOTE',
     Email = <any> 'EMAIL',
     Other = <any> 'OTHER'
 }
+
+export type ActivityTypeEnum = ActivityTypeEnumExpected | string;

@@ -12,9 +12,11 @@
 
 import { RequestFile } from './models';
 
-export enum AttachmentTypeEnum {
+export enum AttachmentTypeEnumExpected {
     Resume = <any> 'RESUME',
     CoverLetter = <any> 'COVER_LETTER',
     OfferLetter = <any> 'OFFER_LETTER',
     Other = <any> 'OTHER'
 }
+
+export type AttachmentTypeEnum = AttachmentTypeEnumExpected | string;

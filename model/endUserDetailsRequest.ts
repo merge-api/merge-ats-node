@@ -11,13 +11,15 @@
  */
 
 import { RequestFile } from './models';
+import { CategoriesEnum } from './categoriesEnum';
 
 export class EndUserDetailsRequest {
     'end_user_email_address': string;
     'end_user_organization_name': string;
     'end_user_origin_id': string;
-    'categories'?: Array<EndUserDetailsRequest.CategoriesEnum>;
+    'categories'?: Array<CategoriesEnum>;
     'integration'?: string | null;
+    'link_expiry_mins'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -40,12 +42,17 @@ export class EndUserDetailsRequest {
         {
             "name": "categories",
             "baseName": "categories",
-            "type": "Array<EndUserDetailsRequest.CategoriesEnum>"
+            "type": "Array<CategoriesEnum>"
         },
         {
             "name": "integration",
             "baseName": "integration",
             "type": "string"
+        },
+        {
+            "name": "link_expiry_mins",
+            "baseName": "link_expiry_mins",
+            "type": "number"
         }    ];
 
     static getAttributeTypeMap() {
@@ -53,10 +60,3 @@ export class EndUserDetailsRequest {
     }
 }
 
-export namespace EndUserDetailsRequest {
-    export enum CategoriesEnum {
-        Hris = <any> 'hris',
-        Ats = <any> 'ats',
-        Accounting = <any> 'accounting'
-    }
-}

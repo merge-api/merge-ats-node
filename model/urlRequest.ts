@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 import { UrlTypeEnum } from './urlTypeEnum';
 
 /**
-* # The Url Object ### Description The `Url` object is used to represent a candidate\'s website.  ### Usage Example Fetch from the `GET Candidate` endpoint and view their website urls.
+* # The Url Object ### Description The `Url` object is used to represent a candidate\'s website. ### Usage Example Fetch from the `GET Candidate` endpoint and view their website urls.
 */
 export class UrlRequest {
     /**

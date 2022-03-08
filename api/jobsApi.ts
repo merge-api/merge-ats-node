@@ -98,6 +98,7 @@ export class JobsApi {
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
@@ -105,7 +106,7 @@ export class JobsApi {
      * @param remoteId The API provider\&#39;s ID for the given object.
      * @param status If provided, will only return jobs with this status. Options: (\&#39;OPEN\&#39;, \&#39;CLOSED\&#39;, \&#39;DRAFT\&#39;, \&#39;ARCHIVED\&#39;, \&#39;PENDING\&#39;)
      */
-    public async jobsList (xAccountToken: string, code?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'departments' | 'departments,hiring_managers' | 'departments,offices' | 'departments,offices,hiring_managers' | 'hiring_managers' | 'offices' | 'offices,hiring_managers', includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, status?: 'OPEN' | 'CLOSED' | 'DRAFT' | 'ARCHIVED' | 'PENDING' | '' | 'null', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedJobList;  }> {
+    public async jobsList (xAccountToken: string, code?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'departments' | 'departments,hiring_managers' | 'departments,offices' | 'departments,offices,hiring_managers' | 'hiring_managers' | 'offices' | 'offices,hiring_managers', includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, status?: 'ARCHIVED' | 'CLOSED' | 'DRAFT' | 'OPEN' | 'PENDING', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedJobList;  }> {
         const localVarPath = this.basePath + '/jobs';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -143,6 +144,10 @@ export class JobsApi {
             localVarQueryParameters['expand'] = ObjectSerializer.serialize(expand, "'departments' | 'departments,hiring_managers' | 'departments,offices' | 'departments,offices,hiring_managers' | 'hiring_managers' | 'offices' | 'offices,hiring_managers'");
         }
 
+        if (includeDeletedData !== undefined) {
+            localVarQueryParameters['include_deleted_data'] = ObjectSerializer.serialize(includeDeletedData, "boolean");
+        }
+
         if (includeRemoteData !== undefined) {
             localVarQueryParameters['include_remote_data'] = ObjectSerializer.serialize(includeRemoteData, "boolean");
         }
@@ -164,7 +169,7 @@ export class JobsApi {
         }
 
         if (status !== undefined) {
-            localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'OPEN' | 'CLOSED' | 'DRAFT' | 'ARCHIVED' | 'PENDING' | '' | 'null'");
+            localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'ARCHIVED' | 'CLOSED' | 'DRAFT' | 'OPEN' | 'PENDING'");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

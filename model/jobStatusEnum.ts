@@ -12,10 +12,12 @@
 
 import { RequestFile } from './models';
 
-export enum JobStatusEnum {
+export enum JobStatusEnumExpected {
     Open = <any> 'OPEN',
     Closed = <any> 'CLOSED',
     Draft = <any> 'DRAFT',
     Archived = <any> 'ARCHIVED',
     Pending = <any> 'PENDING'
 }
+
+export type JobStatusEnum = JobStatusEnumExpected | string;

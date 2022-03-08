@@ -16,7 +16,8 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { Application } from '../model/application';
-import { ApplicationRequest } from '../model/applicationRequest';
+import { ApplicationEndpointRequest } from '../model/applicationEndpointRequest';
+import { ApplicationResponse } from '../model/applicationResponse';
 import { PaginatedApplicationList } from '../model/paginatedApplicationList';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -94,11 +95,11 @@ export class ApplicationsApi {
     /**
      * Creates an `Application` object with the given values.
      * @param xAccountToken Token identifying the end user.
-     * @param remoteUserId The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+     * @param applicationEndpointRequest 
+     * @param isDebugMode Whether to include debug fields (such as log file links) in the response.
      * @param runAsync Whether or not third-party updates should be run asynchronously.
-     * @param applicationRequest 
      */
-    public async applicationsCreate (xAccountToken: string, remoteUserId?: string, runAsync?: boolean, applicationRequest?: ApplicationRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Application;  }> {
+    public async applicationsCreate (xAccountToken: string, applicationEndpointRequest: ApplicationEndpointRequest, isDebugMode?: boolean, runAsync?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ApplicationResponse;  }> {
         const localVarPath = this.basePath + '/applications';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -116,8 +117,13 @@ export class ApplicationsApi {
             throw new Error('Required parameter xAccountToken was null or undefined when calling applicationsCreate.');
         }
 
-        if (remoteUserId !== undefined) {
-            localVarQueryParameters['remote_user_id'] = ObjectSerializer.serialize(remoteUserId, "string");
+        // verify required parameter 'applicationEndpointRequest' is not null or undefined
+        if (applicationEndpointRequest === null || applicationEndpointRequest === undefined) {
+            throw new Error('Required parameter applicationEndpointRequest was null or undefined when calling applicationsCreate.');
+        }
+
+        if (isDebugMode !== undefined) {
+            localVarQueryParameters['is_debug_mode'] = ObjectSerializer.serialize(isDebugMode, "boolean");
         }
 
         if (runAsync !== undefined) {
@@ -136,7 +142,7 @@ export class ApplicationsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(applicationRequest, "ApplicationRequest")
+            body: ObjectSerializer.serialize(applicationEndpointRequest, "ApplicationEndpointRequest")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -158,12 +164,12 @@ export class ApplicationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: Application;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: ApplicationResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
-                        body = ObjectSerializer.deserialize(body, "Application");
+                        body = ObjectSerializer.deserialize(body, "ApplicationResponse");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -184,6 +190,7 @@ export class ApplicationsApi {
      * @param currentStageId If provided, will only return applications at this interview stage.
      * @param cursor The pagination cursor value.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param jobId If provided, will only return applications for this job.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
@@ -192,7 +199,7 @@ export class ApplicationsApi {
      * @param rejectReasonId If provided, will only return applications with this reject reason.
      * @param remoteId The API provider\&#39;s ID for the given object.
      */
-    public async applicationsList (xAccountToken: string, candidateId?: string, createdAfter?: Date, createdBefore?: Date, creditedToId?: string, currentStageId?: string, cursor?: string, expand?: 'candidate' | 'candidate,credited_to' | 'candidate,credited_to,current_stage' | 'candidate,credited_to,current_stage,reject_reason' | 'candidate,credited_to,reject_reason' | 'candidate,current_stage' | 'candidate,current_stage,reject_reason' | 'candidate,job' | 'candidate,job,credited_to' | 'candidate,job,credited_to,current_stage' | 'candidate,job,credited_to,current_stage,reject_reason' | 'candidate,job,credited_to,reject_reason' | 'candidate,job,current_stage' | 'candidate,job,current_stage,reject_reason' | 'candidate,job,reject_reason' | 'candidate,reject_reason' | 'credited_to' | 'credited_to,current_stage' | 'credited_to,current_stage,reject_reason' | 'credited_to,reject_reason' | 'current_stage' | 'current_stage,reject_reason' | 'job' | 'job,credited_to' | 'job,credited_to,current_stage' | 'job,credited_to,current_stage,reject_reason' | 'job,credited_to,reject_reason' | 'job,current_stage' | 'job,current_stage,reject_reason' | 'job,reject_reason' | 'reject_reason', includeRemoteData?: boolean, jobId?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, rejectReasonId?: string, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedApplicationList;  }> {
+    public async applicationsList (xAccountToken: string, candidateId?: string, createdAfter?: Date, createdBefore?: Date, creditedToId?: string, currentStageId?: string, cursor?: string, expand?: 'candidate' | 'candidate,credited_to' | 'candidate,credited_to,current_stage' | 'candidate,credited_to,current_stage,reject_reason' | 'candidate,credited_to,reject_reason' | 'candidate,current_stage' | 'candidate,current_stage,reject_reason' | 'candidate,job' | 'candidate,job,credited_to' | 'candidate,job,credited_to,current_stage' | 'candidate,job,credited_to,current_stage,reject_reason' | 'candidate,job,credited_to,reject_reason' | 'candidate,job,current_stage' | 'candidate,job,current_stage,reject_reason' | 'candidate,job,reject_reason' | 'candidate,reject_reason' | 'credited_to' | 'credited_to,current_stage' | 'credited_to,current_stage,reject_reason' | 'credited_to,reject_reason' | 'current_stage' | 'current_stage,reject_reason' | 'job' | 'job,credited_to' | 'job,credited_to,current_stage' | 'job,credited_to,current_stage,reject_reason' | 'job,credited_to,reject_reason' | 'job,current_stage' | 'job,current_stage,reject_reason' | 'job,reject_reason' | 'reject_reason', includeDeletedData?: boolean, includeRemoteData?: boolean, jobId?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, rejectReasonId?: string, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedApplicationList;  }> {
         const localVarPath = this.basePath + '/applications';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -236,6 +243,10 @@ export class ApplicationsApi {
 
         if (expand !== undefined) {
             localVarQueryParameters['expand'] = ObjectSerializer.serialize(expand, "'candidate' | 'candidate,credited_to' | 'candidate,credited_to,current_stage' | 'candidate,credited_to,current_stage,reject_reason' | 'candidate,credited_to,reject_reason' | 'candidate,current_stage' | 'candidate,current_stage,reject_reason' | 'candidate,job' | 'candidate,job,credited_to' | 'candidate,job,credited_to,current_stage' | 'candidate,job,credited_to,current_stage,reject_reason' | 'candidate,job,credited_to,reject_reason' | 'candidate,job,current_stage' | 'candidate,job,current_stage,reject_reason' | 'candidate,job,reject_reason' | 'candidate,reject_reason' | 'credited_to' | 'credited_to,current_stage' | 'credited_to,current_stage,reject_reason' | 'credited_to,reject_reason' | 'current_stage' | 'current_stage,reject_reason' | 'job' | 'job,credited_to' | 'job,credited_to,current_stage' | 'job,credited_to,current_stage,reject_reason' | 'job,credited_to,reject_reason' | 'job,current_stage' | 'job,current_stage,reject_reason' | 'job,reject_reason' | 'reject_reason'");
+        }
+
+        if (includeDeletedData !== undefined) {
+            localVarQueryParameters['include_deleted_data'] = ObjectSerializer.serialize(includeDeletedData, "boolean");
         }
 
         if (includeRemoteData !== undefined) {

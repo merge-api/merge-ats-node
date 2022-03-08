@@ -17,7 +17,7 @@ import { RemoteData } from './remoteData';
 import { Url } from './url';
 
 /**
-* # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions.  ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
+* # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions. ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
 */
 export class Candidate {
     'id'?: string;
@@ -81,6 +81,10 @@ export class Candidate {
     */
     'attachments'?: Array<string>;
     'remote_data'?: Array<RemoteData> | null;
+    /**
+    * Custom fields configured for a given model.
+    */
+    'custom_fields'?: { [key: string]: any; } | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -179,6 +183,11 @@ export class Candidate {
             "name": "remote_data",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
+        },
+        {
+            "name": "custom_fields",
+            "baseName": "custom_fields",
+            "type": "{ [key: string]: any; }"
         }    ];
 
     static getAttributeTypeMap() {

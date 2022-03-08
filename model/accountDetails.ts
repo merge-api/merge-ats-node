@@ -20,6 +20,7 @@ export class AccountDetails {
     'end_user_origin_id'?: string;
     'end_user_organization_name'?: string;
     'end_user_email_address'?: string;
+    'status'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -52,6 +53,11 @@ export class AccountDetails {
         {
             "name": "end_user_email_address",
             "baseName": "end_user_email_address",
+            "type": "string"
+        },
+        {
+            "name": "status",
+            "baseName": "status",
             "type": "string"
         }    ];
 
