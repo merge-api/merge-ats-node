@@ -16,7 +16,7 @@ import { RemoteData } from './remoteData';
 import { VisibilityEnum } from './visibilityEnum';
 
 /**
-* # The Activity Object ### Description The `Activity` object is used to represent an activity performed by a user.  ### Usage Example Fetch from the `LIST Activities` endpoint and filter by `ID` to show all activities.
+* # The Activity Object ### Description The `Activity` object is used to represent an activity performed by a user. ### Usage Example Fetch from the `LIST Activities` endpoint and filter by `ID` to show all activities.
 */
 export class Activity {
     'id'?: string;
@@ -24,9 +24,6 @@ export class Activity {
     * The third-party API ID of the matching object.
     */
     'remote_id'?: string | null;
-    /**
-    * The user the performed the action.
-    */
     'user'?: string | null;
     /**
     * When the third party\'s activity was created.

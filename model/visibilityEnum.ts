@@ -12,8 +12,10 @@
 
 import { RequestFile } from './models';
 
-export enum VisibilityEnum {
+export enum VisibilityEnumExpected {
     AdminOnly = <any> 'ADMIN_ONLY',
     Public = <any> 'PUBLIC',
     Private = <any> 'PRIVATE'
 }
+
+export type VisibilityEnum = VisibilityEnumExpected | string;

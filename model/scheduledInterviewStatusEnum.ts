@@ -12,8 +12,10 @@
 
 import { RequestFile } from './models';
 
-export enum ScheduledInterviewStatusEnum {
+export enum ScheduledInterviewStatusEnumExpected {
     Scheduled = <any> 'SCHEDULED',
     AwaitingFeedback = <any> 'AWAITING_FEEDBACK',
     Complete = <any> 'COMPLETE'
 }
+
+export type ScheduledInterviewStatusEnum = ScheduledInterviewStatusEnumExpected | string;

@@ -12,8 +12,10 @@
 
 import { RequestFile } from './models';
 
-export enum DisabilityStatusEnum {
+export enum DisabilityStatusEnumExpected {
     YesIHaveADisabilityOrPreviouslyHadADisability = <any> 'YES_I_HAVE_A_DISABILITY_OR_PREVIOUSLY_HAD_A_DISABILITY',
     NoIDontHaveADisability = <any> 'NO_I_DONT_HAVE_A_DISABILITY',
     IDontWishToAnswer = <any> 'I_DONT_WISH_TO_ANSWER'
 }
+
+export type DisabilityStatusEnum = DisabilityStatusEnumExpected | string;

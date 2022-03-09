@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 import { RemoteData } from './remoteData';
 
 /**
-* # The Department Object ### Description The `Department` object is used to represent a department within a company.  ### Usage Example Fetch from the `LIST Departments` endpoint and view the departments within a company.
+* # The Department Object ### Description The `Department` object is used to represent a department within a company. ### Usage Example Fetch from the `LIST Departments` endpoint and view the departments within a company.
 */
 export class Department {
     'id'?: string;

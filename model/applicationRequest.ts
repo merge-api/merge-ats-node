@@ -13,20 +13,14 @@
 import { RequestFile } from './models';
 
 /**
-* # The Application Object ### Description The `Application` object is used to represent an Application for a job position.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
+* # The Application Object ### Description The `Application` object is used to represent an Application for a job position. ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
 */
 export class ApplicationRequest {
     /**
     * The third-party API ID of the matching object.
     */
     'remote_id'?: string | null;
-    /**
-    * The candidate applying.
-    */
     'candidate'?: string | null;
-    /**
-    * The job being applied for.
-    */
     'job'?: string | null;
     /**
     * When the application was submitted.
@@ -40,18 +34,16 @@ export class ApplicationRequest {
     * The application\'s source.
     */
     'source'?: string | null;
-    /**
-    * The user credited for this application.
-    */
     'credited_to'?: string | null;
-    /**
-    * The application\'s current stage.
-    */
     'current_stage'?: string | null;
-    /**
-    * The application\'s reason for rejection.
-    */
     'reject_reason'?: string | null;
+    /**
+    * Custom fields configured for a given model.
+    */
+    'custom_fields'?: { [key: string]: any; } | null;
+    'remote_template_id'?: string | null;
+    'integration_params'?: { [key: string]: any; } | null;
+    'linked_account_params'?: { [key: string]: any; } | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -100,6 +92,26 @@ export class ApplicationRequest {
             "name": "reject_reason",
             "baseName": "reject_reason",
             "type": "string"
+        },
+        {
+            "name": "custom_fields",
+            "baseName": "custom_fields",
+            "type": "{ [key: string]: any; }"
+        },
+        {
+            "name": "remote_template_id",
+            "baseName": "remote_template_id",
+            "type": "string"
+        },
+        {
+            "name": "integration_params",
+            "baseName": "integration_params",
+            "type": "{ [key: string]: any; }"
+        },
+        {
+            "name": "linked_account_params",
+            "baseName": "linked_account_params",
+            "type": "{ [key: string]: any; }"
         }    ];
 
     static getAttributeTypeMap() {

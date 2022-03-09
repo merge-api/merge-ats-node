@@ -15,7 +15,7 @@ import { AccessRoleEnum } from './accessRoleEnum';
 import { RemoteData } from './remoteData';
 
 /**
-* # The RemoteUser Object ### Description The `RemoteUser` object is used to represent a third party user.  ### Usage Example Fetch from the `LIST RemoteUsers` endpoint to show all users for a third party.
+* # The RemoteUser Object ### Description The `RemoteUser` object is used to represent a third party user. ### Usage Example Fetch from the `LIST RemoteUsers` endpoint to show all users for a third party.
 */
 export class RemoteUser {
     'id'?: string;

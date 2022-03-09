@@ -18,7 +18,7 @@ import { RemoteData } from './remoteData';
 import { VeteranStatusEnum } from './veteranStatusEnum';
 
 /**
-* # The EEOC Object ### Description The `EEOC` object is used to represent the Equal Employment Opportunity Commission information for a candidate.  ### Usage Example Fetch from the `LIST EEOCs` endpoint and filter by `candidate` to show all EEOC information for a candidate.
+* # The EEOC Object ### Description The `EEOC` object is used to represent the Equal Employment Opportunity Commission information for a candidate. ### Usage Example Fetch from the `LIST EEOCs` endpoint and filter by `candidate` to show all EEOC information for a candidate.
 */
 export class EEOC {
     'id'?: string;
@@ -26,9 +26,6 @@ export class EEOC {
     * The third-party API ID of the matching object.
     */
     'remote_id'?: string | null;
-    /**
-    * The candidate being represented.
-    */
     'candidate'?: string | null;
     /**
     * When the information was submitted.

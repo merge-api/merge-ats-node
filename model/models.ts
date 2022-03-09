@@ -2,29 +2,45 @@ import localVarRequest from 'request';
 
 export * from './accessRoleEnum';
 export * from './accountDetails';
+export * from './accountDetailsAndActions';
+export * from './accountDetailsAndActionsIntegration';
+export * from './accountDetailsAndActionsStatusEnum';
 export * from './accountIntegration';
 export * from './accountToken';
 export * from './activity';
 export * from './activityTypeEnum';
 export * from './application';
+export * from './applicationEndpointRequest';
 export * from './applicationRequest';
+export * from './applicationResponse';
 export * from './attachment';
+export * from './attachmentEndpointRequest';
 export * from './attachmentRequest';
+export * from './attachmentResponse';
 export * from './attachmentTypeEnum';
 export * from './availableActions';
 export * from './candidate';
+export * from './candidateEndpointRequest';
 export * from './candidateRequest';
+export * from './candidateResponse';
+export * from './categoriesEnum';
 export * from './categoryEnum';
 export * from './dataPassthroughRequest';
+export * from './debugModeLog';
+export * from './debugModelLogSummary';
 export * from './department';
 export * from './disabilityStatusEnum';
 export * from './eEOC';
 export * from './emailAddress';
 export * from './emailAddressRequest';
 export * from './emailAddressTypeEnum';
+export * from './encodingEnum';
 export * from './endUserDetailsRequest';
+export * from './errorValidationProblem';
 export * from './genderEnum';
 export * from './generateRemoteKeyRequest';
+export * from './ignoreCommonModel';
+export * from './ignoreCommonModelRequest';
 export * from './issue';
 export * from './issueStatusEnum';
 export * from './job';
@@ -33,10 +49,12 @@ export * from './jobStatusEnum';
 export * from './linkToken';
 export * from './methodEnum';
 export * from './modelOperation';
+export * from './multipartFormFieldRequest';
 export * from './offer';
 export * from './offerStatusEnum';
 export * from './office';
 export * from './overallRecommendationEnum';
+export * from './paginatedAccountDetailsAndActionsList';
 export * from './paginatedActivityList';
 export * from './paginatedApplicationList';
 export * from './paginatedAttachmentList';
@@ -58,6 +76,7 @@ export * from './phoneNumber';
 export * from './phoneNumberRequest';
 export * from './phoneNumberTypeEnum';
 export * from './raceEnum';
+export * from './reasonEnum';
 export * from './rejectReason';
 export * from './remoteData';
 export * from './remoteDataRequest';
@@ -65,21 +84,20 @@ export * from './remoteKey';
 export * from './remoteKeyForRegenerationRequest';
 export * from './remoteResponse';
 export * from './remoteUser';
-export * from './remoteUserRequest';
 export * from './requestFormatEnum';
 export * from './scheduledInterview';
-export * from './scheduledInterviewRequest';
 export * from './scheduledInterviewStatusEnum';
 export * from './scorecard';
-export * from './scorecardRequest';
 export * from './syncStatus';
 export * from './syncStatusStatusEnum';
 export * from './tag';
 export * from './url';
 export * from './urlRequest';
 export * from './urlTypeEnum';
+export * from './validationProblemSource';
 export * from './veteranStatusEnum';
 export * from './visibilityEnum';
+export * from './warningValidationProblem';
 
 import * as fs from 'fs';
 
@@ -94,43 +112,61 @@ export interface RequestDetailedFile {
 export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 
-import { AccessRoleEnum } from './accessRoleEnum';
+import { AccessRoleEnum, AccessRoleEnumExpected } from './accessRoleEnum';
 import { AccountDetails } from './accountDetails';
+import { AccountDetailsAndActions } from './accountDetailsAndActions';
+import { AccountDetailsAndActionsIntegration } from './accountDetailsAndActionsIntegration';
+import { AccountDetailsAndActionsStatusEnum, AccountDetailsAndActionsStatusEnumExpected } from './accountDetailsAndActionsStatusEnum';
 import { AccountIntegration } from './accountIntegration';
 import { AccountToken } from './accountToken';
 import { Activity } from './activity';
-import { ActivityTypeEnum } from './activityTypeEnum';
+import { ActivityTypeEnum, ActivityTypeEnumExpected } from './activityTypeEnum';
 import { Application } from './application';
+import { ApplicationEndpointRequest } from './applicationEndpointRequest';
 import { ApplicationRequest } from './applicationRequest';
+import { ApplicationResponse } from './applicationResponse';
 import { Attachment } from './attachment';
+import { AttachmentEndpointRequest } from './attachmentEndpointRequest';
 import { AttachmentRequest } from './attachmentRequest';
-import { AttachmentTypeEnum } from './attachmentTypeEnum';
+import { AttachmentResponse } from './attachmentResponse';
+import { AttachmentTypeEnum, AttachmentTypeEnumExpected } from './attachmentTypeEnum';
 import { AvailableActions } from './availableActions';
 import { Candidate } from './candidate';
+import { CandidateEndpointRequest } from './candidateEndpointRequest';
 import { CandidateRequest } from './candidateRequest';
-import { CategoryEnum } from './categoryEnum';
+import { CandidateResponse } from './candidateResponse';
+import { CategoriesEnum, CategoriesEnumExpected } from './categoriesEnum';
+import { CategoryEnum, CategoryEnumExpected } from './categoryEnum';
 import { DataPassthroughRequest } from './dataPassthroughRequest';
+import { DebugModeLog } from './debugModeLog';
+import { DebugModelLogSummary } from './debugModelLogSummary';
 import { Department } from './department';
-import { DisabilityStatusEnum } from './disabilityStatusEnum';
+import { DisabilityStatusEnum, DisabilityStatusEnumExpected } from './disabilityStatusEnum';
 import { EEOC } from './eEOC';
 import { EmailAddress } from './emailAddress';
 import { EmailAddressRequest } from './emailAddressRequest';
-import { EmailAddressTypeEnum } from './emailAddressTypeEnum';
+import { EmailAddressTypeEnum, EmailAddressTypeEnumExpected } from './emailAddressTypeEnum';
+import { EncodingEnum, EncodingEnumExpected } from './encodingEnum';
 import { EndUserDetailsRequest } from './endUserDetailsRequest';
-import { GenderEnum } from './genderEnum';
+import { ErrorValidationProblem } from './errorValidationProblem';
+import { GenderEnum, GenderEnumExpected } from './genderEnum';
 import { GenerateRemoteKeyRequest } from './generateRemoteKeyRequest';
+import { IgnoreCommonModel } from './ignoreCommonModel';
+import { IgnoreCommonModelRequest } from './ignoreCommonModelRequest';
 import { Issue } from './issue';
-import { IssueStatusEnum } from './issueStatusEnum';
+import { IssueStatusEnum, IssueStatusEnumExpected } from './issueStatusEnum';
 import { Job } from './job';
 import { JobInterviewStage } from './jobInterviewStage';
-import { JobStatusEnum } from './jobStatusEnum';
+import { JobStatusEnum, JobStatusEnumExpected } from './jobStatusEnum';
 import { LinkToken } from './linkToken';
-import { MethodEnum } from './methodEnum';
+import { MethodEnum, MethodEnumExpected } from './methodEnum';
 import { ModelOperation } from './modelOperation';
+import { MultipartFormFieldRequest } from './multipartFormFieldRequest';
 import { Offer } from './offer';
-import { OfferStatusEnum } from './offerStatusEnum';
+import { OfferStatusEnum, OfferStatusEnumExpected } from './offerStatusEnum';
 import { Office } from './office';
-import { OverallRecommendationEnum } from './overallRecommendationEnum';
+import { OverallRecommendationEnum, OverallRecommendationEnumExpected } from './overallRecommendationEnum';
+import { PaginatedAccountDetailsAndActionsList } from './paginatedAccountDetailsAndActionsList';
 import { PaginatedActivityList } from './paginatedActivityList';
 import { PaginatedApplicationList } from './paginatedApplicationList';
 import { PaginatedAttachmentList } from './paginatedAttachmentList';
@@ -150,8 +186,9 @@ import { PaginatedSyncStatusList } from './paginatedSyncStatusList';
 import { PaginatedTagList } from './paginatedTagList';
 import { PhoneNumber } from './phoneNumber';
 import { PhoneNumberRequest } from './phoneNumberRequest';
-import { PhoneNumberTypeEnum } from './phoneNumberTypeEnum';
-import { RaceEnum } from './raceEnum';
+import { PhoneNumberTypeEnum, PhoneNumberTypeEnumExpected } from './phoneNumberTypeEnum';
+import { RaceEnum, RaceEnumExpected } from './raceEnum';
+import { ReasonEnum, ReasonEnumExpected } from './reasonEnum';
 import { RejectReason } from './rejectReason';
 import { RemoteData } from './remoteData';
 import { RemoteDataRequest } from './remoteDataRequest';
@@ -159,21 +196,20 @@ import { RemoteKey } from './remoteKey';
 import { RemoteKeyForRegenerationRequest } from './remoteKeyForRegenerationRequest';
 import { RemoteResponse } from './remoteResponse';
 import { RemoteUser } from './remoteUser';
-import { RemoteUserRequest } from './remoteUserRequest';
-import { RequestFormatEnum } from './requestFormatEnum';
+import { RequestFormatEnum, RequestFormatEnumExpected } from './requestFormatEnum';
 import { ScheduledInterview } from './scheduledInterview';
-import { ScheduledInterviewRequest } from './scheduledInterviewRequest';
-import { ScheduledInterviewStatusEnum } from './scheduledInterviewStatusEnum';
+import { ScheduledInterviewStatusEnum, ScheduledInterviewStatusEnumExpected } from './scheduledInterviewStatusEnum';
 import { Scorecard } from './scorecard';
-import { ScorecardRequest } from './scorecardRequest';
 import { SyncStatus } from './syncStatus';
-import { SyncStatusStatusEnum } from './syncStatusStatusEnum';
+import { SyncStatusStatusEnum, SyncStatusStatusEnumExpected } from './syncStatusStatusEnum';
 import { Tag } from './tag';
 import { Url } from './url';
 import { UrlRequest } from './urlRequest';
-import { UrlTypeEnum } from './urlTypeEnum';
-import { VeteranStatusEnum } from './veteranStatusEnum';
-import { VisibilityEnum } from './visibilityEnum';
+import { UrlTypeEnum, UrlTypeEnumExpected } from './urlTypeEnum';
+import { ValidationProblemSource } from './validationProblemSource';
+import { VeteranStatusEnum, VeteranStatusEnumExpected } from './veteranStatusEnum';
+import { VisibilityEnum, VisibilityEnumExpected } from './visibilityEnum';
+import { WarningValidationProblem } from './warningValidationProblem';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -188,56 +224,73 @@ let primitives = [
                  ];
 
 let enumsMap: {[index: string]: any} = {
-        "AccessRoleEnum": AccessRoleEnum,
-        "AccountIntegration.CategoriesEnum": AccountIntegration.CategoriesEnum,
-        "ActivityTypeEnum": ActivityTypeEnum,
-        "AttachmentTypeEnum": AttachmentTypeEnum,
-        "CategoryEnum": CategoryEnum,
-        "DisabilityStatusEnum": DisabilityStatusEnum,
-        "EmailAddressTypeEnum": EmailAddressTypeEnum,
-        "EndUserDetailsRequest.CategoriesEnum": EndUserDetailsRequest.CategoriesEnum,
-        "GenderEnum": GenderEnum,
-        "IssueStatusEnum": IssueStatusEnum,
-        "JobStatusEnum": JobStatusEnum,
-        "MethodEnum": MethodEnum,
-        "OfferStatusEnum": OfferStatusEnum,
-        "OverallRecommendationEnum": OverallRecommendationEnum,
-        "PhoneNumberTypeEnum": PhoneNumberTypeEnum,
-        "RaceEnum": RaceEnum,
-        "RequestFormatEnum": RequestFormatEnum,
-        "ScheduledInterviewStatusEnum": ScheduledInterviewStatusEnum,
-        "SyncStatusStatusEnum": SyncStatusStatusEnum,
-        "UrlTypeEnum": UrlTypeEnum,
-        "VeteranStatusEnum": VeteranStatusEnum,
-        "VisibilityEnum": VisibilityEnum,
+        "AccessRoleEnum": AccessRoleEnumExpected,
+        "AccountDetailsAndActionsStatusEnum": AccountDetailsAndActionsStatusEnumExpected,
+        "ActivityTypeEnum": ActivityTypeEnumExpected,
+        "AttachmentTypeEnum": AttachmentTypeEnumExpected,
+        "CategoriesEnum": CategoriesEnumExpected,
+        "CategoryEnum": CategoryEnumExpected,
+        "DisabilityStatusEnum": DisabilityStatusEnumExpected,
+        "EmailAddressTypeEnum": EmailAddressTypeEnumExpected,
+        "EncodingEnum": EncodingEnumExpected,
+        "GenderEnum": GenderEnumExpected,
+        "IssueStatusEnum": IssueStatusEnumExpected,
+        "JobStatusEnum": JobStatusEnumExpected,
+        "MethodEnum": MethodEnumExpected,
+        "OfferStatusEnum": OfferStatusEnumExpected,
+        "OverallRecommendationEnum": OverallRecommendationEnumExpected,
+        "PhoneNumberTypeEnum": PhoneNumberTypeEnumExpected,
+        "RaceEnum": RaceEnumExpected,
+        "ReasonEnum": ReasonEnumExpected,
+        "RequestFormatEnum": RequestFormatEnumExpected,
+        "ScheduledInterviewStatusEnum": ScheduledInterviewStatusEnumExpected,
+        "SyncStatusStatusEnum": SyncStatusStatusEnumExpected,
+        "UrlTypeEnum": UrlTypeEnumExpected,
+        "VeteranStatusEnum": VeteranStatusEnumExpected,
+        "VisibilityEnum": VisibilityEnumExpected,
 }
 
 let typeMap: {[index: string]: any} = {
     "AccountDetails": AccountDetails,
+    "AccountDetailsAndActions": AccountDetailsAndActions,
+    "AccountDetailsAndActionsIntegration": AccountDetailsAndActionsIntegration,
     "AccountIntegration": AccountIntegration,
     "AccountToken": AccountToken,
     "Activity": Activity,
     "Application": Application,
+    "ApplicationEndpointRequest": ApplicationEndpointRequest,
     "ApplicationRequest": ApplicationRequest,
+    "ApplicationResponse": ApplicationResponse,
     "Attachment": Attachment,
+    "AttachmentEndpointRequest": AttachmentEndpointRequest,
     "AttachmentRequest": AttachmentRequest,
+    "AttachmentResponse": AttachmentResponse,
     "AvailableActions": AvailableActions,
     "Candidate": Candidate,
+    "CandidateEndpointRequest": CandidateEndpointRequest,
     "CandidateRequest": CandidateRequest,
+    "CandidateResponse": CandidateResponse,
     "DataPassthroughRequest": DataPassthroughRequest,
+    "DebugModeLog": DebugModeLog,
+    "DebugModelLogSummary": DebugModelLogSummary,
     "Department": Department,
     "EEOC": EEOC,
     "EmailAddress": EmailAddress,
     "EmailAddressRequest": EmailAddressRequest,
     "EndUserDetailsRequest": EndUserDetailsRequest,
+    "ErrorValidationProblem": ErrorValidationProblem,
     "GenerateRemoteKeyRequest": GenerateRemoteKeyRequest,
+    "IgnoreCommonModel": IgnoreCommonModel,
+    "IgnoreCommonModelRequest": IgnoreCommonModelRequest,
     "Issue": Issue,
     "Job": Job,
     "JobInterviewStage": JobInterviewStage,
     "LinkToken": LinkToken,
     "ModelOperation": ModelOperation,
+    "MultipartFormFieldRequest": MultipartFormFieldRequest,
     "Offer": Offer,
     "Office": Office,
+    "PaginatedAccountDetailsAndActionsList": PaginatedAccountDetailsAndActionsList,
     "PaginatedActivityList": PaginatedActivityList,
     "PaginatedApplicationList": PaginatedApplicationList,
     "PaginatedAttachmentList": PaginatedAttachmentList,
@@ -264,15 +317,14 @@ let typeMap: {[index: string]: any} = {
     "RemoteKeyForRegenerationRequest": RemoteKeyForRegenerationRequest,
     "RemoteResponse": RemoteResponse,
     "RemoteUser": RemoteUser,
-    "RemoteUserRequest": RemoteUserRequest,
     "ScheduledInterview": ScheduledInterview,
-    "ScheduledInterviewRequest": ScheduledInterviewRequest,
     "Scorecard": Scorecard,
-    "ScorecardRequest": ScorecardRequest,
     "SyncStatus": SyncStatus,
     "Tag": Tag,
     "Url": Url,
     "UrlRequest": UrlRequest,
+    "ValidationProblemSource": ValidationProblemSource,
+    "WarningValidationProblem": WarningValidationProblem,
 }
 
 export class ObjectSerializer {

@@ -15,7 +15,7 @@ import { RemoteData } from './remoteData';
 import { ScheduledInterviewStatusEnum } from './scheduledInterviewStatusEnum';
 
 /**
-* # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent an interview  ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
+* # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent an interview ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
 */
 export class ScheduledInterview {
     'id'?: string;
@@ -23,17 +23,8 @@ export class ScheduledInterview {
     * The third-party API ID of the matching object.
     */
     'remote_id'?: string | null;
-    /**
-    * The application being interviewed.
-    */
     'application'?: string | null;
-    /**
-    * The stage of the interview.
-    */
     'job_interview_stage'?: string | null;
-    /**
-    * The user organizing the interview.
-    */
     'organizer'?: string | null;
     /**
     * Array of `RemoteUser` IDs.

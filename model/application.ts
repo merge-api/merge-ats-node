@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 import { RemoteData } from './remoteData';
 
 /**
-* # The Application Object ### Description The `Application` object is used to represent an Application for a job position.  ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
+* # The Application Object ### Description The `Application` object is used to represent an Application for a job position. ### Usage Example Fetch from the `LIST Applications` endpoint and filter by `ID` to show all applications.
 */
 export class Application {
     'id'?: string;
@@ -22,13 +22,7 @@ export class Application {
     * The third-party API ID of the matching object.
     */
     'remote_id'?: string | null;
-    /**
-    * The candidate applying.
-    */
     'candidate'?: string | null;
-    /**
-    * The job being applied for.
-    */
     'job'?: string | null;
     /**
     * When the application was submitted.
@@ -42,19 +36,14 @@ export class Application {
     * The application\'s source.
     */
     'source'?: string | null;
-    /**
-    * The user credited for this application.
-    */
     'credited_to'?: string | null;
-    /**
-    * The application\'s current stage.
-    */
     'current_stage'?: string | null;
-    /**
-    * The application\'s reason for rejection.
-    */
     'reject_reason'?: string | null;
     'remote_data'?: Array<RemoteData> | null;
+    /**
+    * Custom fields configured for a given model.
+    */
+    'custom_fields'?: { [key: string]: any; } | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -113,6 +102,11 @@ export class Application {
             "name": "remote_data",
             "baseName": "remote_data",
             "type": "Array<RemoteData>"
+        },
+        {
+            "name": "custom_fields",
+            "baseName": "custom_fields",
+            "type": "{ [key: string]: any; }"
         }    ];
 
     static getAttributeTypeMap() {

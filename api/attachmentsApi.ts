@@ -16,7 +16,8 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { Attachment } from '../model/attachment';
-import { AttachmentRequest } from '../model/attachmentRequest';
+import { AttachmentEndpointRequest } from '../model/attachmentEndpointRequest';
+import { AttachmentResponse } from '../model/attachmentResponse';
 import { PaginatedAttachmentList } from '../model/paginatedAttachmentList';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -94,11 +95,11 @@ export class AttachmentsApi {
     /**
      * Creates an `Attachment` object with the given values.
      * @param xAccountToken Token identifying the end user.
-     * @param remoteUserId The ID of the RemoteUser modifying the resource. This can be found in the ID field (not remote_id) in the RemoteUser table.
+     * @param attachmentEndpointRequest 
+     * @param isDebugMode Whether to include debug fields (such as log file links) in the response.
      * @param runAsync Whether or not third-party updates should be run asynchronously.
-     * @param attachmentRequest 
      */
-    public async attachmentsCreate (xAccountToken: string, remoteUserId?: string, runAsync?: boolean, attachmentRequest?: AttachmentRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Attachment;  }> {
+    public async attachmentsCreate (xAccountToken: string, attachmentEndpointRequest: AttachmentEndpointRequest, isDebugMode?: boolean, runAsync?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: AttachmentResponse;  }> {
         const localVarPath = this.basePath + '/attachments';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -116,8 +117,13 @@ export class AttachmentsApi {
             throw new Error('Required parameter xAccountToken was null or undefined when calling attachmentsCreate.');
         }
 
-        if (remoteUserId !== undefined) {
-            localVarQueryParameters['remote_user_id'] = ObjectSerializer.serialize(remoteUserId, "string");
+        // verify required parameter 'attachmentEndpointRequest' is not null or undefined
+        if (attachmentEndpointRequest === null || attachmentEndpointRequest === undefined) {
+            throw new Error('Required parameter attachmentEndpointRequest was null or undefined when calling attachmentsCreate.');
+        }
+
+        if (isDebugMode !== undefined) {
+            localVarQueryParameters['is_debug_mode'] = ObjectSerializer.serialize(isDebugMode, "boolean");
         }
 
         if (runAsync !== undefined) {
@@ -136,7 +142,7 @@ export class AttachmentsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(attachmentRequest, "AttachmentRequest")
+            body: ObjectSerializer.serialize(attachmentEndpointRequest, "AttachmentEndpointRequest")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -158,12 +164,12 @@ export class AttachmentsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: Attachment;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: AttachmentResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
-                        body = ObjectSerializer.deserialize(body, "Attachment");
+                        body = ObjectSerializer.deserialize(body, "AttachmentResponse");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {
@@ -181,13 +187,15 @@ export class AttachmentsApi {
      * @param createdAfter If provided, will only return objects created after this datetime.
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
+     * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
+     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
      * @param remoteId The API provider\&#39;s ID for the given object.
      */
-    public async attachmentsList (xAccountToken: string, candidateId?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedAttachmentList;  }> {
+    public async attachmentsList (xAccountToken: string, candidateId?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'candidate', includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedAttachmentList;  }> {
         const localVarPath = this.basePath + '/attachments';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -219,6 +227,14 @@ export class AttachmentsApi {
 
         if (cursor !== undefined) {
             localVarQueryParameters['cursor'] = ObjectSerializer.serialize(cursor, "string");
+        }
+
+        if (expand !== undefined) {
+            localVarQueryParameters['expand'] = ObjectSerializer.serialize(expand, "'candidate'");
+        }
+
+        if (includeDeletedData !== undefined) {
+            localVarQueryParameters['include_deleted_data'] = ObjectSerializer.serialize(includeDeletedData, "boolean");
         }
 
         if (includeRemoteData !== undefined) {
@@ -294,9 +310,10 @@ export class AttachmentsApi {
      * Returns an `Attachment` object with the given `id`.
      * @param xAccountToken Token identifying the end user.
      * @param id 
+     * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      */
-    public async attachmentsRetrieve (xAccountToken: string, id: string, includeRemoteData?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Attachment;  }> {
+    public async attachmentsRetrieve (xAccountToken: string, id: string, expand?: 'candidate', includeRemoteData?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Attachment;  }> {
         const localVarPath = this.basePath + '/attachments/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -318,6 +335,10 @@ export class AttachmentsApi {
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling attachmentsRetrieve.');
+        }
+
+        if (expand !== undefined) {
+            localVarQueryParameters['expand'] = ObjectSerializer.serialize(expand, "'candidate'");
         }
 
         if (includeRemoteData !== undefined) {

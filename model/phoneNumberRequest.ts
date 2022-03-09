@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 import { PhoneNumberTypeEnum } from './phoneNumberTypeEnum';
 
 /**
-* # The PhoneNumber Object ### Description The `PhoneNumber` object is used to represent a candidate\'s phone number.  ### Usage Example Fetch from the `GET Candidate` endpoint and view their phone numbers.
+* # The PhoneNumber Object ### Description The `PhoneNumber` object is used to represent a candidate\'s phone number. ### Usage Example Fetch from the `GET Candidate` endpoint and view their phone numbers.
 */
 export class PhoneNumberRequest {
     /**

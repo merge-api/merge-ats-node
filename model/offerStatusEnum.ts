@@ -12,7 +12,7 @@
 
 import { RequestFile } from './models';
 
-export enum OfferStatusEnum {
+export enum OfferStatusEnumExpected {
     Draft = <any> 'DRAFT',
     ApprovalSent = <any> 'APPROVAL-SENT',
     Approved = <any> 'APPROVED',
@@ -23,3 +23,5 @@ export enum OfferStatusEnum {
     Signed = <any> 'SIGNED',
     Deprecated = <any> 'DEPRECATED'
 }
+
+export type OfferStatusEnum = OfferStatusEnumExpected | string;

@@ -15,7 +15,7 @@ import { OfferStatusEnum } from './offerStatusEnum';
 import { RemoteData } from './remoteData';
 
 /**
-* # The Offer Object ### Description The `Offer` object is used to represent an offer for an application.  ### Usage Example Fetch from the `LIST Offers` endpoint and filter by `ID` to show all offers.
+* # The Offer Object ### Description The `Offer` object is used to represent an offer for an application. ### Usage Example Fetch from the `LIST Offers` endpoint and filter by `ID` to show all offers.
 */
 export class Offer {
     'id'?: string;
@@ -23,13 +23,7 @@ export class Offer {
     * The third-party API ID of the matching object.
     */
     'remote_id'?: string | null;
-    /**
-    * The application who is receiving the offer.
-    */
     'application'?: string | null;
-    /**
-    * The user who created the offer.
-    */
     'creator'?: string | null;
     /**
     * When the third party\'s offer was created.

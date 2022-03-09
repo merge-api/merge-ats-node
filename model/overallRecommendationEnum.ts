@@ -12,10 +12,12 @@
 
 import { RequestFile } from './models';
 
-export enum OverallRecommendationEnum {
+export enum OverallRecommendationEnumExpected {
     DefinitelyNo = <any> 'DEFINITELY_NO',
     No = <any> 'NO',
     Yes = <any> 'YES',
     StrongYes = <any> 'STRONG_YES',
     NoDecision = <any> 'NO_DECISION'
 }
+
+export type OverallRecommendationEnum = OverallRecommendationEnumExpected | string;

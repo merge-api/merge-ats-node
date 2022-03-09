@@ -12,7 +12,7 @@
 
 import { RequestFile } from './models';
 
-export enum RaceEnum {
+export enum RaceEnumExpected {
     AmericanIndianOrAlaskanNative = <any> 'AMERICAN_INDIAN_OR_ALASKAN_NATIVE',
     Asian = <any> 'ASIAN',
     BlackOrAfricanAmerican = <any> 'BLACK_OR_AFRICAN_AMERICAN',
@@ -22,3 +22,5 @@ export enum RaceEnum {
     TwoOrMoreRaces = <any> 'TWO_OR_MORE_RACES',
     DeclineToSelfIdentify = <any> 'DECLINE_TO_SELF_IDENTIFY'
 }
+
+export type RaceEnum = RaceEnumExpected | string;

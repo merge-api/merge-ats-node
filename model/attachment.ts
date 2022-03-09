@@ -15,7 +15,7 @@ import { AttachmentTypeEnum } from './attachmentTypeEnum';
 import { RemoteData } from './remoteData';
 
 /**
-* # The Attachment Object ### Description The `Attachment` object is used to represent a attachment for a candidate.  ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
+* # The Attachment Object ### Description The `Attachment` object is used to represent a attachment for a candidate. ### Usage Example Fetch from the `LIST Attachments` endpoint and view attachments accessible by a company.
 */
 export class Attachment {
     'id'?: string;

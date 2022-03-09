@@ -12,7 +12,7 @@
 
 import { RequestFile } from './models';
 
-export enum UrlTypeEnum {
+export enum UrlTypeEnumExpected {
     Personal = <any> 'PERSONAL',
     Company = <any> 'COMPANY',
     Portfolio = <any> 'PORTFOLIO',
@@ -20,3 +20,5 @@ export enum UrlTypeEnum {
     SocialMedia = <any> 'SOCIAL_MEDIA',
     Other = <any> 'OTHER'
 }
+
+export type UrlTypeEnum = UrlTypeEnumExpected | string;

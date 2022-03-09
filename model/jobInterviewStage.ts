@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 import { RemoteData } from './remoteData';
 
 /**
-* # The JobInterviewStage Object ### Description The `JobInterviewStage` object is used to represent the stage of an interview  ### Usage Example Fetch from the `LIST JobInterviewStages` endpoint and view the job interview stages used by a company.
+* # The JobInterviewStage Object ### Description The `JobInterviewStage` object is used to represent the stage of an interview ### Usage Example Fetch from the `LIST JobInterviewStages` endpoint and view the job interview stages used by a company.
 */
 export class JobInterviewStage {
     'id'?: string;
@@ -26,9 +26,6 @@ export class JobInterviewStage {
     * The stage\'s name.
     */
     'name'?: string | null;
-    /**
-    * If stages are specific to a job, this is the job that this stage belongs to.
-    */
     'job'?: string | null;
     'remote_data'?: Array<RemoteData> | null;
 
