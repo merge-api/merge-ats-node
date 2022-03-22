@@ -72,6 +72,7 @@ export * from './paginatedScheduledInterviewList';
 export * from './paginatedScorecardList';
 export * from './paginatedSyncStatusList';
 export * from './paginatedTagList';
+export * from './paginatedWebhookReceiverList';
 export * from './phoneNumber';
 export * from './phoneNumberRequest';
 export * from './phoneNumberTypeEnum';
@@ -98,6 +99,8 @@ export * from './validationProblemSource';
 export * from './veteranStatusEnum';
 export * from './visibilityEnum';
 export * from './warningValidationProblem';
+export * from './webhookReceiver';
+export * from './webhookReceiverRequest';
 
 import * as fs from 'fs';
 
@@ -184,6 +187,7 @@ import { PaginatedScheduledInterviewList } from './paginatedScheduledInterviewLi
 import { PaginatedScorecardList } from './paginatedScorecardList';
 import { PaginatedSyncStatusList } from './paginatedSyncStatusList';
 import { PaginatedTagList } from './paginatedTagList';
+import { PaginatedWebhookReceiverList } from './paginatedWebhookReceiverList';
 import { PhoneNumber } from './phoneNumber';
 import { PhoneNumberRequest } from './phoneNumberRequest';
 import { PhoneNumberTypeEnum, PhoneNumberTypeEnumExpected } from './phoneNumberTypeEnum';
@@ -210,6 +214,8 @@ import { ValidationProblemSource } from './validationProblemSource';
 import { VeteranStatusEnum, VeteranStatusEnumExpected } from './veteranStatusEnum';
 import { VisibilityEnum, VisibilityEnumExpected } from './visibilityEnum';
 import { WarningValidationProblem } from './warningValidationProblem';
+import { WebhookReceiver } from './webhookReceiver';
+import { WebhookReceiverRequest } from './webhookReceiverRequest';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -308,6 +314,7 @@ let typeMap: {[index: string]: any} = {
     "PaginatedScorecardList": PaginatedScorecardList,
     "PaginatedSyncStatusList": PaginatedSyncStatusList,
     "PaginatedTagList": PaginatedTagList,
+    "PaginatedWebhookReceiverList": PaginatedWebhookReceiverList,
     "PhoneNumber": PhoneNumber,
     "PhoneNumberRequest": PhoneNumberRequest,
     "RejectReason": RejectReason,
@@ -325,6 +332,8 @@ let typeMap: {[index: string]: any} = {
     "UrlRequest": UrlRequest,
     "ValidationProblemSource": ValidationProblemSource,
     "WarningValidationProblem": WarningValidationProblem,
+    "WebhookReceiver": WebhookReceiver,
+    "WebhookReceiverRequest": WebhookReceiverRequest,
 }
 
 export class ObjectSerializer {

@@ -52,6 +52,8 @@ export * from './tagsApi';
 import { TagsApi } from './tagsApi';
 export * from './usersApi';
 import { UsersApi } from './usersApi';
+export * from './webhookReceiversApi';
+import { WebhookReceiversApi } from './webhookReceiversApi';
 import * as http from 'http';
 
 export class HttpError extends Error {
@@ -63,4 +65,4 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [AccountDetailsApi, AccountTokenApi, ActivitiesApi, ApplicationsApi, AttachmentsApi, AvailableActionsApi, CandidatesApi, DeleteAccountApi, DepartmentsApi, EeocsApi, ForceResyncApi, GenerateKeyApi, InterviewsApi, IssuesApi, JobInterviewStagesApi, JobsApi, LinkTokenApi, LinkedAccountsApi, OffersApi, OfficesApi, PassthroughApi, RegenerateKeyApi, RejectReasonsApi, ScorecardsApi, SyncStatusApi, TagsApi, UsersApi];
+export const APIS = [AccountDetailsApi, AccountTokenApi, ActivitiesApi, ApplicationsApi, AttachmentsApi, AvailableActionsApi, CandidatesApi, DeleteAccountApi, DepartmentsApi, EeocsApi, ForceResyncApi, GenerateKeyApi, InterviewsApi, IssuesApi, JobInterviewStagesApi, JobsApi, LinkTokenApi, LinkedAccountsApi, OffersApi, OfficesApi, PassthroughApi, RegenerateKeyApi, RejectReasonsApi, ScorecardsApi, SyncStatusApi, TagsApi, UsersApi, WebhookReceiversApi];

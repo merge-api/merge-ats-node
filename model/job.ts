@@ -63,6 +63,10 @@ export class Job {
     * IDs of `RemoteUser` objects that serve as hiring managers for this `Job`.
     */
     'hiring_managers'?: Array<string>;
+    /**
+    * IDs of RemoteUser objects that serve as recruiters for this Job.
+    */
+    'recruiters'?: Array<string>;
     'remote_data'?: Array<RemoteData> | null;
 
     static discriminator: string | undefined = undefined;
@@ -126,6 +130,11 @@ export class Job {
         {
             "name": "hiring_managers",
             "baseName": "hiring_managers",
+            "type": "Array<string>"
+        },
+        {
+            "name": "recruiters",
+            "baseName": "recruiters",
             "type": "Array<string>"
         },
         {
