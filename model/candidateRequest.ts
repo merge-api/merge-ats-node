@@ -11,6 +11,9 @@
  */
 
 import { RequestFile } from './models';
+import { EmailAddressRequest } from './emailAddressRequest';
+import { PhoneNumberRequest } from './phoneNumberRequest';
+import { UrlRequest } from './urlRequest';
 
 /**
 * # The Candidate Object ### Description The `Candidate` object is used to represent a Candidate for various positions. ### Usage Example Fetch from the `LIST Candidates` endpoint and filter by `ID` to show all candidates.
@@ -60,6 +63,9 @@ export class CandidateRequest {
     * The candidate\'s locations.
     */
     'locations'?: Array<string> | null;
+    'phone_numbers'?: Array<PhoneNumberRequest>;
+    'email_addresses'?: Array<EmailAddressRequest>;
+    'urls'?: Array<UrlRequest>;
     /**
     * Array of `Tag` names as strings.
     */
@@ -137,6 +143,21 @@ export class CandidateRequest {
             "name": "locations",
             "baseName": "locations",
             "type": "Array<string>"
+        },
+        {
+            "name": "phone_numbers",
+            "baseName": "phone_numbers",
+            "type": "Array<PhoneNumberRequest>"
+        },
+        {
+            "name": "email_addresses",
+            "baseName": "email_addresses",
+            "type": "Array<EmailAddressRequest>"
+        },
+        {
+            "name": "urls",
+            "baseName": "urls",
+            "type": "Array<UrlRequest>"
         },
         {
             "name": "tags",

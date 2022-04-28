@@ -96,13 +96,17 @@ export class IssuesApi {
      * @param cursor The pagination cursor value.
      * @param endDate If included, will only include issues whose most recent action occurred before this time
      * @param endUserOrganizationName 
+     * @param firstIncidentTimeAfter If provided, will only return issues whose first incident time was after this datetime.
+     * @param firstIncidentTimeBefore If provided, will only return issues whose first incident time was before this datetime.
      * @param includeMuted If True, will include muted issues
      * @param integrationName 
+     * @param lastIncidentTimeAfter If provided, will only return issues whose first incident time was after this datetime.
+     * @param lastIncidentTimeBefore If provided, will only return issues whose first incident time was before this datetime.
      * @param pageSize Number of results to return per page.
      * @param startDate If included, will only include issues whose most recent action occurred after this time
      * @param status 
      */
-    public async issuesList (accountToken?: string, cursor?: string, endDate?: string, endUserOrganizationName?: string, includeMuted?: string, integrationName?: string, pageSize?: number, startDate?: string, status?: 'ONGOING' | 'RESOLVED', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedIssueList;  }> {
+    public async issuesList (accountToken?: string, cursor?: string, endDate?: string, endUserOrganizationName?: string, firstIncidentTimeAfter?: Date, firstIncidentTimeBefore?: Date, includeMuted?: string, integrationName?: string, lastIncidentTimeAfter?: Date, lastIncidentTimeBefore?: Date, pageSize?: number, startDate?: string, status?: 'ONGOING' | 'RESOLVED', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedIssueList;  }> {
         const localVarPath = this.basePath + '/issues';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -131,12 +135,28 @@ export class IssuesApi {
             localVarQueryParameters['end_user_organization_name'] = ObjectSerializer.serialize(endUserOrganizationName, "string");
         }
 
+        if (firstIncidentTimeAfter !== undefined) {
+            localVarQueryParameters['first_incident_time_after'] = ObjectSerializer.serialize(firstIncidentTimeAfter, "Date");
+        }
+
+        if (firstIncidentTimeBefore !== undefined) {
+            localVarQueryParameters['first_incident_time_before'] = ObjectSerializer.serialize(firstIncidentTimeBefore, "Date");
+        }
+
         if (includeMuted !== undefined) {
             localVarQueryParameters['include_muted'] = ObjectSerializer.serialize(includeMuted, "string");
         }
 
         if (integrationName !== undefined) {
             localVarQueryParameters['integration_name'] = ObjectSerializer.serialize(integrationName, "string");
+        }
+
+        if (lastIncidentTimeAfter !== undefined) {
+            localVarQueryParameters['last_incident_time_after'] = ObjectSerializer.serialize(lastIncidentTimeAfter, "Date");
+        }
+
+        if (lastIncidentTimeBefore !== undefined) {
+            localVarQueryParameters['last_incident_time_before'] = ObjectSerializer.serialize(lastIncidentTimeBefore, "Date");
         }
 
         if (pageSize !== undefined) {
