@@ -17,7 +17,7 @@ export class EndUserDetailsRequest {
     'end_user_email_address': string;
     'end_user_organization_name': string;
     'end_user_origin_id': string;
-    'categories'?: Array<CategoriesEnum>;
+    'categories': Array<CategoriesEnum>;
     /**
     * The slug of a specific pre-selected integration for this linking flow token, for examples of slugs see https://www.merge.dev/docs/basics/integration-metadata
     */

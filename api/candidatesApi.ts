@@ -20,6 +20,7 @@ import { CandidateEndpointRequest } from '../model/candidateEndpointRequest';
 import { CandidateResponse } from '../model/candidateResponse';
 import { IgnoreCommonModel } from '../model/ignoreCommonModel';
 import { IgnoreCommonModelRequest } from '../model/ignoreCommonModelRequest';
+import { MetaResponse } from '../model/metaResponse';
 import { PaginatedCandidateList } from '../model/paginatedCandidateList';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -184,10 +185,11 @@ export class CandidatesApi {
     }
     /**
      * Ignores a specific row based on the `model_id` in the url. These records will have their properties set to null, and will not be updated in future syncs. The \"reason\" and \"message\" fields in the request body will be stored for audit purposes.
+     * @param xAccountToken Token identifying the end user.
      * @param modelId 
      * @param ignoreCommonModelRequest 
      */
-    public async candidatesIgnoreCreate (modelId: string, ignoreCommonModelRequest: IgnoreCommonModelRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: IgnoreCommonModel;  }> {
+    public async candidatesIgnoreCreate (xAccountToken: string, modelId: string, ignoreCommonModelRequest: IgnoreCommonModelRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: IgnoreCommonModel;  }> {
         const localVarPath = this.basePath + '/candidates/ignore/{model_id}'
             .replace('{' + 'model_id' + '}', encodeURIComponent(String(modelId)));
         let localVarQueryParameters: any = {};
@@ -201,6 +203,11 @@ export class CandidatesApi {
         }
         let localVarFormParams: any = {};
 
+        // verify required parameter 'xAccountToken' is not null or undefined
+        if (xAccountToken === null || xAccountToken === undefined) {
+            throw new Error('Required parameter xAccountToken was null or undefined when calling candidatesIgnoreCreate.');
+        }
+
         // verify required parameter 'modelId' is not null or undefined
         if (modelId === null || modelId === undefined) {
             throw new Error('Required parameter modelId was null or undefined when calling candidatesIgnoreCreate.');
@@ -211,6 +218,7 @@ export class CandidatesApi {
             throw new Error('Required parameter ignoreCommonModelRequest was null or undefined when calling candidatesIgnoreCreate.');
         }
 
+        localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -381,6 +389,77 @@ export class CandidatesApi {
                         reject(error);
                     } else {
                         body = ObjectSerializer.deserialize(body, "PaginatedCandidateList");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Returns metadata for `Candidate` POSTs.
+     * @param xAccountToken Token identifying the end user.
+     */
+    public async candidatesMetaPostRetrieve (xAccountToken: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: MetaResponse;  }> {
+        const localVarPath = this.basePath + '/candidates/meta/post';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'xAccountToken' is not null or undefined
+        if (xAccountToken === null || xAccountToken === undefined) {
+            throw new Error('Required parameter xAccountToken was null or undefined when calling candidatesMetaPostRetrieve.');
+        }
+
+        localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.tokenAuth.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.tokenAuth.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: MetaResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "MetaResponse");
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             resolve({ response: response, body: body });
                         } else {

@@ -47,6 +47,8 @@ export * from './job';
 export * from './jobInterviewStage';
 export * from './jobStatusEnum';
 export * from './linkToken';
+export * from './linkedAccountStatus';
+export * from './metaResponse';
 export * from './methodEnum';
 export * from './modelOperation';
 export * from './multipartFormFieldRequest';
@@ -72,7 +74,6 @@ export * from './paginatedScheduledInterviewList';
 export * from './paginatedScorecardList';
 export * from './paginatedSyncStatusList';
 export * from './paginatedTagList';
-export * from './paginatedWebhookReceiverList';
 export * from './phoneNumber';
 export * from './phoneNumberRequest';
 export * from './phoneNumberTypeEnum';
@@ -162,6 +163,8 @@ import { Job } from './job';
 import { JobInterviewStage } from './jobInterviewStage';
 import { JobStatusEnum, JobStatusEnumExpected } from './jobStatusEnum';
 import { LinkToken } from './linkToken';
+import { LinkedAccountStatus } from './linkedAccountStatus';
+import { MetaResponse } from './metaResponse';
 import { MethodEnum, MethodEnumExpected } from './methodEnum';
 import { ModelOperation } from './modelOperation';
 import { MultipartFormFieldRequest } from './multipartFormFieldRequest';
@@ -187,7 +190,6 @@ import { PaginatedScheduledInterviewList } from './paginatedScheduledInterviewLi
 import { PaginatedScorecardList } from './paginatedScorecardList';
 import { PaginatedSyncStatusList } from './paginatedSyncStatusList';
 import { PaginatedTagList } from './paginatedTagList';
-import { PaginatedWebhookReceiverList } from './paginatedWebhookReceiverList';
 import { PhoneNumber } from './phoneNumber';
 import { PhoneNumberRequest } from './phoneNumberRequest';
 import { PhoneNumberTypeEnum, PhoneNumberTypeEnumExpected } from './phoneNumberTypeEnum';
@@ -292,6 +294,8 @@ let typeMap: {[index: string]: any} = {
     "Job": Job,
     "JobInterviewStage": JobInterviewStage,
     "LinkToken": LinkToken,
+    "LinkedAccountStatus": LinkedAccountStatus,
+    "MetaResponse": MetaResponse,
     "ModelOperation": ModelOperation,
     "MultipartFormFieldRequest": MultipartFormFieldRequest,
     "Offer": Offer,
@@ -314,7 +318,6 @@ let typeMap: {[index: string]: any} = {
     "PaginatedScorecardList": PaginatedScorecardList,
     "PaginatedSyncStatusList": PaginatedSyncStatusList,
     "PaginatedTagList": PaginatedTagList,
-    "PaginatedWebhookReceiverList": PaginatedWebhookReceiverList,
     "PhoneNumber": PhoneNumber,
     "PhoneNumberRequest": PhoneNumberRequest,
     "RejectReason": RejectReason,
