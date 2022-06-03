@@ -199,8 +199,9 @@ export class ApplicationsApi {
      * @param pageSize Number of results to return per page.
      * @param rejectReasonId If provided, will only return applications with this reject reason.
      * @param remoteId The API provider\&#39;s ID for the given object.
+     * @param source If provided, will only return applications with this source.
      */
-    public async applicationsList (xAccountToken: string, candidateId?: string, createdAfter?: Date, createdBefore?: Date, creditedToId?: string, currentStageId?: string, cursor?: string, expand?: 'candidate' | 'candidate,credited_to' | 'candidate,credited_to,current_stage' | 'candidate,credited_to,current_stage,reject_reason' | 'candidate,credited_to,reject_reason' | 'candidate,current_stage' | 'candidate,current_stage,reject_reason' | 'candidate,job' | 'candidate,job,credited_to' | 'candidate,job,credited_to,current_stage' | 'candidate,job,credited_to,current_stage,reject_reason' | 'candidate,job,credited_to,reject_reason' | 'candidate,job,current_stage' | 'candidate,job,current_stage,reject_reason' | 'candidate,job,reject_reason' | 'candidate,reject_reason' | 'credited_to' | 'credited_to,current_stage' | 'credited_to,current_stage,reject_reason' | 'credited_to,reject_reason' | 'current_stage' | 'current_stage,reject_reason' | 'job' | 'job,credited_to' | 'job,credited_to,current_stage' | 'job,credited_to,current_stage,reject_reason' | 'job,credited_to,reject_reason' | 'job,current_stage' | 'job,current_stage,reject_reason' | 'job,reject_reason' | 'reject_reason', includeDeletedData?: boolean, includeRemoteData?: boolean, jobId?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, rejectReasonId?: string, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedApplicationList;  }> {
+    public async applicationsList (xAccountToken: string, candidateId?: string, createdAfter?: Date, createdBefore?: Date, creditedToId?: string, currentStageId?: string, cursor?: string, expand?: 'candidate' | 'candidate,credited_to' | 'candidate,credited_to,current_stage' | 'candidate,credited_to,current_stage,reject_reason' | 'candidate,credited_to,reject_reason' | 'candidate,current_stage' | 'candidate,current_stage,reject_reason' | 'candidate,job' | 'candidate,job,credited_to' | 'candidate,job,credited_to,current_stage' | 'candidate,job,credited_to,current_stage,reject_reason' | 'candidate,job,credited_to,reject_reason' | 'candidate,job,current_stage' | 'candidate,job,current_stage,reject_reason' | 'candidate,job,reject_reason' | 'candidate,reject_reason' | 'credited_to' | 'credited_to,current_stage' | 'credited_to,current_stage,reject_reason' | 'credited_to,reject_reason' | 'current_stage' | 'current_stage,reject_reason' | 'job' | 'job,credited_to' | 'job,credited_to,current_stage' | 'job,credited_to,current_stage,reject_reason' | 'job,credited_to,reject_reason' | 'job,current_stage' | 'job,current_stage,reject_reason' | 'job,reject_reason' | 'reject_reason', includeDeletedData?: boolean, includeRemoteData?: boolean, jobId?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, rejectReasonId?: string, remoteId?: string, source?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedApplicationList;  }> {
         const localVarPath = this.basePath + '/applications';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -276,6 +277,10 @@ export class ApplicationsApi {
 
         if (remoteId !== undefined) {
             localVarQueryParameters['remote_id'] = ObjectSerializer.serialize(remoteId, "string");
+        }
+
+        if (source !== undefined) {
+            localVarQueryParameters['source'] = ObjectSerializer.serialize(source, "string");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");
