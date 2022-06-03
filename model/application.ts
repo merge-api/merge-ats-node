@@ -44,6 +44,7 @@ export class Application {
     * Custom fields configured for a given model.
     */
     'custom_fields'?: { [key: string]: any; } | null;
+    'remote_was_deleted'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -107,6 +108,11 @@ export class Application {
             "name": "custom_fields",
             "baseName": "custom_fields",
             "type": "{ [key: string]: any; }"
+        },
+        {
+            "name": "remote_was_deleted",
+            "baseName": "remote_was_deleted",
+            "type": "boolean"
         }    ];
 
     static getAttributeTypeMap() {
