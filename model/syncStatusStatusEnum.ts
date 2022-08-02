@@ -16,7 +16,8 @@ export enum SyncStatusStatusEnumExpected {
     Syncing = <any> 'SYNCING',
     Done = <any> 'DONE',
     Failed = <any> 'FAILED',
-    Disabled = <any> 'DISABLED'
+    Disabled = <any> 'DISABLED',
+    Paused = <any> 'PAUSED'
 }
 
 export type SyncStatusStatusEnum = SyncStatusStatusEnumExpected | string;

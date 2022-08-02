@@ -81,7 +81,6 @@ export * from './raceEnum';
 export * from './reasonEnum';
 export * from './rejectReason';
 export * from './remoteData';
-export * from './remoteDataRequest';
 export * from './remoteKey';
 export * from './remoteKeyForRegenerationRequest';
 export * from './remoteResponse';
@@ -93,6 +92,7 @@ export * from './scorecard';
 export * from './syncStatus';
 export * from './syncStatusStatusEnum';
 export * from './tag';
+export * from './updateApplicationStageRequest';
 export * from './url';
 export * from './urlRequest';
 export * from './urlTypeEnum';
@@ -197,7 +197,6 @@ import { RaceEnum, RaceEnumExpected } from './raceEnum';
 import { ReasonEnum, ReasonEnumExpected } from './reasonEnum';
 import { RejectReason } from './rejectReason';
 import { RemoteData } from './remoteData';
-import { RemoteDataRequest } from './remoteDataRequest';
 import { RemoteKey } from './remoteKey';
 import { RemoteKeyForRegenerationRequest } from './remoteKeyForRegenerationRequest';
 import { RemoteResponse } from './remoteResponse';
@@ -209,6 +208,7 @@ import { Scorecard } from './scorecard';
 import { SyncStatus } from './syncStatus';
 import { SyncStatusStatusEnum, SyncStatusStatusEnumExpected } from './syncStatusStatusEnum';
 import { Tag } from './tag';
+import { UpdateApplicationStageRequest } from './updateApplicationStageRequest';
 import { Url } from './url';
 import { UrlRequest } from './urlRequest';
 import { UrlTypeEnum, UrlTypeEnumExpected } from './urlTypeEnum';
@@ -322,7 +322,6 @@ let typeMap: {[index: string]: any} = {
     "PhoneNumberRequest": PhoneNumberRequest,
     "RejectReason": RejectReason,
     "RemoteData": RemoteData,
-    "RemoteDataRequest": RemoteDataRequest,
     "RemoteKey": RemoteKey,
     "RemoteKeyForRegenerationRequest": RemoteKeyForRegenerationRequest,
     "RemoteResponse": RemoteResponse,
@@ -331,6 +330,7 @@ let typeMap: {[index: string]: any} = {
     "Scorecard": Scorecard,
     "SyncStatus": SyncStatus,
     "Tag": Tag,
+    "UpdateApplicationStageRequest": UpdateApplicationStageRequest,
     "Url": Url,
     "UrlRequest": UrlRequest,
     "ValidationProblemSource": ValidationProblemSource,

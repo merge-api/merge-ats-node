@@ -96,7 +96,7 @@ export class DepartmentsApi {
      * @param createdAfter If provided, will only return objects created after this datetime.
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
-     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
+     * @param includeDeletedData Whether to include data that was marked as deleted by third party webhooks.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
      * @param modifiedBefore If provided, will only return objects modified before this datetime.

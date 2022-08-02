@@ -276,7 +276,7 @@ export class CandidatesApi {
      * @param cursor The pagination cursor value.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
      * @param firstName If provided, will only return candidates with this first name.
-     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
+     * @param includeDeletedData Whether to include data that was marked as deleted by third party webhooks.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param lastName If provided, will only return candidates with this last name.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.

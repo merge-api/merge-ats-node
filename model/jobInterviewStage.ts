@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 import { RemoteData } from './remoteData';
 
 /**
-* # The JobInterviewStage Object ### Description The `JobInterviewStage` object is used to represent the stage of an interview ### Usage Example Fetch from the `LIST JobInterviewStages` endpoint and view the job interview stages used by a company.
+* # The JobInterviewStage Object ### Description The `JobInterviewStage` object is used to represent the stage that a job application is in. ### Usage Example Fetch from the `LIST JobInterviewStages` endpoint and view the job interview stages used by a company.
 */
 export class JobInterviewStage {
     'id'?: string;
@@ -26,10 +26,13 @@ export class JobInterviewStage {
     * The stage\'s name.
     */
     'name'?: string | null;
+    /**
+    * This field is populated only if the stage is specific to a particular job. If the stage is generic, this field will not be populated.
+    */
     'job'?: string | null;
     'remote_data'?: Array<RemoteData> | null;
     /**
-    * Indicates whether or not this object has been deleted on the third-party.
+    * Indicates whether or not this object has been deleted by third party webhooks.
     */
     'remote_was_deleted'?: boolean;
 

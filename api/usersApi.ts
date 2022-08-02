@@ -97,14 +97,15 @@ export class UsersApi {
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
      * @param email If provided, will only return remote users with the given email address
-     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
+     * @param includeDeletedData Whether to include data that was marked as deleted by third party webhooks.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      * @param remoteId The API provider\&#39;s ID for the given object.
      */
-    public async usersList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, email?: string, includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedRemoteUserList;  }> {
+    public async usersList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, email?: string, includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteFields?: 'access_role', remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedRemoteUserList;  }> {
         const localVarPath = this.basePath + '/users';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -156,6 +157,10 @@ export class UsersApi {
 
         if (pageSize !== undefined) {
             localVarQueryParameters['page_size'] = ObjectSerializer.serialize(pageSize, "number");
+        }
+
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'access_role'");
         }
 
         if (remoteId !== undefined) {
@@ -216,8 +221,9 @@ export class UsersApi {
      * @param xAccountToken Token identifying the end user.
      * @param id 
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      */
-    public async usersRetrieve (xAccountToken: string, id: string, includeRemoteData?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RemoteUser;  }> {
+    public async usersRetrieve (xAccountToken: string, id: string, includeRemoteData?: boolean, remoteFields?: 'access_role', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: RemoteUser;  }> {
         const localVarPath = this.basePath + '/users/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -243,6 +249,10 @@ export class UsersApi {
 
         if (includeRemoteData !== undefined) {
             localVarQueryParameters['include_remote_data'] = ObjectSerializer.serialize(includeRemoteData, "boolean");
+        }
+
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'access_role'");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

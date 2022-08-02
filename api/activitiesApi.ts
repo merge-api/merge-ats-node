@@ -97,15 +97,16 @@ export class ActivitiesApi {
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
+     * @param includeDeletedData Whether to include data that was marked as deleted by third party webhooks.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      * @param remoteId The API provider\&#39;s ID for the given object.
      * @param userId If provided, will only return activities done by this user.
      */
-    public async activitiesList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'user', includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, userId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedActivityList;  }> {
+    public async activitiesList (xAccountToken: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'user', includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteFields?: 'activity_type' | 'activity_type,visibility' | 'visibility', remoteId?: string, userId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedActivityList;  }> {
         const localVarPath = this.basePath + '/activities';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -157,6 +158,10 @@ export class ActivitiesApi {
 
         if (pageSize !== undefined) {
             localVarQueryParameters['page_size'] = ObjectSerializer.serialize(pageSize, "number");
+        }
+
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'activity_type' | 'activity_type,visibility' | 'visibility'");
         }
 
         if (remoteId !== undefined) {
@@ -222,8 +227,9 @@ export class ActivitiesApi {
      * @param id 
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      */
-    public async activitiesRetrieve (xAccountToken: string, id: string, expand?: 'user', includeRemoteData?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Activity;  }> {
+    public async activitiesRetrieve (xAccountToken: string, id: string, expand?: 'user', includeRemoteData?: boolean, remoteFields?: 'activity_type' | 'activity_type,visibility' | 'visibility', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Activity;  }> {
         const localVarPath = this.basePath + '/activities/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -253,6 +259,10 @@ export class ActivitiesApi {
 
         if (includeRemoteData !== undefined) {
             localVarQueryParameters['include_remote_data'] = ObjectSerializer.serialize(includeRemoteData, "boolean");
+        }
+
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'activity_type' | 'activity_type,visibility' | 'visibility'");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

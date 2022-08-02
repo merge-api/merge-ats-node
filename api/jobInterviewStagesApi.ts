@@ -97,7 +97,7 @@ export class JobInterviewStagesApi {
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
+     * @param includeDeletedData Whether to include data that was marked as deleted by third party webhooks.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param jobId If provided, will only return interview stages for this job.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.

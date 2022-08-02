@@ -15,7 +15,7 @@ import { RemoteData } from './remoteData';
 import { ScheduledInterviewStatusEnum } from './scheduledInterviewStatusEnum';
 
 /**
-* # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent an interview ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
+* # The ScheduledInterview Object ### Description The `ScheduledInterview` object is used to represent an interview. ### Usage Example Fetch from the `LIST ScheduledInterviews` endpoint and filter by `interviewers` to show all office locations.
 */
 export class ScheduledInterview {
     'id'?: string;
@@ -56,7 +56,7 @@ export class ScheduledInterview {
     'status'?: ScheduledInterviewStatusEnum | null;
     'remote_data'?: Array<RemoteData> | null;
     /**
-    * Indicates whether or not this object has been deleted on the third-party.
+    * Indicates whether or not this object has been deleted by third party webhooks.
     */
     'remote_was_deleted'?: boolean;
 

@@ -20,6 +20,7 @@ export class RemoteResponse {
     'path': string;
     'status': number;
     'response': { [key: string]: any; };
+    'response_headers'?: { [key: string]: any; };
     'headers'?: { [key: string]: any; };
 
     static discriminator: string | undefined = undefined;
@@ -43,6 +44,11 @@ export class RemoteResponse {
         {
             "name": "response",
             "baseName": "response",
+            "type": "{ [key: string]: any; }"
+        },
+        {
+            "name": "response_headers",
+            "baseName": "response_headers",
             "type": "{ [key: string]: any; }"
         },
         {
