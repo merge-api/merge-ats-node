@@ -98,15 +98,16 @@ export class JobsApi {
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
+     * @param includeDeletedData Whether to include data that was marked as deleted by third party webhooks.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      * @param remoteId The API provider\&#39;s ID for the given object.
      * @param status If provided, will only return jobs with this status. Options: (\&#39;OPEN\&#39;, \&#39;CLOSED\&#39;, \&#39;DRAFT\&#39;, \&#39;ARCHIVED\&#39;, \&#39;PENDING\&#39;)
      */
-    public async jobsList (xAccountToken: string, code?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'departments' | 'departments,hiring_managers' | 'departments,hiring_managers,recruiters' | 'departments,offices' | 'departments,offices,hiring_managers' | 'departments,offices,hiring_managers,recruiters' | 'departments,offices,recruiters' | 'departments,recruiters' | 'hiring_managers' | 'hiring_managers,recruiters' | 'offices' | 'offices,hiring_managers' | 'offices,hiring_managers,recruiters' | 'offices,recruiters' | 'recruiters', includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, status?: 'ARCHIVED' | 'CLOSED' | 'DRAFT' | 'OPEN' | 'PENDING', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedJobList;  }> {
+    public async jobsList (xAccountToken: string, code?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'departments' | 'departments,hiring_managers' | 'departments,hiring_managers,recruiters' | 'departments,offices' | 'departments,offices,hiring_managers' | 'departments,offices,hiring_managers,recruiters' | 'departments,offices,recruiters' | 'departments,recruiters' | 'hiring_managers' | 'hiring_managers,recruiters' | 'offices' | 'offices,hiring_managers' | 'offices,hiring_managers,recruiters' | 'offices,recruiters' | 'recruiters', includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteFields?: 'status', remoteId?: string, status?: 'ARCHIVED' | 'CLOSED' | 'DRAFT' | 'OPEN' | 'PENDING', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedJobList;  }> {
         const localVarPath = this.basePath + '/jobs';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -162,6 +163,10 @@ export class JobsApi {
 
         if (pageSize !== undefined) {
             localVarQueryParameters['page_size'] = ObjectSerializer.serialize(pageSize, "number");
+        }
+
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'status'");
         }
 
         if (remoteId !== undefined) {
@@ -227,8 +232,9 @@ export class JobsApi {
      * @param id 
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      */
-    public async jobsRetrieve (xAccountToken: string, id: string, expand?: 'departments' | 'departments,hiring_managers' | 'departments,hiring_managers,recruiters' | 'departments,offices' | 'departments,offices,hiring_managers' | 'departments,offices,hiring_managers,recruiters' | 'departments,offices,recruiters' | 'departments,recruiters' | 'hiring_managers' | 'hiring_managers,recruiters' | 'offices' | 'offices,hiring_managers' | 'offices,hiring_managers,recruiters' | 'offices,recruiters' | 'recruiters', includeRemoteData?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Job;  }> {
+    public async jobsRetrieve (xAccountToken: string, id: string, expand?: 'departments' | 'departments,hiring_managers' | 'departments,hiring_managers,recruiters' | 'departments,offices' | 'departments,offices,hiring_managers' | 'departments,offices,hiring_managers,recruiters' | 'departments,offices,recruiters' | 'departments,recruiters' | 'hiring_managers' | 'hiring_managers,recruiters' | 'offices' | 'offices,hiring_managers' | 'offices,hiring_managers,recruiters' | 'offices,recruiters' | 'recruiters', includeRemoteData?: boolean, remoteFields?: 'status', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Job;  }> {
         const localVarPath = this.basePath + '/jobs/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -258,6 +264,10 @@ export class JobsApi {
 
         if (includeRemoteData !== undefined) {
             localVarQueryParameters['include_remote_data'] = ObjectSerializer.serialize(includeRemoteData, "boolean");
+        }
+
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'status'");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

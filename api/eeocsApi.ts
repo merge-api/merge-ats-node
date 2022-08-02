@@ -98,14 +98,15 @@ export class EeocsApi {
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
+     * @param includeDeletedData Whether to include data that was marked as deleted by third party webhooks.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      * @param remoteId The API provider\&#39;s ID for the given object.
      */
-    public async eeocsList (xAccountToken: string, candidateId?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'candidate', includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedEEOCList;  }> {
+    public async eeocsList (xAccountToken: string, candidateId?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'candidate', includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteFields?: 'disability_status' | 'disability_status,gender' | 'disability_status,gender,race' | 'disability_status,gender,race,veteran_status' | 'disability_status,gender,veteran_status' | 'disability_status,race' | 'disability_status,race,veteran_status' | 'disability_status,veteran_status' | 'gender' | 'gender,race' | 'gender,race,veteran_status' | 'gender,veteran_status' | 'race' | 'race,veteran_status' | 'veteran_status', remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedEEOCList;  }> {
         const localVarPath = this.basePath + '/eeocs';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -161,6 +162,10 @@ export class EeocsApi {
 
         if (pageSize !== undefined) {
             localVarQueryParameters['page_size'] = ObjectSerializer.serialize(pageSize, "number");
+        }
+
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'disability_status' | 'disability_status,gender' | 'disability_status,gender,race' | 'disability_status,gender,race,veteran_status' | 'disability_status,gender,veteran_status' | 'disability_status,race' | 'disability_status,race,veteran_status' | 'disability_status,veteran_status' | 'gender' | 'gender,race' | 'gender,race,veteran_status' | 'gender,veteran_status' | 'race' | 'race,veteran_status' | 'veteran_status'");
         }
 
         if (remoteId !== undefined) {
@@ -222,8 +227,9 @@ export class EeocsApi {
      * @param id 
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      */
-    public async eeocsRetrieve (xAccountToken: string, id: string, expand?: 'candidate', includeRemoteData?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EEOC;  }> {
+    public async eeocsRetrieve (xAccountToken: string, id: string, expand?: 'candidate', includeRemoteData?: boolean, remoteFields?: 'disability_status' | 'disability_status,gender' | 'disability_status,gender,race' | 'disability_status,gender,race,veteran_status' | 'disability_status,gender,veteran_status' | 'disability_status,race' | 'disability_status,race,veteran_status' | 'disability_status,veteran_status' | 'gender' | 'gender,race' | 'gender,race,veteran_status' | 'gender,veteran_status' | 'race' | 'race,veteran_status' | 'veteran_status', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EEOC;  }> {
         const localVarPath = this.basePath + '/eeocs/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -253,6 +259,10 @@ export class EeocsApi {
 
         if (includeRemoteData !== undefined) {
             localVarQueryParameters['include_remote_data'] = ObjectSerializer.serialize(includeRemoteData, "boolean");
+        }
+
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'disability_status' | 'disability_status,gender' | 'disability_status,gender,race' | 'disability_status,gender,race,veteran_status' | 'disability_status,gender,veteran_status' | 'disability_status,race' | 'disability_status,race,veteran_status' | 'disability_status,veteran_status' | 'gender' | 'gender,race' | 'gender,race,veteran_status' | 'gender,veteran_status' | 'race' | 'race,veteran_status' | 'veteran_status'");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

@@ -189,14 +189,15 @@ export class AttachmentsApi {
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
+     * @param includeDeletedData Whether to include data that was marked as deleted by third party webhooks.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      * @param remoteId The API provider\&#39;s ID for the given object.
      */
-    public async attachmentsList (xAccountToken: string, candidateId?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'candidate', includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedAttachmentList;  }> {
+    public async attachmentsList (xAccountToken: string, candidateId?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'candidate', includeDeletedData?: boolean, includeRemoteData?: boolean, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteFields?: 'attachment_type', remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedAttachmentList;  }> {
         const localVarPath = this.basePath + '/attachments';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -252,6 +253,10 @@ export class AttachmentsApi {
 
         if (pageSize !== undefined) {
             localVarQueryParameters['page_size'] = ObjectSerializer.serialize(pageSize, "number");
+        }
+
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'attachment_type'");
         }
 
         if (remoteId !== undefined) {
@@ -384,8 +389,9 @@ export class AttachmentsApi {
      * @param id 
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      */
-    public async attachmentsRetrieve (xAccountToken: string, id: string, expand?: 'candidate', includeRemoteData?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Attachment;  }> {
+    public async attachmentsRetrieve (xAccountToken: string, id: string, expand?: 'candidate', includeRemoteData?: boolean, remoteFields?: 'attachment_type', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Attachment;  }> {
         const localVarPath = this.basePath + '/attachments/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -415,6 +421,10 @@ export class AttachmentsApi {
 
         if (includeRemoteData !== undefined) {
             localVarQueryParameters['include_remote_data'] = ObjectSerializer.serialize(includeRemoteData, "boolean");
+        }
+
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'attachment_type'");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

@@ -32,6 +32,7 @@ export class DataPassthroughRequest {
     */
     'headers'?: { [key: string]: any; } | null;
     'request_format'?: RequestFormatEnum | null;
+    'normalize_response'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
@@ -70,6 +71,11 @@ export class DataPassthroughRequest {
             "name": "request_format",
             "baseName": "request_format",
             "type": "RequestFormatEnum"
+        },
+        {
+            "name": "normalize_response",
+            "baseName": "normalize_response",
+            "type": "boolean"
         }    ];
 
     static getAttributeTypeMap() {

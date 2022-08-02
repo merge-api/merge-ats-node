@@ -98,16 +98,17 @@ export class ScorecardsApi {
      * @param createdBefore If provided, will only return objects created before this datetime.
      * @param cursor The pagination cursor value.
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
-     * @param includeDeletedData Whether to include data that was deleted in the third-party service.
+     * @param includeDeletedData Whether to include data that was marked as deleted by third party webhooks.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
      * @param interviewId If provided, will only return scorecards for this interview.
      * @param interviewerId If provided, will only return scorecards for this interviewer.
      * @param modifiedAfter If provided, will only return objects modified after this datetime.
      * @param modifiedBefore If provided, will only return objects modified before this datetime.
      * @param pageSize Number of results to return per page.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      * @param remoteId The API provider\&#39;s ID for the given object.
      */
-    public async scorecardsList (xAccountToken: string, applicationId?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'application' | 'application,interview' | 'application,interview,interviewer' | 'application,interviewer' | 'interview' | 'interview,interviewer' | 'interviewer', includeDeletedData?: boolean, includeRemoteData?: boolean, interviewId?: string, interviewerId?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedScorecardList;  }> {
+    public async scorecardsList (xAccountToken: string, applicationId?: string, createdAfter?: Date, createdBefore?: Date, cursor?: string, expand?: 'application' | 'application,interview' | 'application,interview,interviewer' | 'application,interviewer' | 'interview' | 'interview,interviewer' | 'interviewer', includeDeletedData?: boolean, includeRemoteData?: boolean, interviewId?: string, interviewerId?: string, modifiedAfter?: Date, modifiedBefore?: Date, pageSize?: number, remoteFields?: 'overall_recommendation', remoteId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PaginatedScorecardList;  }> {
         const localVarPath = this.basePath + '/scorecards';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -173,6 +174,10 @@ export class ScorecardsApi {
             localVarQueryParameters['page_size'] = ObjectSerializer.serialize(pageSize, "number");
         }
 
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'overall_recommendation'");
+        }
+
         if (remoteId !== undefined) {
             localVarQueryParameters['remote_id'] = ObjectSerializer.serialize(remoteId, "string");
         }
@@ -232,8 +237,9 @@ export class ScorecardsApi {
      * @param id 
      * @param expand Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces.
      * @param includeRemoteData Whether to include the original data Merge fetched from the third-party to produce these models.
+     * @param remoteFields Which fields should be returned in non-normalized form.
      */
-    public async scorecardsRetrieve (xAccountToken: string, id: string, expand?: 'application' | 'application,interview' | 'application,interview,interviewer' | 'application,interviewer' | 'interview' | 'interview,interviewer' | 'interviewer', includeRemoteData?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Scorecard;  }> {
+    public async scorecardsRetrieve (xAccountToken: string, id: string, expand?: 'application' | 'application,interview' | 'application,interview,interviewer' | 'application,interviewer' | 'interview' | 'interview,interviewer' | 'interviewer', includeRemoteData?: boolean, remoteFields?: 'overall_recommendation', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Scorecard;  }> {
         const localVarPath = this.basePath + '/scorecards/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -263,6 +269,10 @@ export class ScorecardsApi {
 
         if (includeRemoteData !== undefined) {
             localVarQueryParameters['include_remote_data'] = ObjectSerializer.serialize(includeRemoteData, "boolean");
+        }
+
+        if (remoteFields !== undefined) {
+            localVarQueryParameters['remote_fields'] = ObjectSerializer.serialize(remoteFields, "'overall_recommendation'");
         }
 
         localVarHeaderParams['X-Account-Token'] = ObjectSerializer.serialize(xAccountToken, "string");

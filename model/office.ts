@@ -32,7 +32,7 @@ export class Office {
     'location'?: string | null;
     'remote_data'?: Array<RemoteData> | null;
     /**
-    * Indicates whether or not this object has been deleted on the third-party.
+    * Indicates whether or not this object has been deleted by third party webhooks.
     */
     'remote_was_deleted'?: boolean;
 

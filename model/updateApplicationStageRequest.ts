@@ -12,32 +12,29 @@
 
 import { RequestFile } from './models';
 
-export class LinkToken {
-    'link_token': string;
-    'integration_name': string;
-    'magic_link_url'?: string;
+export class UpdateApplicationStageRequest {
+    /**
+    * The interview stage to move the application to.
+    */
+    'job_interview_stage'?: string | null;
+    'remote_user_id'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "link_token",
-            "baseName": "link_token",
+            "name": "job_interview_stage",
+            "baseName": "job_interview_stage",
             "type": "string"
         },
         {
-            "name": "integration_name",
-            "baseName": "integration_name",
-            "type": "string"
-        },
-        {
-            "name": "magic_link_url",
-            "baseName": "magic_link_url",
+            "name": "remote_user_id",
+            "baseName": "remote_user_id",
             "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
-        return LinkToken.attributeTypeMap;
+        return UpdateApplicationStageRequest.attributeTypeMap;
     }
 }
 

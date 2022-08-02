@@ -11,8 +11,6 @@
  */
 
 import { RequestFile } from './models';
-import { AttachmentRequest } from './attachmentRequest';
-import { ApplicationRequest } from './applicationRequest';
 import { EmailAddressRequest } from './emailAddressRequest';
 import { PhoneNumberRequest } from './phoneNumberRequest';
 import { UrlRequest } from './urlRequest';
@@ -75,11 +73,11 @@ export class CandidateRequest {
     /**
     * Array of `Application` object IDs.
     */
-    'applications'?: Array<string | ApplicationRequest>;
+    'applications'?: Array<string>;
     /**
     * Array of `Attachment` object IDs.
     */
-    'attachments'?: Array<string | AttachmentRequest>;
+    'attachments'?: Array<string>;
     /**
     * Custom fields configured for a given model.
     */

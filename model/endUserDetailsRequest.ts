@@ -14,18 +14,34 @@ import { RequestFile } from './models';
 import { CategoriesEnum } from './categoriesEnum';
 
 export class EndUserDetailsRequest {
+    /**
+    * Unique ID for your end user.
+    */
     'end_user_email_address': string;
+    /**
+    * Your end user\'s organization.
+    */
     'end_user_organization_name': string;
+    /**
+    * Your end user\'s email address.
+    */
     'end_user_origin_id': string;
+    /**
+    * The integration categories to show in Merge Link.
+    */
     'categories': Array<CategoriesEnum>;
     /**
-    * The slug of a specific pre-selected integration for this linking flow token, for examples of slugs see https://www.merge.dev/docs/basics/integration-metadata
+    * The slug of a specific pre-selected integration for this linking flow token. For examples of slugs, see https://www.merge.dev/docs/basics/integration-metadata/.
     */
     'integration'?: string | null;
     /**
-    * An integer number of minutes between [30, 720] for how long this token is valid. Defaults to 30
+    * An integer number of minutes between [30, 720 or 10080 if for a Magic Link URL] for how long this token is valid. Defaults to 30.
     */
     'link_expiry_mins'?: number;
+    /**
+    * Whether to generate a Magic Link URL. Defaults to false. For more information on Magic Link, see https://merge.dev/blog/product/integrations,-fast.-say-hello-to-magic-link/.
+    */
+    'should_create_magic_link_url'?: boolean | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -59,6 +75,11 @@ export class EndUserDetailsRequest {
             "name": "link_expiry_mins",
             "baseName": "link_expiry_mins",
             "type": "number"
+        },
+        {
+            "name": "should_create_magic_link_url",
+            "baseName": "should_create_magic_link_url",
+            "type": "boolean"
         }    ];
 
     static getAttributeTypeMap() {
